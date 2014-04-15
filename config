@@ -1,3 +1,0 @@
-[remote "ooici"]
-        url = https://github.com/ooici/ion-ux/
-        fetch = +refs/heads/*:refs/remotes/ooici/*
