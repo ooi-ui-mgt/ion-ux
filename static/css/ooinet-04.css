@@ -35,7 +35,7 @@ body {
   'outline:1px solid #000; /* temp */
 }
 
-#main-subheader {
+#mainSubheader {
   position:fixed;
   top:72px;
   left:218px;
@@ -83,10 +83,10 @@ body {
   width:218px;
   overflow:auto;
   z-index:0;
-  outline:1px solid #000; /* temp */
+  'outline:1px solid #000; /* temp */
 }
 
-#left-subheader {
+#leftSubheader {
   position:fixed;
   top:72px;
   left:0px;
@@ -98,7 +98,7 @@ body {
   'outline:1px solid #000; /* temp */
 }
 
-upper-main {
+#upperMain {
   position:absolute;
   top:0px;
   left:0px;
@@ -110,7 +110,7 @@ upper-main {
   overflow:auto;
 }
 
-lower-main {
+#lowerMain {
   position:absolute;
   top:50%;
   left:0px;
