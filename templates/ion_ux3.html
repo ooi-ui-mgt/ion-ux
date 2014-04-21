@@ -5,6 +5,7 @@ last edited 04-13 04-09 03-05 2014-03-02
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="/static/bootstrap/less/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="/static/css/ooinet-04.css"/>
     <title>OOINet</title>
 
@@ -13,11 +14,17 @@ last edited 04-13 04-09 03-05 2014-03-02
 
     <script src="/static/js/underscore-1.4.4.min.js "> </script>
     <script src="/static/js/backbone-1.0.min.js"> </script>
+    <script src="/static/js/bootstrap.min.js"> </script>
+    <script src="/static/js/backbone.bootstrap-modal.js"> </script>
 
+    <!-- UX JavaScripts --> 
+    <script src="/static/js/ion_ux2.js"> </script>
+    <script src="/static/js/ux_bootstrap_models2.js"> </script>
+    <script src="/static/js/ux_bootstrap_views2.js"> </script>
 </head>
 
 <body>
-	<div id="header" align="center">header</div>
+	<div id="header" align="left">header</div>
 	<div id="leftSubheader" align="center">leftSubheader</div>
 	<div id="mainSubheader" align="left">mainSubheader</div>
 
@@ -29,5 +36,11 @@ last edited 04-13 04-09 03-05 2014-03-02
 	   <div id="lowerMain">
 	   </div>
 	</div>
+
+    <script>
+      $(function(){
+        IONUX.init();
+      });
+    </script>
 </body>
 </html>

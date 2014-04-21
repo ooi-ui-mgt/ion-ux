@@ -108,6 +108,10 @@ def index():
 def failed_login():
      return redirect(url_for('index', cl="cf"))
 
+@app.route('/templates/<path:filename>')
+def serve_template(filename):
+    return render_template(filename)
+
 # -----------------------------------------------------------------------------
 # SEARCH & ATTACHMENTS
 # -----------------------------------------------------------------------------

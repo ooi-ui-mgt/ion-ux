@@ -1,0 +1,17 @@
+<div>
+	<img id="img_a" src="/static/img/ooinet-header-background-02.png" alt="background" border="0" />
+	<a href="http://www.oceanobservatories.org/" title="Ocean Observatories Initiative"><img id="ooi-logo" src="/static/img/newbanner_ooilogo.png" alt="OOI" /></a>
+</div>
+<div id="login"> login </div> <!-- User navigation -->
+
+<script type="text/javascript">
+	$(function(){
+		IONUX.Models.LoginTemplateInstance = new IONUX.Models.LoginTemplate();
+		IONUX.Models.LoginInstance = new IONUX.Models.Login();
+		IONUX.Models.LoginInstance.setModels(IONUX.Models.LoginTemplateInstance, IONUX.Models.SessionInstance);
+
+		IONUX.Views.LoginInstance = new IONUX.Views.Login({model: IONUX.Models.LoginInstance});
+
+	    IONUX.Models.LoginInstance.fetch();
+	});
+</script>
