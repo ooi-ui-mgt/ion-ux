@@ -14,6 +14,8 @@ and just putting it on body only will cause the height calculations contained wi
 
 html, body {
  height:100%;
+ font-family: Arial;
+ font-size: 12px; 
 }
 
 body {
@@ -294,6 +296,17 @@ ul.dropdown-menu li:hover {
   color: #9ecdf9;
 }
 
+.accordion_control {
+  position: relative;
+}
+
+.accordion_label {
+  color: #FFF;
+  margin: 0px;
+  padding: 0px;
+  display: inline-block;
+}
+
 .textRight {
   margin-left: 80px;
 }
@@ -330,16 +343,24 @@ ul.dropdown-menu li:hover {
 }
 
 .arrow_down {
-  width: 0; 
-  height: 0; 
+  width: 0px;
+  height: 0px;
+  display: inline-block;
+  padding: 0px;
+  margin-top: -2px;
+  margin-right: 2px;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 5px solid #fff;
 }
 
 .arrow_right {
-  width: 0; 
-  height: 0; 
+  width: 0px;
+  height: 0px;
+  display: inline-block;
+  padding: 0px;
+  margin-left: 2px;
+  margin-right: 5px;
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
   border-left: 5px solid #fff;
