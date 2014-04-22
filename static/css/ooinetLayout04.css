@@ -313,6 +313,8 @@ ul.dropdown-menu li:hover {
 
 .spatial_duration {
   width: 23px;
+  height: 13px;
+  color: #969fa6;
 }
 
 .expand-hide {
@@ -323,6 +325,8 @@ ul.dropdown-menu li:hover {
   background-color: #88a9cc;
   width: 190px;
   color: #fff;
+  height: 25px;
+  font-size: 0.85em;
 }
 
 .spatial_details h5 {
@@ -343,4 +347,12 @@ ul.dropdown-menu li:hover {
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
   border-left: 5px solid #fff;
+}
+
+.spatial_details select.date_menu {
+  width: 70px;
+  font-size: 0.8em;
+  background-color: #fff;
+  color: #969fa6;
+  width: 55px;
 }

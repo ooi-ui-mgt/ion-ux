@@ -51,7 +51,7 @@ IONUX.Views.Left = Backbone.View.extend({
 			if ($(this).is(':visible')) {
             	$link.removeClass('arrow_down').addClass('arrow_right');              
         	} else {
-        		$link.removeClass('arrow_down').addClass('arrow_right');
+        		$link.removeClass('arrow_right').addClass('arrow_down');
        		}        
 		});
 	},
