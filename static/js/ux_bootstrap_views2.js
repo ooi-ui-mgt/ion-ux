@@ -36,3 +36,15 @@ IONUX.Views.Login = Backbone.View.extend({
 	}
 });
 
+IONUX.Views.Left = Backbone.View.extend({
+	el: '#left',
+	initialize: function() {
+		this.model.on('change:html', this.render, this);
+	},
+	render: function() {
+		console.log('rendering left side view');
+		this.$el.html(this.model.html);
+		return this;
+	}
+});
+

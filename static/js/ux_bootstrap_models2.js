@@ -136,3 +136,17 @@ IONUX.Models.Login = Backbone.Model.extend({
 		});
 	}
 });
+
+IONUX.Models.Left = Backbone.Model.extend({
+  initialize: function() {
+    console.log('initializing left sidebar model');
+  },
+  url: '/templates/accordion.html',
+  html: '',
+  parse: function(resp){
+    console.log('got response from /bootstrap/accordion.html.');
+    this.html = resp;
+    this.trigger('change:html');
+    return resp;
+  }
+});

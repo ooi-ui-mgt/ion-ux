@@ -12,5 +12,12 @@ IONUX = {
 			async: false,
 			dataType: 'html'
 		});
+
+		IONUX.Models.LeftSidebar = new IONUX.Models.Left();
+		IONUX.Views.LeftSidebar = new IONUX.Views.Left({model: IONUX.Models.LeftSidebar});
+		IONUX.Models.LeftSidebar.fetch({
+			async: false,
+			dataType: 'html'
+		});
 	}
 }
