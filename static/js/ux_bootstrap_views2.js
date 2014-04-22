@@ -38,8 +38,22 @@ IONUX.Views.Login = Backbone.View.extend({
 
 IONUX.Views.Left = Backbone.View.extend({
 	el: '#left',
+	events: {
+		'click .expand_hide': 'expandHide'
+	},
 	initialize: function() {
 		this.model.on('change:html', this.render, this);
+	},
+	expandHide: function(e) {
+		e.preventDefault();
+		var $link = $(e.currentTarget);
+		$link.parent().find('.spatial_details').slideToggle('medium', function() {
+			if ($(this).is(':visible')) {
+            	$link.removeClass('arrow_down').addClass('arrow_right');              
+        	} else {
+        		$link.removeClass('arrow_down').addClass('arrow_right');
+       		}        
+		});
 	},
 	render: function() {
 		console.log('rendering left side view');
