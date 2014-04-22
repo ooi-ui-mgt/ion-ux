@@ -101,11 +101,16 @@ def login_required(f):
 
 @app.route('/')
 def index():
-    return render_app_template(request.path)
+    return render_template('ion_ux3.html')
+    # return render_app_template(request.path)
 
 @app.route('/failed')
 def failed_login():
      return redirect(url_for('index', cl="cf"))
+
+@app.route('/templates/<path:filename>')
+def serve_template(filename):
+    return render_template(filename)
 
 # -----------------------------------------------------------------------------
 # SEARCH & ATTACHMENTS
