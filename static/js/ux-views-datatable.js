@@ -435,7 +435,7 @@ IONUX.Views.DataTable = IONUX.Views.Base.extend({
                 var resource_type_name = 'Resource';
         };
         
-        var html = "<div class='sprite "+type_css+"' title='"+resource_type+"'>&nbsp;</div>&nbsp;'"+resource_type_name;
+        var html = "<div class='sprite "+type_css+"' title='"+resource_type+"'>&nbsp;</div>&nbsp;"+resource_type_name;
         return html;
     },
 
