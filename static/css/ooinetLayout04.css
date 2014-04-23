@@ -31,7 +31,7 @@ body {
  margin:0px;
  padding:0px;
  width:100%;
- height:72px;
+ height:96px;
  z-index: 0;
  overflow:hidden;
  'outline:1px solid #000; /* temp */
@@ -42,8 +42,170 @@ body {
  left: 0px;
  top: 0px;
  z-index: -1;
- height: 100%;
+ height: 72px;
  width: 100%;
+}
+
+#header_links {
+  color: white;
+  position: absolute;
+  top: 72px;
+  left: 0px;
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  z-index: 4;
+  background-color: #384d68;
+  background: -webkit-gradient(linear, top left, top right, from(#23435c), to(#040e17));
+  background: -webkit-linear-gradient(top, #23435c, #040e17);
+  background: -moz-linear-gradient(top, #23435c, #040e17);
+  background: -o-linear-gradient(top, #23435c, #040e17);
+  margin-right: 5px;
+  padding: 0px;
+  margin: 0px;
+  text-align: right;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 9pt;
+}
+
+#mainSubheader {
+ position:fixed;
+ top:96px;
+ left:338px;
+ margin:0px;
+ padding:0px;
+ width:calc(100% - 338px);
+ height:20px;
+ z-index:0;
+ 'outline:1px solid #000; /* temp */
+}
+
+#main {
+ position:absolute;
+ top:116px;
+ left:275px;
+ padding:0px;
+ margin:0px;
+ height:calc(100% - 116px);
+ width:calc(100% - 338px);
+ z-index:0;
+ overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
+ otherwise there will be 2 vertical scroll bars (might be a browser bug). */
+ 'outline:1px solid #000; /* temp */
+}
+
+#dynamic-container {  /* same as main */
+ position:absolute;
+ top:116px;
+ left:275px;
+ padding:0px;
+ margin:0px;
+ height:calc(100% - 116px);
+ width:calc(100% - 338px);
+ z-index:0;
+ overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
+ otherwise there will be 2 vertical scroll bars (might be a browser bug). */
+ 'outline:1px solid #000; /* temp */
+}
+
+#left {
+ position:absolute;
+ top:116px;
+ left:0px;
+ height:calc(100% - 116px);
+ width:338px;
+ overflow:auto;
+ z-index:0;
+ 'outline:1px solid #000; /* temp */
+}
+
+#leftSubheader {
+ position:fixed;
+ top:96px;
+ left:0px;
+ margin:0px;
+ padding:0px;
+ width:338px;
+ height:20px;
+ z-index:0;
+ 'outline:1px solid #000; /* temp */
+}
+
+#upperMain {
+ position:absolute;
+ top:0px;
+ left:0px;
+ margin:0px;
+ padding:0px;
+ width:100%;
+ height:50%;
+ z-index:4;
+ overflow:auto;
+}
+
+#lowerMain {
+ position:absolute;
+ top:50%;
+ left:0px;
+ margin:0px;
+ padding:0px;
+ width:100%;
+ height:50%;
+ z-index:4;
+ overflow:auto;
+}
+
+.innerMain {
+  position:relative;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  z-index:4;
+  overflow:auto;
+}
+
+#upperLeft {
+  position:absolute;
+  top:0px;
+  left:0px;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  height:33%;
+  z-index:4;
+  overflow:auto;
+}
+
+#middleLeft {
+  position:absolute;
+  top:33%;
+  left:0px;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  height:33%;
+  z-index:4;
+  overflow:auto;
+}
+
+#lowerLeft {
+  position:absolute;
+  top:66%;
+  left:0px;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  height:33%;
+  z-index:4;
+  overflow:auto;
+}
+.innerLeft {
+  position:relative;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  z-index:4;
+  overflow:auto;
 }
 
 #login {
@@ -149,146 +311,6 @@ ul.dropdown-menu li:hover {
  END TEMP USER-NAV
 --------------------------------------------------------------- */
 
-#mainSubheader {
- position:fixed;
- top:72px;
- left:275px;
- margin:0px;
- padding:0px;
- width:calc(100% - 338px);
- height:44px;
- z-index:0;
- 'outline:1px solid #000; /* temp */
-}
-
-#main {
- position:absolute;
- top:116px;
- left:275px;
- padding:0px;
- margin:0px;
- height:calc(100% - 116px);
- width:calc(100% - 338px);
- z-index:0;
- overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
- otherwise there will be 2 vertical scroll bars (might be a browser bug). */
- 'outline:1px solid #000; /* temp */
-}
-
-#dynamic-container {  /* same as main */
- position:absolute;
- top:116px;
- left:275px;
- padding:0px;
- margin:0px;
- height:calc(100% - 116px);
- width:calc(100% - 338px);
- z-index:0;
- overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
- otherwise there will be 2 vertical scroll bars (might be a browser bug). */
- 'outline:1px solid #000; /* temp */
-}
-
-#left {
- position:absolute;
- top:116px;
- left:0px;
- height:calc(100% - 116px);
- width:338px;
- overflow:auto;
- z-index:0;
- 'outline:1px solid #000; /* temp */
-}
-
-#leftSubheader {
- position:fixed;
- top:72px;
- left:0px;
- margin:0px;
- padding:0px;
- width:338px;
- height:44px;
- z-index:0;
- 'outline:1px solid #000; /* temp */
-}
-
-#upperMain {
- position:absolute;
- top:0px;
- left:0px;
- margin:0px;
- padding:0px;
- width:100%;
- height:50%;
- z-index:4;
- overflow:auto;
-}
-
-#lowerMain {
- position:absolute;
- top:50%;
- left:0px;
- margin:0px;
- padding:0px;
- width:100%;
- height:50%;
- z-index:4;
- overflow:auto;
-}
-
-.innerMain {
-  position:relative;
-  margin:0px;
-  padding:0px;
-  width:100%;
-  z-index:4;
-  overflow:auto;
-}
-
-#upperLeft {
-  position:absolute;
-  top:0px;
-  left:0px;
-  margin:0px;
-  padding:0px;
-  width:100%;
-  height:33%;
-  z-index:4;
-  overflow:auto;
-}
-
-#middleLeft {
-  position:absolute;
-  top:33%;
-  left:0px;
-  margin:0px;
-  padding:0px;
-  width:100%;
-  height:33%;
-  z-index:4;
-  overflow:auto;
-}
-
-#lowerLeft {
-  position:absolute;
-  top:66%;
-  left:0px;
-  margin:0px;
-  padding:0px;
-  width:100%;
-  height:33%;
-  z-index:4;
-  overflow:auto;
-}
-.innerLeft {
-  position:relative;
-  margin:0px;
-  padding:0px;
-  width:100%;
-  z-index:4;
-  overflow:auto;
-}
-
 /* left sidebar accordion */
 #accordion_container {
   background-color: #384d68;
@@ -319,7 +341,7 @@ ul.dropdown-menu li:hover {
   background: -o-linear-gradient(left, #5687AF, #3B5E7E);
   padding: 10px 10px;
   /*width: 217px;*/
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   margin-right: 3px;
   border: 1px solid #5687AF;
   border-left: 0px;
