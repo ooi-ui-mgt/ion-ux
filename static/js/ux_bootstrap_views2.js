@@ -67,12 +67,23 @@ IONUX.Views.Left = Backbone.View.extend({
 
 IONUX.Views.Region = Backbone.View.extend({
 	el: '#region',
+	template: _.template('<span class="accordion_title">' + 
+    '<div class="expand_hide arrow_down"></div><div class="accordion_label">Region</div>' + 
+  	'</span><div class="spatial_details"><ul>' + 
+  		'<% _.each(this.collection, function(model) { %>' + 
+  		'<li><%= model %></li>' + 
+  		'<% }); %>' + 
+  	'</ul></div>'),
 	initialize: function() {
-		this.model.on('change:html', this.render, this);
+		console.log('initializing region view');
+		console.log('collection is ' + this.collection);
+		this.render();
 	},
 	render: function() {
 		console.log('rendering region');
-		this.$el.html(this.model.html);
+		this.$el.html(this.template());
+		/*var tmpl = this.template({ regions: this.collection.toJSON() });
+		this.$el.html(tmpl);*/
 		return this;
 	}
 });

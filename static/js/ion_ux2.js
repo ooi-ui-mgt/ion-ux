@@ -36,7 +36,7 @@ var get_template = function(url) {
         }
     });
     return data;
-}
+};
 
 IONUX = {
 	Models: {},
@@ -73,6 +73,22 @@ IONUX = {
       	});
 
       	this.dashboard_map();
+      	IONUX.Views.RegionList = new IONUX.Views.Region({collection: IONUX.Dashboard.Observatories });
+      	//IONUX.Views.RegionList.render();
+
+	},
+
+	getTemplate: function(url) {
+		var data = "<h1> failed to load url : " + url + "</h1>";
+    	$.ajax({
+        	async: false,
+        	url: url,
+        	dataType: 'text',
+        	success: function(response) {
+            	data = response;
+        	}
+    	});
+    	return data;
 	},
 
 	dashboard_map: function(){
