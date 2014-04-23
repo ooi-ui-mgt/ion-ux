@@ -326,7 +326,7 @@ ul.dropdown-menu li:hover {
 
 .spatial_duration {
   width: 23px;
-  height: 13px;
+  height: 13px !important;
   color: #969fa6;
 }
 
@@ -336,10 +336,11 @@ ul.dropdown-menu li:hover {
 
 .spatial_details select {
   background-color: #88a9cc;
-  width: 190px;
+  width: 160px;
   color: #fff;
-  height: 25px;
+  height: 23px;
   font-size: 0.85em;
+  border-color: #000;
 }
 
 .spatial_details h5 {
