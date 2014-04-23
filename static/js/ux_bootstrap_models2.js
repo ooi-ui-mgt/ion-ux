@@ -150,3 +150,11 @@ IONUX.Models.Left = Backbone.Model.extend({
     return resp;
   }
 });
+
+IONUX.Collections.Observatories = Backbone.Collection.extend({
+  url: '/Observatory/list/',
+  parse: function(resp) {
+    return resp.data;
+  }
+});
+
