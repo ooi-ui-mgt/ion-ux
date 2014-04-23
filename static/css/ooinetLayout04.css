@@ -152,10 +152,10 @@ ul.dropdown-menu li:hover {
 #mainSubheader {
  position:fixed;
  top:72px;
- left:218px;
+ left:275px;
  margin:0px;
  padding:0px;
- width:calc(100% - 218px);
+ width:calc(100% - 275px);
  height:44px;
  z-index:0;
  'outline:1px solid #000; /* temp */
@@ -164,11 +164,11 @@ ul.dropdown-menu li:hover {
 #main {
  position:absolute;
  top:116px;
- left:218px;
+ left:275px;
  padding:0px;
  margin:0px;
  height:calc(100% - 116px);
- width:calc(100% - 218px);
+ width:calc(100% - 275px);
  z-index:0;
  overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
  otherwise there will be 2 vertical scroll bars (might be a browser bug). */
@@ -178,11 +178,11 @@ ul.dropdown-menu li:hover {
 #dynamic-container {  /* same as main */
  position:absolute;
  top:116px;
- left:218px;
+ left:275px;
  padding:0px;
  margin:0px;
  height:calc(100% - 116px);
- width:calc(100% - 218px);
+ width:calc(100% - 275px);
  z-index:0;
  overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
  otherwise there will be 2 vertical scroll bars (might be a browser bug). */
@@ -194,7 +194,7 @@ ul.dropdown-menu li:hover {
  top:116px;
  left:0px;
  height:calc(100% - 116px);
- width:218px;
+ width:275px;
  overflow:auto;
  z-index:0;
  'outline:1px solid #000; /* temp */
@@ -206,7 +206,7 @@ ul.dropdown-menu li:hover {
  left:0px;
  margin:0px;
  padding:0px;
- width:218px;
+ width:275px;
  height:44px;
  z-index:0;
  'outline:1px solid #000; /* temp */
@@ -326,7 +326,7 @@ ul.dropdown-menu li:hover {
 
 .spatial_duration {
   width: 23px;
-  height: 13px;
+  height: 13px !important;
   color: #969fa6;
 }
 
@@ -349,7 +349,7 @@ ul.dropdown-menu li:hover {
   position: absolute;
   left: 0px;
   top: 0px;
-  width: 190px;
+  width: 160px;
   height: 20px;
   background: transparent;
   background: url('../img/left_select_arrow.png') no-repeat right;
@@ -372,10 +372,12 @@ ul.dropdown-menu li:hover {
 }
 
 .spatial_details select {
-  width: 190px;
+  background-color: #88a9cc;
+  width: 160px;
   color: #fff;
-  height: 25px;
+  height: 23px;
   font-size: 0.85em;
+  border-color: #000;
 }
 
 .spatial_details h5 {
