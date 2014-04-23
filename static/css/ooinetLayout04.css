@@ -336,11 +336,11 @@ ul.dropdown-menu li:hover {
 
 .left_navi_select_container {
   position: relative;
-  width: 190px;
+  width: 160px;
   height: 20px;
   padding: 0px;
   border: 1px solid #384D68;
-  border-radius: 3px;
+  border-radius: 4px;
   margin-bottom: 10px;
 }
 
@@ -360,7 +360,7 @@ ul.dropdown-menu li:hover {
   left: 0px;
   top: 0px;
   border: 0px;
-  width: 190px;
+  width: 160px;
   -webkit-appearance: none;
   height: 20px !important;
   padding: 0px;
