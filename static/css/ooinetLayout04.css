@@ -155,7 +155,7 @@ ul.dropdown-menu li:hover {
  left:275px;
  margin:0px;
  padding:0px;
- width:calc(100% - 275px);
+ width:calc(100% - 338px);
  height:44px;
  z-index:0;
  'outline:1px solid #000; /* temp */
@@ -168,7 +168,7 @@ ul.dropdown-menu li:hover {
  padding:0px;
  margin:0px;
  height:calc(100% - 116px);
- width:calc(100% - 275px);
+ width:calc(100% - 338px);
  z-index:0;
  overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
  otherwise there will be 2 vertical scroll bars (might be a browser bug). */
@@ -182,7 +182,7 @@ ul.dropdown-menu li:hover {
  padding:0px;
  margin:0px;
  height:calc(100% - 116px);
- width:calc(100% - 275px);
+ width:calc(100% - 338px);
  z-index:0;
  overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
  otherwise there will be 2 vertical scroll bars (might be a browser bug). */
@@ -194,7 +194,7 @@ ul.dropdown-menu li:hover {
  top:116px;
  left:0px;
  height:calc(100% - 116px);
- width:275px;
+ width:338px;
  overflow:auto;
  z-index:0;
  'outline:1px solid #000; /* temp */
@@ -206,7 +206,7 @@ ul.dropdown-menu li:hover {
  left:0px;
  margin:0px;
  padding:0px;
- width:275px;
+ width:338px;
  height:44px;
  z-index:0;
  'outline:1px solid #000; /* temp */
@@ -312,16 +312,19 @@ ul.dropdown-menu li:hover {
 }
 
 .left_accordion {
-    background-color: #3b5e7e;
-    padding: 20px 10px;
-    /*width: 217px;*/
-    margin-bottom: 6px;
-    border-radius: 7px;
-}
-
-.left_accordion h4 {
-  color: #fff;
-  display: inline;
+  background-color: #3b5e7e;
+  background: -webkit-gradient(linear, left top, right top, from(#5687AF), to(#3B5E7E));
+  background: -webkit-linear-gradient(left, #5687AF, #3B5E7E);
+  background: -moz-linear-gradient(left, #5687AF, #3B5E7E);
+  background: -o-linear-gradient(left, #5687AF, #3B5E7E);
+  padding: 10px 10px;
+  /*width: 217px;*/
+  margin-bottom: 6px;
+  margin-right: 3px;
+  border: 1px solid #5687AF;
+  border-left: 0px;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
 .spatial_duration {
@@ -337,10 +340,10 @@ ul.dropdown-menu li:hover {
 .left_navi_select_container {
   position: relative;
   width: 160px;
-  height: 20px;
+  height: 16px;
   padding: 0px;
   border: 1px solid #384D68;
-  border-radius: 4px;
+  border-radius: 3px;
   margin-bottom: 10px;
 }
 
@@ -350,7 +353,7 @@ ul.dropdown-menu li:hover {
   left: 0px;
   top: 0px;
   width: 160px;
-  height: 20px;
+  height: 16px;
   background: transparent;
   background: url('../img/left_select_arrow.png') no-repeat right;
 }
@@ -362,9 +365,10 @@ ul.dropdown-menu li:hover {
   border: 0px;
   width: 160px;
   -webkit-appearance: none;
-  height: 20px !important;
+  height: 16px !important;
   padding: 0px;
-  line-height: 20px;
+  line-height: 16px;
+  border-radius: 3px;
   background: -webkit-gradient(linear, left top, right top, from(#88A9CC), to(#7890AC));
   background: -webkit-linear-gradient(left, #88A9CC, #7890AC);
   background: -moz-linear-gradient(left, #88A9CC, #7890AC);
@@ -377,7 +381,9 @@ ul.dropdown-menu li:hover {
   color: #fff;
   height: 23px;
   font-size: 0.85em;
-  border-color: #000;
+  font-family: Arial;
+  border-color: #88A9CC;
+  padding: 0px;
 }
 
 .spatial_details h5 {
