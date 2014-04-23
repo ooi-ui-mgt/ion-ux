@@ -47,9 +47,9 @@ IONUX.Views.Left = Backbone.View.extend({
 	expandHide: function(e) {
 		e.preventDefault();
 		var $link = $(e.currentTarget);
-		$link.parent().find('.spatial_details').slideToggle('medium', function() {
+		$link.parent().find('.spatial_details').slideToggle('fast', function() {
 			if ($(this).is(':visible')) {
-            	$link.removeClass('arrow_down').addClass('arrow_right');              
+            	$link.removeClass('arrow_right').addClass('arrow_down');              
         	} else {
         		$link.removeClass('arrow_down').addClass('arrow_right');
        		}        

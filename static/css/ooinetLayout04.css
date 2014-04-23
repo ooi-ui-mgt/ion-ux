@@ -14,6 +14,8 @@ and just putting it on body only will cause the height calculations contained wi
 
 html, body {
  height:100%;
+ font-family: Arial;
+ font-size: 12px; 
 }
 
 body {
@@ -294,6 +296,17 @@ ul.dropdown-menu li:hover {
   color: #9ecdf9;
 }
 
+.accordion_control {
+  position: relative;
+}
+
+.accordion_label {
+  color: #FFF;
+  margin: 0px;
+  padding: 0px;
+  display: inline-block;
+}
+
 .textRight {
   margin-left: 80px;
 }
@@ -313,6 +326,8 @@ ul.dropdown-menu li:hover {
 
 .spatial_duration {
   width: 23px;
+  height: 13px !important;
+  color: #969fa6;
 }
 
 .expand-hide {
@@ -321,8 +336,11 @@ ul.dropdown-menu li:hover {
 
 .spatial_details select {
   background-color: #88a9cc;
-  width: 190px;
+  width: 160px;
   color: #fff;
+  height: 23px;
+  font-size: 0.85em;
+  border-color: #000;
 }
 
 .spatial_details h5 {
@@ -330,17 +348,34 @@ ul.dropdown-menu li:hover {
 }
 
 .arrow_down {
-  width: 0; 
-  height: 0; 
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
+  width: 0px;
+  height: 2px;
+  display: inline-block;
+  padding: 0px;
+  margin-top: -2px;
+  margin-right: 4px;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
   border-top: 5px solid #fff;
 }
 
 .arrow_right {
-  width: 0; 
-  height: 0; 
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
+  width: 0px;
+  height: 0px;
+  display: inline-block;
+  padding: 0px;
+  margin-bottom: 2px;
+  margin-left: 2px;
+  margin-right: 3px;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
   border-left: 5px solid #fff;
+}
+
+.spatial_details select.date_menu {
+  width: 70px;
+  font-size: 0.8em;
+  background-color: #fff;
+  color: #969fa6;
+  width: 55px;
 }
