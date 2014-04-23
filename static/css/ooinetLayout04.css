@@ -359,6 +359,10 @@ ul.dropdown-menu li:hover {
   display:inline-block;
 }
 
+.accordion_title {
+  cursor: pointer;
+}
+
 .left_navi_select_container {
   position: relative;
   width: 160px;
