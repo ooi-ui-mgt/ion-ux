@@ -62,6 +62,8 @@ IONUX = {
 			dataType: 'html'
 		});
 
+		$("#leftSubheader").html(get_template('templates/block_nav_tabs2.html')).show();
+
 	    // Bootstrap navigation menu
 	    $.ajax({
 			async: false,
@@ -75,28 +77,13 @@ IONUX = {
       	this.dashboard_map();
 	},
 
-	dashboard_map: function(){
-	    //this._remove_dashboard_menu();
-	    // disabling code to modify buttons since we don't have them in this case.
-	    /*
-	    $('.map-nested-ul').find('.active').removeClass('active');
-	    
-	    $('#left .resources-view').hide();
-	    $('#left .map-view').show();
-	    $('#btn-map').addClass('active').siblings('.active').removeClass('active');
-	    */
-	    
+	dashboard_map: function(){	    
 	    $('#upperMain').html(get_template('templates/block_map2.html')).show();
 	    if (!IONUX.Dashboard.MapResources || !IONUX.Dashboard.MapResource) {
 	      IONUX.Dashboard.MapResources = new IONUX.Collections.MapResources([], {resource_id: null});
 	      IONUX.Dashboard.MapResource = new IONUX.Models.MapResource();
 	      IONUX.Dashboard.MapDataResources = new IONUX.Collections.MapDataProducts([], {resource_id: null});
 	    };
-	    
-	    // render empty table.
-	    // but not really right now because it ain't gonna live at this spot anymore!
-	    // new IONUX.Views.MapDataProductTable({el: $('#dynamic-container #2163993'), collection: IONUX.Dashboard.MapDataResources});
-	    
 	    
 	    if (!IONUX.Dashboard.MapView){
 	      IONUX.Dashboard.MapView = new IONUX.Views.Map({

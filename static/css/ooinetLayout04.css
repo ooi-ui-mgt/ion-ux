@@ -128,6 +128,7 @@ body {
 }
 
 #leftSubheader {
+ background-color: #ddd;
  position:fixed;
  top:72px;
  left:0px;
@@ -351,10 +352,10 @@ ul.dropdown-menu li:hover {
   /*width: 217px;*/
   margin-bottom: 5px;
   margin-right: 3px;
+  margin-left: 3px;
   border: 1px solid #5687AF;
   border-left: 0px;
-  border-top-right-radius: 7px;
-  border-bottom-right-radius: 7px;
+  border-radius: 7px;
 }
 
 .spatial_duration {
@@ -466,4 +467,28 @@ ul.dropdown-menu li:hover {
   top:20px;
   right: 5px;
   background-color: #FF0000;
+}
+
+.two_nav_tabs {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+}
+
+.two_nav_tab {
+  cursor: pointer;
+  display: inline-block;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  background-color: #FFF;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.two_nav_tabs .active {
+  background-color: #384d68;
+  color: #fff;
 }
