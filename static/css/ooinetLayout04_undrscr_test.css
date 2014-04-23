@@ -349,6 +349,10 @@ ul.dropdown-menu li:hover {
   border-bottom-right-radius: 7px;
 }
 
+input[type="text"].keyword {
+  height: 16px;
+}
+
 .spatial_duration {
   width: 23px;
   height: 13px !important;
@@ -361,11 +365,6 @@ ul.dropdown-menu li:hover {
 
 .accordion_title {
   cursor: pointer;
-}
-
-input.keyword {
-  height: 16px;
-  font-size: 12px;
 }
 
 .left_navi_select_container {
@@ -419,7 +418,6 @@ input.keyword {
 
 .spatial_details h5 {
   line-height: 8px;
-  font-size: 12px;
 }
 
 .arrow_down {

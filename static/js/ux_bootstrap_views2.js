@@ -1,4 +1,7 @@
 // renders the contents of the Header div of the page frame.
+
+
+
 IONUX.Views.Header = Backbone.View.extend({
 	el: '#header',
 	initialize: function() {
@@ -57,6 +60,18 @@ IONUX.Views.Left = Backbone.View.extend({
 	},
 	render: function() {
 		console.log('rendering left side view');
+		this.$el.html(this.model.html);
+		return this;
+	}
+});
+
+IONUX.Views.Region = Backbone.View.extend({
+	el: '#region',
+	initialize: function() {
+		this.model.on('change:html', this.render, this);
+	},
+	render: function() {
+		console.log('rendering region');
 		this.$el.html(this.model.html);
 		return this;
 	}
