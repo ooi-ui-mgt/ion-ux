@@ -6,7 +6,7 @@
     <div class="accordion_label">Keyword</div>
   </span>
 	<div class="spatial_details">
-		More information
+		<input class="keyword" type="text" placeholder="Keyword" />
 	</div>
 </article>
 <article class="left_accordion" id="spatial">
@@ -45,9 +45,18 @@
 		<div id='date-dropdown'>
 			<select class="date_menu" id="year"></select>
 			<select class="date_menu" id='month'></select>
-   			<select class="date_menu" id='day'></select>
+   		<select class="date_menu" id='day'></select>
+      <select class="date_menu" id="hour"></select>
     	</div>
 	</div>
+</article>
+<article class="left_accordion" id="region">
+  <span class="accordion_title">
+    <div class="expand_hide arrow_down"></div><div class="accordion_label">Region</div>
+  </span>
+  <div class="spatial_details">
+    More information
+  </div>
 </article>
 <article class="left_accordion" id="site">
   <span class="accordion_title">
@@ -100,8 +109,7 @@
       /** Date Picker **/
       
       function initDatePicker() {
-        $('#datepicker').each(function() {
-        	this.datepicker({
+        	$('#datepicker').datepicker({
           showOn: 'button',
           buttonImage: 'calendar.png',
           buttonImageOnly: true,
@@ -118,7 +126,6 @@
           onSelect: function() {
             syncDateDropdownWithDatePicker();
           }
-        });
         });        
       }
       
@@ -239,7 +246,7 @@
         });
       }
 
-      function bindDayDropdownEvent() {
+      function bindHourDropdownEvent() {
         $('#hour').on('change', function() {
           syncDatePickerWithDateDropdown();
         });
