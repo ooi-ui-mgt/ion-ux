@@ -38,8 +38,9 @@
 		<div id='date-dropdown'>
 			<select class="date_menu" id="year"></select>
 			<select class="date_menu" id='month'></select>
-   			<select class="date_menu" id='day'></select>
-    	</div>
+   		<select class="date_menu" id='day'></select>
+      <select class="date_menu" id="hour"></select>
+    </div>
 		<h5>To</h5>
 		<div id='date-dropdown'>
 			<select class="date_menu" id="year"></select>
@@ -130,18 +131,23 @@
         var currentMonth = currentDate.getMonth();
         var currentDay = currentDate.getDate();
         var numberOfDays = daysInMonth(currentYear, currentMonth);
+        var numberofHours = 24;
+        var currentHour = currentDate.getHours();
         
         populateYearDropdown(1900, currentYear+10);
         populateMonthDropdown();
         populateDayDropdown(numberOfDays);
+        populateHourDropdown(numberofHours);
                
         selectYearDropdown(currentYear);
         selectMonthDropdown(currentMonth);
         selectDayDropdown(currentDay);
+        selectHourDropdown(currentHour);
         
         bindYearDropdownEvent();
         bindMonthDropdownEvent();
         bindDayDropdownEvent();
+        bindHourDropdownEvent();
       }      
       
       function populateYearDropdown(startYear, endYear) {
@@ -171,6 +177,14 @@
         }
         $('#day').html(dayOptions.join());
       }
+
+      function populateHourDropdown(numberOfHours) {
+        var hourOptions = [];
+        for (var h=1; h<=numberOfHours; h++) {
+          hourOptions.push('<option value="' + h + '">' + h + '</option>');
+        }
+        $('#hour').html(hourOptions.join());
+      }
       
       function selectYearDropdown(year) {
         $('#year option[value=' + year + ']').attr('selected', true);
@@ -183,11 +197,15 @@
       function selectDayDropdown(day) {
         $('#day option[value=' + day + ']').attr('selected', true);
       }
+
+      function selectHourDropdown(hour) {
+        $('#hour option[value=' + hour + ']').attr('selected', true);
+      }
       
       function refreshDayDropdown() {
         var year = parseInt($('#year').val());
         var month = parseInt($('#month').val());
-        var day = parseInt($('#day').val());        
+        var day = parseInt($('#day').val());   
         var numberOfDays = daysInMonth(year, month);
         
         populateDayDropdown(numberOfDays);
@@ -220,6 +238,12 @@
           syncDatePickerWithDateDropdown();
         });
       }
+
+      function bindDayDropdownEvent() {
+        $('#hour').on('change', function() {
+          syncDatePickerWithDateDropdown();
+        });
+      }
       
       
       /** Sync Functions **/
@@ -230,13 +254,15 @@
         selectMonthDropdown(datePickerDate.getMonth());
         refreshDayDropdown();
         selectDayDropdown(datePickerDate.getDate());
+        selectHourDropdown(dataPickerDate.getHours());
       }
       
       function syncDatePickerWithDateDropdown() {
         var dropdownYear = parseInt($('#year').val());
         var dropdownMonth = parseInt($('#month').val());
         var dropdownDay = parseInt($('#day').val());
-        var dropdownDate = new Date(dropdownYear, dropdownMonth, dropdownDay);
+        var dropdownHour = parseInt($('#hour').val());
+        var dropdownDate = new Date(dropdownYear, dropdownMonth, dropdownDay, dropdownHour);
         $('#datepicker').datepicker('setDate', dropdownDate);
       }
       
