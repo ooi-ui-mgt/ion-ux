@@ -334,8 +334,44 @@ ul.dropdown-menu li:hover {
   display:inline-block;
 }
 
+.left_navi_select_container {
+  position: relative;
+  width: 190px;
+  height: 20px;
+  padding: 0px;
+  border: 1px solid #384D68;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.left_navi_select_arrow {
+  pointer-events:none;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 190px;
+  height: 20px;
+  background: transparent;
+  background: url('../img/left_select_arrow.png') no-repeat right;
+}
+
+.left_navi_select_container select {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  border: 0px;
+  width: 190px;
+  -webkit-appearance: none;
+  height: 20px !important;
+  padding: 0px;
+  line-height: 20px;
+  background: -webkit-gradient(linear, left top, right top, from(#88A9CC), to(#7890AC));
+  background: -webkit-linear-gradient(left, #88A9CC, #7890AC);
+  background: -moz-linear-gradient(left, #88A9CC, #7890AC);
+  background: -o-linear-gradient(left, #88A9CC, #7890AC);
+}
+
 .spatial_details select {
-  background-color: #88a9cc;
   width: 190px;
   color: #fff;
   height: 25px;
@@ -347,6 +383,7 @@ ul.dropdown-menu li:hover {
 }
 
 .arrow_down {
+  cursor: pointer;
   width: 0px;
   height: 2px;
   display: inline-block;
@@ -359,6 +396,7 @@ ul.dropdown-menu li:hover {
 }
 
 .arrow_right {
+  cursor: pointer;
   width: 0px;
   height: 0px;
   display: inline-block;
@@ -378,3 +416,4 @@ ul.dropdown-menu li:hover {
   color: #969fa6;
   width: 55px;
 }
+
