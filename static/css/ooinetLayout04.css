@@ -60,12 +60,26 @@ body {
   background: -webkit-linear-gradient(top, #23435c, #040e17);
   background: -moz-linear-gradient(top, #23435c, #040e17);
   background: -o-linear-gradient(top, #23435c, #040e17);
+  margin: 0px;
   margin-right: 5px;
   padding: 0px;
-  margin: 0px;
+  padding-right: 5px;
   text-align: right;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 9pt;
+}
+
+#header_links a {
+  text-decoration: none;
+  color: #FFFFFF;
+  border: none;
+  margin-right: 5px;
+}
+
+#header_links a:after {
+  margin-left: 5px;
+  color: #004972;
+  content: "|";
 }
 
 #mainSubheader {
