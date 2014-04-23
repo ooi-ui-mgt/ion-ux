@@ -116,6 +116,7 @@ body {
 }
 
 #left {
+ background-color: #384d68;
  position:absolute;
  top:116px;
  left:0px;
