@@ -76,7 +76,6 @@ IONUX = {
       	});
 
       	this.dashboard_map();
-
 	},
 
 	getTemplate: function(url) {
