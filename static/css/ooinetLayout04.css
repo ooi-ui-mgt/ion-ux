@@ -76,24 +76,25 @@ body {
 }
 
 #mainSubheader {
+ background-color: #dbdee5;
  position:fixed;
  top:72px;
  left:275px;
  margin:0px;
  padding:0px;
  width:calc(100% - 275px);
- height:44px;
+ height:32px;
  z-index:0;
  'outline:1px solid #000; /* temp */
 }
 
 #main {
  position:absolute;
- top:116px;
+ top:104px;
  left:275px;
  padding:0px;
  margin:0px;
- height:calc(100% - 116px);
+ height:calc(100% - 104px);
  width:calc(100% - 275px);
  z-index:0;
  overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
@@ -103,11 +104,11 @@ body {
 
 #dynamic-container {  /* same as main */
  position:absolute;
- top:116px;
+ top:104px;
  left:275px;
  padding:0px;
  margin:0px;
- height:calc(100% - 116px);
+ height:calc(100% - 104px);
  width:calc(100% - 275px);
  z-index:0;
  overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
@@ -118,9 +119,9 @@ body {
 #left {
  background-color: #384d68;
  position:absolute;
- top:116px;
+ top:104px;
  left:0px;
- height:calc(100% - 116px);
+ height:calc(100% - 104px);
  width:275px;
  overflow:auto;
  z-index:1;
@@ -128,14 +129,14 @@ body {
 }
 
 #leftSubheader {
- background-color: #ddd;
+ background-color: #dbdee5;
  position:fixed;
  top:72px;
  left:0px;
  margin:0px;
  padding:0px;
  width:275px;
- height:44px;
+ height:32px;
  z-index:0;
  'outline:1px solid #000; /* temp */
 }
@@ -323,8 +324,10 @@ ul.dropdown-menu li:hover {
 /* left sidebar accordion */
 #accordion_container {
   background-color: #384d68;
-  padding-top:20px;
-  color: #9ecdf9;
+  padding-top: 0px;
+  color: #fff;
+  font-family: Arial;
+  font-size: 12px; 
 }
 
 .accordion_control {
@@ -339,7 +342,10 @@ ul.dropdown-menu li:hover {
 }
 
 .textRight {
-  margin-left: 80px;
+  width: 100%;
+  margin-right: 4px;
+  text-align: right;
+  display: inline-block;
 }
 
 .left_accordion {
@@ -348,7 +354,7 @@ ul.dropdown-menu li:hover {
   background: -webkit-linear-gradient(left, #5687AF, #3B5E7E);
   background: -moz-linear-gradient(left, #5687AF, #3B5E7E);
   background: -o-linear-gradient(left, #5687AF, #3B5E7E);
-  padding: 10px 10px;
+  padding: 4px 10px;
   /*width: 217px;*/
   margin-bottom: 5px;
   margin-right: 3px;
@@ -372,9 +378,36 @@ ul.dropdown-menu li:hover {
   cursor: pointer;
 }
 
-input.keyword {
+ input.keyword {
+  width: calc(100% - 58px);
+  margin-left: 4px;
+  margin-bottom: 2px;
+}
+
+#spatial input {
+  width: 40px;
+}
+
+select.date_menu {
+  width: 54px;
+}
+
+#accordion_container input {
   height: 16px;
-  font-size: 12px;
+  line-height: 16px;
+  padding: 0px 2px;
+  margin: 0px;
+  font-family: Arial;
+  font-size: 12px; 
+}
+
+#accordion_container select {
+  height: 16px;
+  line-height: 16px;
+  padding: 0px;
+  margin: 0px;
+  font-family: Arial;
+  font-size: 12px; 
 }
 
 .left_navi_select_container {
@@ -384,7 +417,7 @@ input.keyword {
   padding: 0px;
   border: 1px solid #384D68;
   border-radius: 3px;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 
 .left_navi_select_arrow {
@@ -407,23 +440,13 @@ input.keyword {
   -webkit-appearance: none;
   height: 16px !important;
   padding: 0px;
+  color: #fff;
   line-height: 16px;
   border-radius: 3px;
   background: -webkit-gradient(linear, left top, right top, from(#88A9CC), to(#7890AC));
   background: -webkit-linear-gradient(left, #88A9CC, #7890AC);
   background: -moz-linear-gradient(left, #88A9CC, #7890AC);
   background: -o-linear-gradient(left, #88A9CC, #7890AC);
-}
-
-.spatial_details select {
-  background-color: #88a9cc;
-  width: 160px;
-  color: #fff;
-  height: 23px;
-  font-size: 0.85em;
-  font-family: Arial;
-  border-color: #88A9CC;
-  padding: 0px;
 }
 
 .spatial_details h5 {
@@ -458,23 +481,6 @@ input.keyword {
   border-left: 5px solid #fff;
 }
 
-.spatial_details select.date_menu {
-  width: 70px;
-  font-size: 0.8em;
-  background-color: #fff;
-  color: #969fa6;
-  width: 55px;
-}
-
-#maximizer {
-  position:absolute;
-  width:10px;
-  height:10px;
-  top:20px;
-  right: 5px;
-  background-color: #FF0000;
-}
-
 .two_nav_tabs {
   position: absolute;
   left: 0px;
@@ -497,4 +503,40 @@ input.keyword {
 .two_nav_tabs .active {
   background-color: #384d68;
   color: #fff;
+}
+
+.mapButtonSplit {
+  cursor: pointer;
+  width: 39px;
+  height: 26px;
+  padding: 0px;
+  margin: 0px;
+  position: absolute;
+  bottom: 4px;
+  right: 45px;
+  background: url('../img/map-button-02-03.png');
+}
+
+.mapButtonFull {
+  cursor: pointer;
+  width: 39px;
+  height: 26px;
+  padding: 0px;
+  margin: 0px;
+  position: absolute;
+  bottom: 4px;
+  right: 88px;
+  background: url('../img/map-button-01-03.png');
+}
+
+.mapButtonHidden {
+  cursor: pointer;
+  width: 39px;
+  height: 26px;
+  padding: 0px;
+  margin: 0px;
+  position: absolute;
+  bottom: 4px;
+  right: 3px;
+  background: url('../img/map-button-03-03.png');
 }

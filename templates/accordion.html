@@ -1,17 +1,12 @@
 <section id="accordion_container">
 	<span class="textRight">Save this Search</span>
 <article class="left_accordion" id="keyword">
-	<span class="accordion_title">
-    <div class="expand_hide arrow_down"></div>
-    <div class="accordion_label">Keyword</div>
-  </span>
-	<div class="spatial_details">
-		<input class="keyword" type="text" placeholder="Keyword" />
-	</div>
+  <div class="accordion_label">Keyword</div>
+  <input class="keyword" type="text" placeholder="Keyword" style="display:inline-block;"/>
 </article>
 <article class="left_accordion" id="spatial">
   <span class="accordion_title">
-	 <div class="expand_hide arrow_down"></div><div class="accordion_label">Spatial</div>
+	 <div class="expand_hide arrow_right"></div><div class="accordion_label">Spatial</div>
   </span>
 	<div class="spatial_details">
     <div class="left_navi_select_container">
@@ -25,7 +20,7 @@
 </article>
 <article class="left_accordion" id="temporal">
   <span class="accordion_title">
-	 <div class="expand_hide arrow_down"></div><div class="accordion_label">Temporal</div>
+	 <div class="expand_hide arrow_right"></div><div class="accordion_label">Temporal</div>
   </span>
 	<div class="spatial_details">
     <div class="left_navi_select_container">
@@ -34,25 +29,25 @@
       </select>
       <div class="left_navi_select_arrow"/>
     </div>
-		<h5>From</h5>
-		<div id='date-dropdown'>
-			<select class="date_menu" id="year"></select>
-			<select class="date_menu" id='month'></select>
-   		<select class="date_menu" id='day'></select>
-      <select class="date_menu" id="hour"></select>
+		<div>From</div>
+		<div class='date-dropdown'>
+			<select class="date_menu year"></select>
+			<select class="date_menu month"></select>
+   		<select class="date_menu day"></select>
+      <select class="date_menu hour"></select>
     </div>
-		<h5>To</h5>
-		<div id='date-dropdown'>
-			<select class="date_menu" id="year"></select>
-			<select class="date_menu" id='month'></select>
-   		<select class="date_menu" id='day'></select>
-      <select class="date_menu" id="hour"></select>
+		<div>To</div>
+		<div class='date-dropdown'>
+			<select class="date_menu year"></select>
+			<select class="date_menu month"></select>
+   		<select class="date_menu day"></select>
+      <select class="date_menu hour"></select>
     	</div>
 	</div>
 </article>
 <article class="left_accordion" id="region">
   <!--<span class="accordion_title">
-    <div class="expand_hide arrow_down"></div><div class="accordion_label">Region</div>
+    <div class="expand_hide arrow_right"></div><div class="accordion_label">Region</div>
   </span>
   <div class="spatial_details">
     More information
@@ -60,7 +55,7 @@
 </article>
 <article class="left_accordion" id="site">
   <span class="accordion_title">
-    <div class="expand_hide arrow_down"></div><div class="accordion_label">Site</div>
+    <div class="expand_hide arrow_right"></div><div class="accordion_label">Site</div>
   </span>
   <div class="spatial_details">
     More information
@@ -68,7 +63,7 @@
 </article>
 <article class="left_accordion" id="platform">
   <span class="accordion_title">
-    <div class="expand_hide arrow_down"></div><div class="accordion_label">Platform</div>
+    <div class="expand_hide arrow_right"></div><div class="accordion_label">Platform</div>
   </span>
   <div class="spatial_details">
     More information
@@ -76,7 +71,7 @@
 </article>
 <article class="left_accordion" id="instrument">
   <span class="accordion_title">
-    <div class="expand_hide arrow_down"></div><div class="accordion_label">Instrument</div>
+    <div class="expand_hide arrow_right"></div><div class="accordion_label">Instrument</div>
   </span>
   <div class="spatial_details">
     More information
@@ -84,7 +79,7 @@
 </article>
 <article class="left_accordion" id="data_type">
   <span class="accordion_title">
-    <div class="expand_hide arrow_down"></div><div class="accordion_label">Data Type</div>
+    <div class="expand_hide arrow_right"></div><div class="accordion_label">Data Type</div>
   </span>
   <div class="spatial_details">
     More information
@@ -92,7 +87,7 @@
 </article>
 <article class="left_accordion" id="boolean_expression">
   <span class="accordion_title">
-	 <div class="expand_hide arrow_down"></div><div class="accordion_label">Boolean Expression</div>
+	 <div class="expand_hide arrow_right"></div><div class="accordion_label">Boolean Expression</div>
   </span>
 	<div class="spatial_details">
 		More information
@@ -102,10 +97,15 @@
 </section>
     
     <script>
-      /** Init **/ 
+      $(function(){
+
+        $('.spatial_details').hide();
+        /** Init **/
         initDatePicker();
         initDateDropDown();
       
+      });
+
       /** Date Picker **/
       
       function initDatePicker() {
@@ -164,7 +164,7 @@
           yearOptions.push('<option value="' + y + '">' + y + '</option>');
         }
         
-        $('#year').html(yearOptions.join());
+        $('.year').html(yearOptions.join());
       }
       
       function populateMonthDropdown() {
@@ -174,7 +174,7 @@
           monthOptions.push('<option value="' + m + '">' + months[m] + '</option>');
         }
         
-        $('#month').html(monthOptions.join());
+        $('.month').html(monthOptions.join());
       }
       
       function populateDayDropdown(numberOfDays) {
@@ -182,7 +182,7 @@
         for (var d = 1; d <= numberOfDays; d++) {          
           dayOptions.push('<option value="' + d + '">' + d + '</option>');
         }
-        $('#day').html(dayOptions.join());
+        $('.day').html(dayOptions.join());
       }
 
       function populateHourDropdown(numberOfHours) {
@@ -190,29 +190,29 @@
         for (var h=1; h<=numberOfHours; h++) {
           hourOptions.push('<option value="' + h + '">' + h + '</option>');
         }
-        $('#hour').html(hourOptions.join());
+        $('.hour').html(hourOptions.join());
       }
       
       function selectYearDropdown(year) {
-        $('#year option[value=' + year + ']').attr('selected', true);
+        $('.year option[value=' + year + ']').attr('selected', true);
       }
       
       function selectMonthDropdown(month) {
-        $('#month option[value=' + month + ']').attr('selected', true);
+        $('.month option[value=' + month + ']').attr('selected', true);
       }
       
       function selectDayDropdown(day) {
-        $('#day option[value=' + day + ']').attr('selected', true);
+        $('.day option[value=' + day + ']').attr('selected', true);
       }
 
       function selectHourDropdown(hour) {
-        $('#hour option[value=' + hour + ']').attr('selected', true);
+        $('.hour option[value=' + hour + ']').attr('selected', true);
       }
       
       function refreshDayDropdown() {
-        var year = parseInt($('#year').val());
-        var month = parseInt($('#month').val());
-        var day = parseInt($('#day').val());   
+        var year = parseInt($('.year').val());
+        var month = parseInt($('.month').val());
+        var day = parseInt($('.day').val());   
         var numberOfDays = daysInMonth(year, month);
         
         populateDayDropdown(numberOfDays);
@@ -265,10 +265,10 @@
       }
       
       function syncDatePickerWithDateDropdown() {
-        var dropdownYear = parseInt($('#year').val());
-        var dropdownMonth = parseInt($('#month').val());
-        var dropdownDay = parseInt($('#day').val());
-        var dropdownHour = parseInt($('#hour').val());
+        var dropdownYear = parseInt($('.year').val());
+        var dropdownMonth = parseInt($('.month').val());
+        var dropdownDay = parseInt($('.day').val());
+        var dropdownHour = parseInt($('.hour').val());
         var dropdownDate = new Date(dropdownYear, dropdownMonth, dropdownDay, dropdownHour);
         $('#datepicker').datepicker('setDate', dropdownDate);
       }

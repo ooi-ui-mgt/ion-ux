@@ -41,7 +41,9 @@ last edited 04-13 04-09 03-05 2014-03-02
 	<div id="leftSubheader" align="left">
     </div>
 	<div id="mainSubheader" align="left"><div id="search-production" class="span10"> 
-        <div id="maximizer" state="half"></div>
+        <div class="mapButtonFull" title="Full Map View"></div>
+        <div class="mapButtonSplit" title="Split View"></div>
+        <div class="mapButtonHidden" title="Hidden Map View"></div>
     </div></div>
 
     <div id="left">left side menu here<br />
@@ -57,36 +59,33 @@ last edited 04-13 04-09 03-05 2014-03-02
       $(function(){
         IONUX.init();
 
-        $("#maximizer").click(function(){
-            if($("#maximizer").attr("state") == 'half'){
-                $("#maximizer").css("background-color","#0F0");
-                $("#upperMain").css("height", "100%");
-                $("#lowerMain").css("height", "0%");
-                $("#lowerMain").css("top", "100%");
-                $("#maximizer").attr("state", 'full');
-                $(window).trigger('resize');
-                IONUX.Dashboard.MapView.draw_map();
-                IONUX.Dashboard.MapView.draw_markers();
-            } else if($("#maximizer").attr("state") == 'full'){
-                $("#maximizer").css("background-color","#00F");
-                $("#upperMain").css("height", "0%");
-                $("#lowerMain").css("height", "100%");
-                $("#lowerMain").css("top", "0%");
-                $("#maximizer").attr("state", 'none');
-                $(window).trigger('resize');
-                IONUX.Dashboard.MapView.draw_map();
-                IONUX.Dashboard.MapView.draw_markers();
-            } else if($("#maximizer").attr("state") == 'none'){
-                $("#maximizer").css("background-color","#F00");
-                $("#upperMain").css("height", "60%");
-                $("#lowerMain").css("height", "40%");
-                $("#lowerMain").css("top", "60%");
-                $("#maximizer").attr("state", 'half');
-                $(window).trigger('resize');
-                IONUX.Dashboard.MapView.draw_map();
-                IONUX.Dashboard.MapView.draw_markers();
-            }
+        $(".mapButtonFull").click(function(){
+            $("#upperMain").css("height", "100%");
+            $("#lowerMain").css("height", "0%");
+            $("#lowerMain").css("top", "100%");
+            $(window).trigger('resize');
+            IONUX.Dashboard.MapView.draw_map();
+            IONUX.Dashboard.MapView.draw_markers();
         });
+
+        $(".mapButtonSplit").click(function(){
+            $("#upperMain").css("height", "60%");
+            $("#lowerMain").css("height", "40%");
+            $("#lowerMain").css("top", "60%");
+            $(window).trigger('resize');
+            IONUX.Dashboard.MapView.draw_map();
+            IONUX.Dashboard.MapView.draw_markers();
+        });
+        
+        $(".mapButtonHidden").click(function(){
+            $("#upperMain").css("height", "0%");
+            $("#lowerMain").css("height", "100%");
+            $("#lowerMain").css("top", "0%");
+            $(window).trigger('resize');
+            IONUX.Dashboard.MapView.draw_map();
+            IONUX.Dashboard.MapView.draw_markers();
+        });
+        
       });
     </script>
 </body>
