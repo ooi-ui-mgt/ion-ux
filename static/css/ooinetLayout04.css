@@ -497,6 +497,14 @@ top: 6px;
   background: -o-linear-gradient(left, #88A9CC, #7890AC);
 }
 
+.top_search_radius {
+  display: none;
+}
+
+input.no_placeholder_radius {
+  display: none;
+}
+
 .spatial_details h5 {
   line-height: 8px;
   font-size: 12px;
