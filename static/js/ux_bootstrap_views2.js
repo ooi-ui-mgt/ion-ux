@@ -70,14 +70,11 @@ IONUX.Views.Region = Backbone.View.extend({
 	template: _.template(IONUX.getTemplate('templates/regions.html')),
 	initialize: function() {
 		console.log('initializing region view');
-		console.log('collection is ' + this.collection.length);
 		this.render();
 	},
 	render: function() {
 		console.log('rendering region');
 		this.$el.html(this.template(this.collection.toJSON()));
-		//var tmpl = this.template({ collection: this.collection.toJSON() });
-		//this.$el.html(tmpl);
 		return this;
 	}
 });
