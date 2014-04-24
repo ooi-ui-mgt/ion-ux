@@ -84,7 +84,8 @@ body {
  width:calc(100% - 275px);
  height:44px;
  z-index:0;
- 'outline:1px solid #000; /* temp */
+ display:block;
+ background-color: #ddd;
 }
 
 #main {
@@ -96,9 +97,22 @@ body {
  height:calc(100% - 116px);
  width:calc(100% - 275px);
  z-index:0;
+ display:block;
  overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
  otherwise there will be 2 vertical scroll bars (might be a browser bug). */
- 'outline:1px solid #000; /* temp */
+}
+
+#mainFull {
+ position:absolute;
+ top:72px;
+ left:275px;
+ padding:0px;
+ margin:0px;
+ height:calc(100% - 72px);
+ width:calc(100% - 275px);
+ z-index:0;
+ display:none;
+ overflow:auto;
 }
 
 #dynamic-container {  /* same as main */
@@ -112,7 +126,6 @@ body {
  z-index:0;
  overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
  otherwise there will be 2 vertical scroll bars (might be a browser bug). */
- 'outline:1px solid #000; /* temp */
 }
 
 #left {
@@ -124,7 +137,6 @@ body {
  width:275px;
  overflow:auto;
  z-index:1;
- 'outline:1px solid #000; /* temp */
 }
 
 #leftSubheader {
@@ -137,7 +149,6 @@ body {
  width:275px;
  height:44px;
  z-index:0;
- 'outline:1px solid #000; /* temp */
 }
 
 #upperMain {
