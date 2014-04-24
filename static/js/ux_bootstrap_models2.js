@@ -137,7 +137,7 @@ IONUX.Models.Login = Backbone.Model.extend({
 	}
 });
 
-IONUX.Models.Left = Backbone.Model.extend({
+IONUX.Models.SearchTabContent = Backbone.Model.extend({
   initialize: function() {
     console.log('initializing left sidebar model');
   },

@@ -1,6 +1,6 @@
 <section id="accordion_container">
 	<span class="textRight">Save this Search</span>
-<article class="left_accordion" id="keyword">
+<article class="left_accordion accordion_fixed" id="keyword">
   <div class="accordion_label">Keyword</div>
   <input class="keyword" type="text" placeholder="Keyword" style="display:inline-block;"/>
 </article>
@@ -99,7 +99,12 @@
     <script>
       $(function(){
 
+        IONUX.Views.RegionList = new IONUX.Views.Region({collection: IONUX.Dashboard.Observatories });
+        
         $('.spatial_details').hide();
+        $('#accordion_container').sortable({
+          items: "article:not(.accordion_fixed)"
+        });
         /** Init **/
         initDatePicker();
         initDateDropDown();

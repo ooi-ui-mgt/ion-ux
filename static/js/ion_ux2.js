@@ -55,9 +55,9 @@ IONUX = {
 			dataType: 'html'
 		});
 
-		IONUX.Models.LeftSidebar = new IONUX.Models.Left();
-		IONUX.Views.LeftSidebar = new IONUX.Views.Left({model: IONUX.Models.LeftSidebar});
-		IONUX.Models.LeftSidebar.fetch({
+		IONUX.Models.SearchTabContentInstance = new IONUX.Models.SearchTabContent();
+		IONUX.Views.SearchTabContentInstance = new IONUX.Views.SearchTabContent({model: IONUX.Models.SearchTabContentInstance});
+		IONUX.Models.SearchTabContentInstance.fetch({
 			async: false,
 			dataType: 'html'
 		});
@@ -75,7 +75,6 @@ IONUX = {
       	});
 
       	this.dashboard_map();
-      	IONUX.Views.RegionList = new IONUX.Views.Region({collection: IONUX.Dashboard.Observatories });
       	//IONUX.Views.RegionList.render();
 
 	},

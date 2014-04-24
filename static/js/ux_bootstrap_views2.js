@@ -39,8 +39,8 @@ IONUX.Views.Login = Backbone.View.extend({
 	}
 });
 
-IONUX.Views.Left = Backbone.View.extend({
-	el: '#left',
+IONUX.Views.SearchTabContent = Backbone.View.extend({
+	el: '#searchTabContent',
 	events: {
 		'click .accordion_title': 'expandHide'
 	},
