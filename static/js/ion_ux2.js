@@ -76,7 +76,6 @@ IONUX = {
 
       	this.dashboard_map();
       	//IONUX.Views.RegionList.render();
-
 	},
 
 	getTemplate: function(url) {
