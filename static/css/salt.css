@@ -276,127 +276,127 @@ td.filter-option {
 }
 
 .facility-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -120px -716px;
 }
 
 .region-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -60px -476px;
 }
 
 .site-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -60px -716px;
 }
 
 .instrumentportal-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -60px -416px;
 }
 
 .platformportal-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -60px -536px;
 }
 
 .deployment-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -60px -296px;
 }
 
 .station-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: 0px -716px;
 }
 
 .platformdevice-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -120px -956px;
 }
 
 .platformmodel-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -120px -536px;
 }
 
 .platformagent-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -120px -596px;
 }
 
 .platformagentdef-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -120px -656px;
 }
 
 .instrumentdevice-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -60px -956px;
 }
 
 .instrumentmodel-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -120px -356px;
 }
 
 .instrumentagent-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -120px -476px;
 }
 
 .instrumentagentdef-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -120px -416px;
 }
 
 .dataproduct-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -60px -176px;
 }
 
 .dataprocess-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -60px -116px;
 }
 
 .datatransform-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -120px -236px;
 }
 
 .attachment-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -60px -56px;
 }
 
 .role-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -120px -776px;
 }
 
 .externaldataagent-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -120px -1016px;
 }
 
 .externaldataagentinstance-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: 0px -236px;
 }
 
 .resource-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -60px -596px;
 }
 
 .observatory-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -60px -476px;
 }
 
 .lcstate-option:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -60px -836px;
 }
 
@@ -426,7 +426,7 @@ ul.map-ul {
 
 .map-ul > li:hover:before {
   background: #607B8B;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -90px -476px;
 }
 
@@ -437,7 +437,7 @@ ul.map-ul {
   left: 11px;
   display:inline-block;
   position: absolute;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -60px -476px;
 }
 
@@ -453,7 +453,7 @@ ul.map-ul {
   width: 16px;
   height: 16px;
   margin-top: 4px;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -180px -360px;
   display: block;
   margin-right: 0px;
@@ -470,7 +470,7 @@ ul.map-ul {
   width: 16px;
   height: 16px;
   margin-top: 4px;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -360px -360px;
 }
 /* nested map navigation */
@@ -500,7 +500,7 @@ ul.map-nested-ul {
 
 .map-nested-ul > li:hover:before {
   background: #607B8B;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -90px -716px;
 }
 
@@ -511,7 +511,7 @@ ul.map-nested-ul {
   left: 26px;
   display:inline-block;
   position: absolute;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -60px -716px;
 }
 
@@ -539,7 +539,7 @@ ul.map-nested-ul {
 }
 
 .map-nested-ul > li.active:hover:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -90px -716px;
 }
 
@@ -563,7 +563,7 @@ ul.map-nested-ul {
   width: 16px;
   height: 16px;
   margin-top: 4px;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -180px -360px;
   display: block;
   margin-right: 0px;
@@ -579,7 +579,7 @@ ul.map-nested-ul {
   width: 16px;
   height: 16px;
   margin-top: 4px;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -360px -360px;
 }
 
@@ -609,7 +609,7 @@ ul.resource-ul {
 
 .resource-ul li:hover:before {
   background: #607B8B;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -150px -716px;
 }
 
@@ -621,7 +621,7 @@ ul.resource-ul {
   display:inline-block;
   position: absolute;
   background-color: transparent;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -120px -716px;
 }
 
@@ -644,7 +644,7 @@ ul.resource-ul {
 
 .resource-ul li:hover:before {
   background: #607B8B;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -150px -716px;
 }
 
@@ -656,7 +656,7 @@ ul.resource-ul {
   display:block;
   position: absolute;
   color: #fff;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -150px -716px;
 }
 
@@ -673,7 +673,7 @@ ul.resource-ul {
 
 .secondary-link {
   margin-top: 4px;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -60px -900px;
 }
 
@@ -739,12 +739,12 @@ ul.resource-ul {
   top: 10px;
   display:inline-block;
   position: relative;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -180px -480px;
 }
 
 #map-asset-data-menu span.active:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -360px -480px;
 }
 
@@ -776,12 +776,12 @@ ul.resource-ul {
 }
 
 .nsf:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -600px -360px;
 }
 
 .ol:before {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -600px -300px;
 }
 
@@ -1025,7 +1025,7 @@ a.btn-black:hover, a.btn-advanced-search:hover {
   top: -5px;
   display:block;
   position: absolute;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -420px -840px; /*Default/unspecified icon*/
 }
 
@@ -1126,66 +1126,66 @@ a.btn-black:hover, a.btn-advanced-search:hover {
 }
 
 .flow_power {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -600px 0px;
 }
 
 .flow_communications {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -600px -60px;
 }
 
 .flow_data {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -600px -180px;
 }
 
 .location {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -600px -120px;
 }
 
 .badge_status_graphic_unknown {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -360px -660px;
 }
 
 .badge_status_graphic_ok {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -300px -660px;
 }
 
 .badge_status_graphic_warning {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -240px -660px;
 }
 
 .badge_status_graphic_critical {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -180px -660px;
 }
 
 .status_unknown_mini {
   width: 15px;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: 0px -420px;
 }
 
 .status_ok_mini {
   width: 15px;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: 0px -480px;
 }
 
 .status_warning_alert_mini {
   width: 15px;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: 0px -360px;
 }
 
 .status_critical_alert_mini {
   width: 15px;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: 0px -300px;
 }
 
@@ -1496,7 +1496,7 @@ ACTION MENU STYLING
   left: 8px;
   display:block;
   position: absolute;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -180px -180px;
 }
 
@@ -1507,7 +1507,7 @@ ACTION MENU STYLING
   left: 8px;
   display:block;
   position: absolute;
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position: -240px -180px;
 }
 
@@ -1866,7 +1866,7 @@ a.btn-navigation-plain {
 
 /* HEADER */
 #header {
-  background-image:url(../img/header-clean.jpg);
+  background-image:url();
   border-top: solid 1px #6692a9;
   border-left: solid 1px #6692a9;
   border-right: solid 1px #000;
@@ -2626,7 +2626,7 @@ a.paginate_disabled_previous, a.paginate_disabled_next {
 }
 
 .filter_passive {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position:-180px -58px !important; /* fixme */
 }
 
@@ -2688,7 +2688,7 @@ a.paginate_disabled_previous, a.paginate_disabled_next {
 }
 
 .filter-add {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position:-180px -540px !important; /* fixme */
 }
 
@@ -2697,7 +2697,7 @@ a.paginate_disabled_previous, a.paginate_disabled_next {
 }
 
 .filter-remove {
-  background-image: url(../img/salt_sprite.png);
+  background-image: url(/static/img/salt_sprite.png);
   background-position:-180px -600px !important; /* fixme */
 }
 
