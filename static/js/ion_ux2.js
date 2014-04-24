@@ -57,6 +57,7 @@ IONUX = {
 
 		IONUX.Models.SearchTabContentInstance = new IONUX.Models.SearchTabContent();
 		IONUX.Views.SearchTabContentInstance = new IONUX.Views.SearchTabContent({model: IONUX.Models.SearchTabContentInstance});
+		IONUX.Views.SearchAdvancedContent = new IONUX.Views.SearchBar();
 		IONUX.Models.SearchTabContentInstance.fetch({
 			async: false,
 			dataType: 'html'
@@ -75,7 +76,6 @@ IONUX = {
       	});
 
       	this.dashboard_map();
-      	//IONUX.Views.RegionList.render();
 
 	},
 

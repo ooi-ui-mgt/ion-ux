@@ -363,10 +363,17 @@ ul.dropdown-menu li:hover {
   border-radius: 7px;
 }
 
-.spatial_duration {
-  width: 23px;
+.spatial_duration, .latlong {
   height: 13px !important;
   color: #969fa6;
+}
+
+.spatial_duration {
+  width: 23px;
+}
+
+.latlong {
+  width: 40px;
 }
 
 .expand-hide {
@@ -419,23 +426,65 @@ select.date_menu {
   margin-bottom: 4px;
 }
 
-.left_navi_select_arrow {
+.top_navi_select_container, .top_navi_narrow_select_container {
+position: relative;
+height: 16px;
+padding: 0px;
+border: 1px solid #384D68;
+border-radius: 3px;
+margin-bottom: 4px;
+display: inline-block;
+}
+
+.top_navi_select_container {
+  width: 160px;
+  top: 6px;
+}
+
+.top_navi_narrow_select_container {
+width: 60px;
+top: 6px;
+}
+
+.left_navi_narrow_select_arrow {
+  width: 60px;
+}
+
+.left_navi_select_arrow, .top_navi_select_arrow {
+   width: 160px;
+}
+
+.top_navi_select_arrow {
+  top: 6px;
+}
+
+.left_navi_select_arrow, .top_navi_select_arrow, .left_navi_narrow_select_arrow {
   pointer-events:none;
   position: absolute;
   left: 0px;
   top: 0px;
-  width: 160px;
   height: 16px;
   background: transparent;
   background: url('../img/left_select_arrow.png') no-repeat right;
 }
 
-.left_navi_select_container select {
+.left_navi_select_container select, .top_navi_select_container select {
+  width: 160px;
+}
+
+.top_navi_select_container select {
+  top: 6px;
+}
+
+.top_navi_narrow_select_container select {
+  width: 60px;
+}
+
+.left_navi_select_container select, .top_navi_select_container select, .top_navi_narrow_select_container select {
   position: absolute;
   left: 0px;
   top: 0px;
-  border: 0px;
-  width: 160px;
+  border: 0px;  
   -webkit-appearance: none;
   height: 16px !important;
   padding: 0px;
@@ -478,6 +527,17 @@ select.date_menu {
   border-top: 3px solid transparent;
   border-bottom: 3px solid transparent;
   border-left: 5px solid #fff;
+}
+#search_bar_container {
+  background-color: #3b5e7e;
+  padding-left: 10px;
+}
+
+#search_bar_container h5 {
+  color: #FFF;
+  margin: 0px;
+  padding: 0px;
+  display: inline-block;
 }
 
 .two_nav_tabs {
