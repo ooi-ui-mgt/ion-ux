@@ -519,6 +519,11 @@ select.lat_long_menu option {
   font-size: 12px;
 }
 
+.label_through {
+  height: 10px;
+  display: block;
+}
+
 .arrow_down {
   cursor: pointer;
   width: 0px;
