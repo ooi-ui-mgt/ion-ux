@@ -1,5 +1,5 @@
 // Timestamp conversion methods to call when parsing response.
-// Maybe put these into IONUX.Helpers namespace?
+// Maybe put these into IONUX2.Helpers namespace?
 var epoch_to_iso = function(epoch_time){
     try {
       return new Date(parseInt(epoch_time)).toISOString().replace(/T/, ' ').replace(/.\d{3}Z$/, 'Z');
@@ -38,32 +38,32 @@ var get_template = function(url) {
     return data;
 };
 
-IONUX = {
+IONUX2 = {
 	Models: {},
 	Collections: {},
 	Views: {},
 	Dashboard: {},
 	init: function(){
 
-		IONUX.Models.SessionInstance = new IONUX.Models.Session();
-		IONUX.Models.HeaderInstance = new IONUX.Models.Header();
+		IONUX2.Models.SessionInstance = new IONUX2.Models.Session();
+		IONUX2.Models.HeaderInstance = new IONUX2.Models.Header();
 
-		IONUX.Views.HeaderInstance = new IONUX.Views.Header({model: IONUX.Models.HeaderInstance});
+		IONUX2.Views.HeaderInstance = new IONUX2.Views.Header({model: IONUX2.Models.HeaderInstance});
 
-		IONUX.Models.HeaderInstance.fetch({
+		IONUX2.Models.HeaderInstance.fetch({
 			async: false,
 			dataType: 'html'
 		});
 
-		IONUX.Models.SearchTabContentInstance = new IONUX.Models.SearchTabContent();
-		IONUX.Views.SearchTabContentInstance = new IONUX.Views.SearchTabContent({model: IONUX.Models.SearchTabContentInstance});
-		IONUX.Models.SearchTabContentInstance.fetch({
+		IONUX2.Models.SearchTabContentInstance = new IONUX2.Models.SearchTabContent();
+		IONUX2.Views.SearchTabContentInstance = new IONUX2.Views.SearchTabContent({model: IONUX2.Models.SearchTabContentInstance});
+		IONUX2.Models.SearchTabContentInstance.fetch({
 			async: false,
 			dataType: 'html'
 		});
 
-		$("#leftSubheader").html(IONUX.getTemplate('templates/block_nav_tabs2.html')).show();
-		$("#lowerMain").html(IONUX.getTemplate('templates/block_accordion_white2.html')).show();
+		$("#leftSubheader").html(IONUX2.getTemplate('templates/block_nav_tabs2.html')).show();
+		$("#lowerMain").html(IONUX2.getTemplate('templates/block_accordion_white2.html')).show();
 
 	    // Bootstrap navigation menu
 	    $.ajax({
@@ -71,10 +71,10 @@ IONUX = {
 			url: '/ui/navigation/',
 			success: function(resp) {
 		        // MAPS Sidebar (initially shown)
-		        IONUX.Dashboard.Observatories = new IONUX.Collections.Observatories(_.sortBy(resp.data.observatories,function(o){return o.spatial_area_name + (o.local_name ? o.local_name : '') + o.name}))
+		        IONUX2.Dashboard.Observatories = new IONUX2.Collections.Observatories(_.sortBy(resp.data.observatories,function(o){return o.spatial_area_name + (o.local_name ? o.local_name : '') + o.name}))
       		},
       	});
-	    IONUX.Views.spatial = new IONUX.Views.Spatial();
+	    IONUX2.Views.spatial = new IONUX2.Views.Spatial();
       	this.dashboard_map();
 	},
 
@@ -93,22 +93,22 @@ IONUX = {
 
 	dashboard_map: function(){	    
 	    $('#upperMain').html(get_template('templates/block_map2.html')).show();
-	    if (!IONUX.Dashboard.MapResources || !IONUX.Dashboard.MapResource) {
-	      IONUX.Dashboard.MapResources = new IONUX.Collections.MapResources([], {resource_id: null});
-	      IONUX.Dashboard.MapResource = new IONUX.Models.MapResource();
-	      IONUX.Dashboard.MapDataResources = new IONUX.Collections.MapDataProducts([], {resource_id: null});
+	    if (!IONUX2.Dashboard.MapResources || !IONUX2.Dashboard.MapResource) {
+	      IONUX2.Dashboard.MapResources = new IONUX2.Collections.MapResources([], {resource_id: null});
+	      IONUX2.Dashboard.MapResource = new IONUX2.Models.MapResource();
+	      IONUX2.Dashboard.MapDataResources = new IONUX2.Collections.MapDataProducts([], {resource_id: null});
 	    };
 	    
-	    if (!IONUX.Dashboard.MapView){
-	      IONUX.Dashboard.MapView = new IONUX.Views.Map({
-	        collection: IONUX.Dashboard.Observatories,
-	        model: IONUX.Dashboard.MapResource
+	    if (!IONUX2.Dashboard.MapView){
+	      IONUX2.Dashboard.MapView = new IONUX2.Views.Map({
+	        collection: IONUX2.Dashboard.Observatories,
+	        model: IONUX2.Dashboard.MapResource
 	      });
 	    }else{
-	      IONUX.Dashboard.MapView.active_marker = null; // Track clicked icon
-	      IONUX.Dashboard.MapView.map_bounds_elmt = $('#map_bounds');
-	      IONUX.Dashboard.MapView.draw_map();
-	      IONUX.Dashboard.MapView.draw_markers();
+	      IONUX2.Dashboard.MapView.active_marker = null; // Track clicked icon
+	      IONUX2.Dashboard.MapView.map_bounds_elmt = $('#map_bounds');
+	      IONUX2.Dashboard.MapView.draw_map();
+	      IONUX2.Dashboard.MapView.draw_markers();
 	    }
 	}
   

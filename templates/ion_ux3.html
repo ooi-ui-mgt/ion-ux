@@ -61,15 +61,15 @@ last edited 04-13 04-09 03-05 2014-03-02
 
     <script>
       $(function(){
-        IONUX.init();
+        IONUX2.init();
 
         $(".mapButtonFull").click(function(){
             $("#upperMain").css("height", "100%");
             $("#lowerMain").css("height", "0%");
             $("#lowerMain").css("top", "100%");
             $(window).trigger('resize');
-            IONUX.Dashboard.MapView.draw_map();
-            IONUX.Dashboard.MapView.draw_markers();
+            IONUX2.Dashboard.MapView.draw_map();
+            IONUX2.Dashboard.MapView.draw_markers();
         });
 
         $(".mapButtonSplit").click(function(){
@@ -77,8 +77,8 @@ last edited 04-13 04-09 03-05 2014-03-02
             $("#lowerMain").css("height", "40%");
             $("#lowerMain").css("top", "60%");
             $(window).trigger('resize');
-            IONUX.Dashboard.MapView.draw_map();
-            IONUX.Dashboard.MapView.draw_markers();
+            IONUX2.Dashboard.MapView.draw_map();
+            IONUX2.Dashboard.MapView.draw_markers();
         });
         
         $(".mapButtonHidden").click(function(){
@@ -86,8 +86,8 @@ last edited 04-13 04-09 03-05 2014-03-02
             $("#lowerMain").css("height", "100%");
             $("#lowerMain").css("top", "0%");
             $(window).trigger('resize');
-            IONUX.Dashboard.MapView.draw_map();
-            IONUX.Dashboard.MapView.draw_markers();
+            IONUX2.Dashboard.MapView.draw_map();
+            IONUX2.Dashboard.MapView.draw_markers();
         });
         
       });

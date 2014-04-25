@@ -1,4 +1,4 @@
-IONUX.Views.Map = Backbone.View.extend({
+IONUX2.Views.Map = Backbone.View.extend({
   el: '#map_canvas',
 
   // From worst to best ('na' considered the catch-all).
@@ -498,9 +498,9 @@ IONUX.Views.Map = Backbone.View.extend({
     var bounds;
     var resetZoom;
 
-      if(IONUX.Dashboard.MapResource.resource_level==3){
+      if(IONUX2.Dashboard.MapResource.resource_level==3){
         //zoom to pin
-        var k =this.platformSitesList[IONUX.Dashboard.MapResource.tmpId];
+        var k =this.platformSitesList[IONUX2.Dashboard.MapResource.tmpId];
         lat  = k.geospatial_point_center.lat;
         lon  = k.geospatial_point_center.lon;
         center = new google.maps.LatLng(lat, lon);
@@ -515,7 +515,7 @@ IONUX.Views.Map = Backbone.View.extend({
         //get san
         var san = this.model.get('spatial_area_name');
         //get tmp san
-        var san_tmp = IONUX.Dashboard.MapResource.tmp;
+        var san_tmp = IONUX2.Dashboard.MapResource.tmp;
         //check if site or pin selected
         var idx = sanNames.indexOf(san_tmp);
         var isSite = false;
@@ -527,7 +527,7 @@ IONUX.Views.Map = Backbone.View.extend({
           if (san_tmp){
           var tmpPin = san_tmp;
           //get the resource id from the selected model
-          var resources = this.collection.where({'_id': IONUX.Dashboard.MapResource.tmpId});
+          var resources = this.collection.where({'_id': IONUX2.Dashboard.MapResource.tmpId});
            if (resources.length==1){
               san_tmp = resources[0].get('spatial_area_name');
            }else if(resources.length>1){
@@ -733,10 +733,10 @@ IONUX.Views.Map = Backbone.View.extend({
     google.maps.event.addListener(marker, 'click', function(_map) {
       if (typeof marker.resource_id != 'undefined') {
         if (marker.type =="Observatory"){
-          IONUX.ROUTER.navigate('/map/'+marker.resource_id, {trigger:true});
+          IONUX2.ROUTER.navigate('/map/'+marker.resource_id, {trigger:true});
         }
         else{//(marker.type =="PlatformSite"){
-          IONUX.ROUTER.navigate('/map/'+marker.resource_id, {trigger:true}); 
+          IONUX2.ROUTER.navigate('/map/'+marker.resource_id, {trigger:true}); 
         }
       };
     });

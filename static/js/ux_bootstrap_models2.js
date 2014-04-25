@@ -1,4 +1,4 @@
-IONUX.Models.Header = Backbone.Model.extend({
+IONUX2.Models.Header = Backbone.Model.extend({
 	url: '/templates/header2.html',
 	html: '',
 	parse: function(resp){
@@ -9,7 +9,7 @@ IONUX.Models.Header = Backbone.Model.extend({
 	}
 });
 
-IONUX.Models.LoginTemplate = Backbone.Model.extend({
+IONUX2.Models.LoginTemplate = Backbone.Model.extend({
 	url: '/templates/partials/login2.html',
 	html: '',
 	parse: function(resp){
@@ -21,7 +21,7 @@ IONUX.Models.LoginTemplate = Backbone.Model.extend({
 });
 
 // For use with collections of Resource Types, i.e. InstrumentDevice, PlatformDevice, etc.
-IONUX.Models.Session = Backbone.Model.extend({
+IONUX2.Models.Session = Backbone.Model.extend({
     defaults: {
         actor_id: null,
         user_id: null,
@@ -66,7 +66,7 @@ IONUX.Models.Session = Backbone.Model.extend({
       // If their session has expired (i.e. their certificate's is_valid date has passed),
       // let the user know and give the option to login.  Do not continue to poll the session.
       if (this.is_logged_in() && !this.is_valid()) {
-        // IONUX.ROUTER.signin_from_expired_session();
+        // IONUX2.ROUTER.signin_from_expired_session();
         return;
       }
       var self = this;
@@ -97,11 +97,11 @@ IONUX.Models.Session = Backbone.Model.extend({
           if (added_roles.length) new_roles[k] = added_roles;
         };
       });
-      // if (!_.isEmpty(new_roles)) new IONUX.Views.NewRoles({new_roles: new_roles}).render().el;
+      // if (!_.isEmpty(new_roles)) new IONUX2.Views.NewRoles({new_roles: new_roles}).render().el;
     },
 });
 
-IONUX.Models.Login = Backbone.Model.extend({
+IONUX2.Models.Login = Backbone.Model.extend({
 	initialize: function(){
 		console.log('initializing login model.');
 	},
@@ -137,7 +137,7 @@ IONUX.Models.Login = Backbone.Model.extend({
 	}
 });
 
-IONUX.Models.SearchTabContent = Backbone.Model.extend({
+IONUX2.Models.SearchTabContent = Backbone.Model.extend({
   initialize: function() {
     console.log('initializing left sidebar model');
   },
@@ -151,7 +151,7 @@ IONUX.Models.SearchTabContent = Backbone.Model.extend({
   }
 });
 
-IONUX.Collections.Observatories = Backbone.Collection.extend({
+IONUX2.Collections.Observatories = Backbone.Collection.extend({
   url: '/Observatory/list/',
   parse: function(resp) {
     return resp.data;
