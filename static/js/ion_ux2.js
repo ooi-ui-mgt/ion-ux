@@ -57,13 +57,13 @@ IONUX = {
 
 		IONUX.Models.SearchTabContentInstance = new IONUX.Models.SearchTabContent();
 		IONUX.Views.SearchTabContentInstance = new IONUX.Views.SearchTabContent({model: IONUX.Models.SearchTabContentInstance});
-		IONUX.Views.SearchAdvancedContent = new IONUX.Views.SearchBar();
 		IONUX.Models.SearchTabContentInstance.fetch({
 			async: false,
 			dataType: 'html'
 		});
 
-		$("#leftSubheader").html(get_template('templates/block_nav_tabs2.html')).show();
+		$("#leftSubheader").html(IONUX.getTemplate('templates/block_nav_tabs2.html')).show();
+		$("#lowerMain").html(IONUX.getTemplate('templates/block_accordion_white2.html')).show();
 
 	    // Bootstrap navigation menu
 	    $.ajax({

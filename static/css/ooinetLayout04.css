@@ -90,10 +90,12 @@ body {
 #main {
  position:absolute;
  top:104px;
+ /*top:141px;*/
  left:275px;
  padding:0px;
  margin:0px;
  height:calc(100% - 104px);
+ /*height:calc(100% - 141px);*/
  width:calc(100% - 275px);
  z-index:0;
  overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
@@ -215,6 +217,7 @@ body {
   z-index:4;
   overflow:auto;
 }
+
 .innerLeft {
   position:relative;
   margin:0px;
@@ -222,6 +225,12 @@ body {
   width:100%;
   z-index:4;
   overflow:auto;
+}
+
+#searchBar {
+  position: absolute;
+  top: 20px;
+  left: 0px;
 }
 
 #login {
@@ -514,6 +523,10 @@ input.no_placeholder_radius {
   display: none;
 }
 
+.lat_long_menu option {
+  background-color: #384d68;
+}
+
 .spatial_details h5 {
   line-height: 8px;
   font-size: 12px;
@@ -629,4 +642,68 @@ input.no_placeholder_radius {
 
 .jspDrag {
   background: #88A9CC;
+}
+
+#accordionContainerWhite {
+  color: #000;
+  position: relative;
+  width:  calc(100% - 8px);
+  margin: 3px;
+}
+
+.accordionWhiteChevron {
+  position: absolute;
+  right: 22px;
+  top: 5px;
+}
+
+.accordionWhitePin {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  background: url('../img/tack1.png');
+}
+
+.pinned .accordionWhitePin {
+  background: url('../img/tack2.png');
+}
+
+.icon-chevron {
+  background-position: -288px -120px;
+}
+
+.collapsed .icon-chevron {
+  background-position: -313px -119px;
+}
+
+.accordionWhite {
+  position: relative;
+  width: 100%;
+  margin: 0px;
+  margin-bottom: 3px;
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+
+.accordionWhiteLabel {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: -webkit-gradient(linear, top left, top right, from(#FFFFFF), to(#5687AF));
+  background: -webkit-linear-gradient(top, #FFFFFF, #5687AF);
+  background: -moz-linear-gradient(top, #FFFFFF, #5687AF);
+  background: -o-linear-gradient(top, #FFFFFF, #5687AF);
+}
+
+.accordionWhiteLabel:hover {
+  background: -webkit-gradient(linear, top left, top right, from(#FFFFFF), to(#479ec6));
+  background: -webkit-linear-gradient(top, #FFFFFF, #479ec6);
+  background: -moz-linear-gradient(top, #FFFFFF, #479ec6);
+  background: -o-linear-gradient(top, #FFFFFF, #479ec6);
+}
+
+.accordionContents {
+  padding: 5px;
 }
