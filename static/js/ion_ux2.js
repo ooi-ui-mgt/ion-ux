@@ -74,7 +74,7 @@ IONUX = {
 		        IONUX.Dashboard.Observatories = new IONUX.Collections.Observatories(_.sortBy(resp.data.observatories,function(o){return o.spatial_area_name + (o.local_name ? o.local_name : '') + o.name}))
       		},
       	});
-
+	    IONUX.Views.spatial = new IONUX.Views.Spatial();
       	this.dashboard_map();
 	},
 

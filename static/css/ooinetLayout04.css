@@ -438,7 +438,7 @@ select.date_menu {
   margin-bottom: 4px;
 }
 
-.top_navi_select_container, .top_navi_narrow_select_container {
+.left_navi_narrow_select_container {
 position: relative;
 height: 16px;
 padding: 0px;
@@ -448,30 +448,21 @@ margin-bottom: 4px;
 display: inline-block;
 }
 
-.top_navi_select_container {
-  width: 160px;
-  top: 6px;
-}
-
-.top_navi_narrow_select_container {
-width: 60px;
-top: 4px;
-height:16px;
+.left_navi_narrow_select_container {
+  width: 60px;
+  top: 9px;
+  height:16px;
 }
 
 .left_navi_narrow_select_arrow {
   width: 60px;
 }
 
-.left_navi_select_arrow, .top_navi_select_arrow {
+.left_navi_select_arrow {
    width: 160px;
 }
 
-.top_navi_select_arrow {
-  top: 6px;
-}
-
-.left_navi_select_arrow, .top_navi_select_arrow, .left_navi_narrow_select_arrow {
+.left_navi_select_arrow, .left_navi_narrow_select_arrow {
   pointer-events:none;
   position: absolute;
   left: 0px;
@@ -481,19 +472,15 @@ height:16px;
   background: url('../img/left_select_arrow.png') no-repeat right;
 }
 
-.left_navi_select_container select, .top_navi_select_container select {
+.left_navi_select_container select {
   width: 160px;
 }
 
-.top_navi_select_container select {
-  top: 6px;
-}
-
-.top_navi_narrow_select_container select {
+.left_navi_narrow_select_container select {
   width: 60px;
 }
 
-.left_navi_select_container select, .top_navi_select_container select, .top_navi_narrow_select_container select {
+.left_navi_select_container select, .left_navi_narrow_select_container select {
   position: absolute;
   left: 0px;
   top: 0px;
@@ -523,7 +510,7 @@ input.no_placeholder_radius {
   display: none;
 }
 
-.lat_long_menu option {
+select.lat_long_menu option {
   background-color: #384d68;
 }
 
