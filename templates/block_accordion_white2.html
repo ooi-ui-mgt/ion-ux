@@ -1,2 +1,29 @@
-<div>
+<div id="accordionContainerWhite">
+	<article class="accordionWhite" id="accordionData">
+		<div class="accordionWhiteLabel">Data</div>
+		<div class="icon-chevron accordionWhiteChevron"></div>
+		<div class="accordionContents" id="accordionDataContent">
+			Hi<br/><br/>there!
+		</div>
+	</article>
+	<article class="accordionWhite" id="accordionAssets">
+		<div class="accordionWhiteLabel">Assets</div>
+		<div class="icon-chevron accordionWhiteChevron"></div>
+		<div class="accordionContents" id="accordionAssetContent">
+			Hi<br/><br/>there!
+		</div>
+	</article>
 </div>
+
+<script>
+	$(function(){
+		$('.accordionWhiteLabel').click(function(e){
+			e.preventDefault();
+			var link = $(e.currentTarget);
+			link.parent().find('.accordionContents').slideToggle('fast', function() {
+				if ($(this).is(':visible')) {
+				}
+			});
+		});
+	});
+</script>

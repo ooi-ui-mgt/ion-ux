@@ -635,3 +635,45 @@ input.no_placeholder_radius {
 .jspDrag {
   background: #88A9CC;
 }
+
+#accordionContainerWhite {
+  color: #000;
+  position: relative;
+  width:  calc(100% - 8px);
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.accordionWhiteChevron {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.accordionWhite {
+  width: 100%;
+  margin: 0px;
+  margin-bottom: 3px;
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+
+.accordionWhiteLabel {
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: -webkit-gradient(linear, top left, top right, from(#FFFFFF), to(#5687AF));
+  background: -webkit-linear-gradient(top, #FFFFFF, #5687AF);
+  background: -moz-linear-gradient(top, #FFFFFF, #5687AF);
+  background: -o-linear-gradient(top, #FFFFFF, #5687AF);
+}
+
+.accordionWhiteLabel:hover {
+  background: -webkit-gradient(linear, top left, top right, from(#FFFFFF), to(#479ec6));
+  background: -webkit-linear-gradient(top, #FFFFFF, #479ec6);
+  background: -moz-linear-gradient(top, #FFFFFF, #479ec6);
+  background: -o-linear-gradient(top, #FFFFFF, #479ec6);
+}
+
+.accordionContents {
+  padding: 5px;
+}

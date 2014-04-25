@@ -63,7 +63,8 @@ IONUX = {
 			dataType: 'html'
 		});
 
-		$("#leftSubheader").html(get_template('templates/block_nav_tabs2.html')).show();
+		$("#leftSubheader").html(IONUX.getTemplate('templates/block_nav_tabs2.html')).show();
+		$("#lowerMain").html(IONUX.getTemplate('templates/block_accordion_white2.html')).show();
 
 	    // Bootstrap navigation menu
 	    $.ajax({
