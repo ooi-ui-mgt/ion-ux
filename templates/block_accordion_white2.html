@@ -1,15 +1,46 @@
 <div id="accordionContainerWhite">
-	<article class="accordionWhite" id="accordionData">
-		<div class="accordionWhiteLabel">Data</div>
-		<div class="icon-chevron accordionWhiteChevron"></div>
-		<div class="accordionContents" id="accordionDataContent">
+	<article class="accordionWhite pinned" id="accordionData">
+		<div class="accordionWhiteLabel">Data
+			<i class="icon-chevron accordionWhiteChevron"></i>
+		</div>
+		<div class="accordionWhitePin"></div>
+		<div class="accordionContents">
 			Hi<br/><br/>there!
 		</div>
 	</article>
-	<article class="accordionWhite" id="accordionAssets">
-		<div class="accordionWhiteLabel">Assets</div>
-		<div class="icon-chevron accordionWhiteChevron"></div>
-		<div class="accordionContents" id="accordionAssetContent">
+	<article class="accordionWhite collapsed" id="accordionAssets">
+		<div class="accordionWhiteLabel">Assets
+			<i class="icon-chevron accordionWhiteChevron"></i>
+		</div>
+		<div class="accordionWhitePin"></div>
+		<div class="accordionContents" style="display:none;">
+			Hi<br/><br/>there!
+		</div>
+	</article>
+	<article class="accordionWhite collapsed" id="accordionPlatform">
+		<div class="accordionWhiteLabel">Platform
+			<i class="icon-chevron accordionWhiteChevron"></i>
+		</div>
+		<div class="accordionWhitePin"></div>
+		<div class="accordionContents" style="display:none;">
+			Hi<br/><br/>there!
+		</div>
+	</article>
+	<article class="accordionWhite collapsed" id="accordionInstruments">
+		<div class="accordionWhiteLabel">Instrument
+			<i class="icon-chevron accordionWhiteChevron"></i>
+		</div>
+		<div class="accordionWhitePin"></div>
+		<div class="accordionContents" style="display:none;">
+			Hi<br/><br/>there!
+		</div>
+	</article>
+	<article class="accordionWhite collapsed" id="accordionDataType">
+		<div class="accordionWhiteLabel">Data Type
+			<i class="icon-chevron accordionWhiteChevron"></i>
+		</div>
+		<div class="accordionWhitePin"></div>
+		<div class="accordionContents" style="display:none;">
 			Hi<br/><br/>there!
 		</div>
 	</article>
@@ -17,13 +48,47 @@
 
 <script>
 	$(function(){
+        $('#accordionContainerWhite').sortable({
+          items: ".accordionWhite:not(.pinned)"
+        });
+
+        function toggleAccordion(accordion_contents){
+			accordion_contents.slideToggle('fast', function() {
+				if ($(this).is(':visible')) {
+					$(this).parent().removeClass('collapsed');
+				} else {
+					$(this).parent().addClass('collapsed');
+				}
+			});
+        }
+
+        $('.accordionWhitePin').click(function(e){
+        	e.preventDefault();
+        	var pin = $(e.currentTarget);
+        	var accordion = pin.closest('.accordionWhite');
+        	if(!accordion.hasClass('pinned')) {
+        		if(accordion.hasClass('collapsed')){
+        			toggleAccordion( accordion.find('.accordionContents'));
+        		}
+        		accordion.addClass('pinned');
+        	} else {
+        		if(!accordion.hasClass('collapsed')){
+        			toggleAccordion( accordion.find('.accordionContents'));
+        		}
+        		accordion.removeClass('pinned');
+        	}
+        });
+
 		$('.accordionWhiteLabel').click(function(e){
 			e.preventDefault();
 			var link = $(e.currentTarget);
-			link.parent().find('.accordionContents').slideToggle('fast', function() {
-				if ($(this).is(':visible')) {
+			var accordion = link.closest('.accordionWhite');
+			if( !accordion.hasClass('pinned')){
+				if( accordion.hasClass('collapsed')){
+					toggleAccordion( accordion.siblings('.accordionWhite:not(.pinned)').find('.accordionContents:visible'));
 				}
-			});
+				toggleAccordion( accordion.find('.accordionContents'));
+			}
 		});
 	});
 </script>

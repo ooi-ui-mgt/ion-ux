@@ -646,17 +646,38 @@ input.no_placeholder_radius {
   color: #000;
   position: relative;
   width:  calc(100% - 8px);
-  margin-left: 3px;
-  margin-right: 3px;
+  margin: 3px;
 }
 
 .accordionWhiteChevron {
   position: absolute;
-  right: 5px;
+  right: 22px;
   top: 5px;
 }
 
+.accordionWhitePin {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  background: url('../img/tack1.png');
+}
+
+.pinned .accordionWhitePin {
+  background: url('../img/tack2.png');
+}
+
+.icon-chevron {
+  background-position: -288px -120px;
+}
+
+.collapsed .icon-chevron {
+  background-position: -313px -119px;
+}
+
 .accordionWhite {
+  position: relative;
   width: 100%;
   margin: 0px;
   margin-bottom: 3px;
@@ -667,6 +688,7 @@ input.no_placeholder_radius {
 .accordionWhiteLabel {
   padding: 3px 8px;
   border-radius: 4px;
+  font-weight: bold;
   background: -webkit-gradient(linear, top left, top right, from(#FFFFFF), to(#5687AF));
   background: -webkit-linear-gradient(top, #FFFFFF, #5687AF);
   background: -moz-linear-gradient(top, #FFFFFF, #5687AF);
