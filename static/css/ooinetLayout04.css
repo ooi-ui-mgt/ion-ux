@@ -89,11 +89,13 @@ body {
 
 #main {
  position:absolute;
- top:104px;
+ /*top:104px;*/
+ top:141px;
  left:275px;
  padding:0px;
  margin:0px;
- height:calc(100% - 104px);
+ /*height:calc(100% - 104px);*/
+ height:calc(100% - 141px);
  width:calc(100% - 275px);
  z-index:0;
  overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
@@ -519,6 +521,10 @@ input.no_placeholder_radius {
 
 .miles_kilos_menu {
   display: none;
+}
+
+.lat_long_menu option {
+  background-color: #384d68;
 }
 
 .spatial_details h5 {
