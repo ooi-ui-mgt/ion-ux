@@ -83,18 +83,19 @@ body {
  padding:0px;
  width:calc(100% - 275px);
  height:32px;
- /*z-index:0;*/
- z-index: 1;
+ z-index:0;
  'outline:1px solid #000; /* temp */
 }
 
 #main {
  position:absolute;
- top:104px;
+ /*top:104px;*/
+ top:141px;
  left:275px;
  padding:0px;
  margin:0px;
- height:calc(100% - 104px);
+ /*height:calc(100% - 104px);*/
+ height:calc(100% - 141px);
  width:calc(100% - 275px);
  z-index:0;
  overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
