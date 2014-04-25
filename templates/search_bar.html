@@ -1,8 +1,9 @@
 <section id="search_bar_container">
   <h5>Spatial</h5>
   <div class="top_navi_select_container">
-      <select>
+      <select class="lat_long_menu">
         <option>Lat/Long - Rect</option>
+        <option>Point/Rad</option>
       </select>
       <div class="top_navi_select_arrow"></div>
     </div>
@@ -22,7 +23,7 @@
       <div class="left_navi_narrow_select_arrow"></div>
     </div>
     <div class="accordion_label top_search_to">To:</div>
-    <div class="accordion_label top_search_radius">Radius:</div>
+    <span class="accordion_label top_search_radius">Radius:</span>
      <input class="latlong placeholder_lat" type="text" placeholder="Lat" />
      <input class="latlong no_placeholder_radius" type="text" />
     <div class="top_navi_narrow_select_container">
@@ -42,3 +43,24 @@
       <div class="left_navi_narrow_select_arrow"></div>
     </div>
 </section>
+<!--<section id="search_bar_container">
+  <h5>Vertical Position</h5>
+  <div class="accordion_label">From:</div>
+  <input class="latlong" type="text" />
+  <div class="accordion_label">To (Depth):</div>
+  <input class="latlong" type="text" />
+  <div class="top_navi_narrow_select_container">
+      <select>
+        <option>FS/M</option>
+      </select>
+      <div class="left_navi_narrow_select_arrow"></div>
+    </div>
+</section>-->
+ <script>
+      $(function(){
+        $('.lat_long_menu').on('change', function(e) {
+          $('.top_search_to, .placeholder_lat, .north_south_menu, .show_hide_longitude').hide();
+          $('.top_search_radius, .no_placeholder_radius, .miles_kilos_menu').show();
+        });
+      });
+</script>
