@@ -79,15 +79,15 @@ IONUX.Views.Region = Backbone.View.extend({
 	}
 });
 
-IONUX.Views.SearchBar = Backbone.View.extend({
-	el: '#searchBar',
-	template: _.template(IONUX.getTemplate('templates/search_bar.html')),
+IONUX.Views.Spatial = Backbone.View.extend({
+	el: '#spatial',
+	template: _.template(IONUX.getTemplate('templates/spatial.html')),
 	initialize: function() {
-		console.log('initializing search bar view');
+		console.log('initializing spatial view');
 		this.render();
 	},
 	render: function() {
-		console.log('rendering region');
+		console.log('rendering spatial');
 		this.$el.html(this.template());
 		return this;
 	}
