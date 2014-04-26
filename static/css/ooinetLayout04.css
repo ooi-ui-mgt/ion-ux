@@ -694,6 +694,11 @@ input.no_placeholder_radius {
   border-radius: 5px;
 }
 
+/* regions */
+.map-ul a {
+  color: #fff;
+}
+
 .accordionWhiteLabel {
   padding: 5px 8px;
   border-radius: 5px;
