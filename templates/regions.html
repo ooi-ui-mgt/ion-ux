@@ -2,9 +2,14 @@
   <div class="expand_hide arrow_right"></div><div class="accordion_label">Region</div>
 </span>
 <div class="spatial_details">
-	<form action="">
-    	<% _.each(resources, function(nested_resources, san) { %>
-    		<input type="checkbox"/> <%= san %><br/>
-    	<% }) %>
-	</form>
+	<div class="select_all">
+		<input class="checkAll" type="checkbox"/> Select All
+	</div>
+	<div class="list_regions">
+		<form action="">
+    		<% _.each(resources, function(nested_resources, san) { %>
+    			<input type="checkbox"/> <%= san %><br/>
+    		<% }) %>
+		</form>
+	</div>
  </div>

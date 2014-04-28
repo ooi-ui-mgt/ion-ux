@@ -388,6 +388,7 @@ ul.dropdown-menu li:hover {
 
 .spatial_duration {
   width: 23px;
+  text-align: center;
 }
 
 .latlong {
@@ -424,6 +425,14 @@ input.latlong {
 
 select.date_menu {
   width: 54px;
+}
+
+select.date_menu.day {
+  width: 45px;
+}
+
+select.date_menu.hour {
+  width: 60px;
 }
 
 #accordion_container input {
@@ -465,13 +474,13 @@ display: inline-block;
 }
 
 .left_navi_narrow_select_container {
-  width: 60px;
+  width: 40px;
   top: 9px;
   height:16px;
 }
 
 .left_navi_narrow_select_arrow {
-  width: 60px;
+  width: 40px;
 }
 
 .left_navi_select_arrow {
@@ -493,7 +502,7 @@ display: inline-block;
 }
 
 .left_navi_narrow_select_container select {
-  width: 60px;
+  width: 40px;
 }
 
 .left_navi_select_container select, .left_navi_narrow_select_container select {
@@ -587,6 +596,10 @@ input.no_placeholder_radius {
   display: inline-block;
   padding-top: 10px;
   margin-bottom: 0;
+}
+
+.select_all {
+  text-align: right;
 }
 
 .two_nav_tabs {

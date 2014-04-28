@@ -34,12 +34,6 @@
 	</div>
 </article>
 <article class="left_accordion" id="region">
-  <!--<span class="accordion_title">
-    <div class="expand_hide arrow_right"></div><div class="accordion_label">Region</div>
-  </span>
-  <div class="spatial_details">
-    More information
-  </div>-->
 </article>
 <article class="left_accordion" id="site">
   <span class="accordion_title">
@@ -182,7 +176,7 @@
       function populateHourDropdown(numberOfHours) {
         var hourOptions = [];
         for (var h=1; h<=numberOfHours; h++) {
-          hourOptions.push('<option value="' + h + '">' + h + '</option>');
+          hourOptions.push('<option value="' + h + '">' + h + ':00</option>');
         }
         $('.hour').html(hourOptions.join());
       }
