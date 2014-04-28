@@ -65,7 +65,19 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
 	}
 });
 
-
+IONUX2.Views.Sites = Backbone.View.extend({
+  el: '#sites',
+  template: _.template(IONUX2.getTemplate('templates/sites.html')),
+  initialize: function() {
+    console.log('initializing sites view');
+    this.render();
+  },
+  render: function() {
+    console.log('rendering sites');
+    this.$el.html(this.template(this.collection.toJSON()));
+    return this;
+  }
+});
 
 IONUX2.Views.Region = Backbone.View.extend({
 	el: '#region',
@@ -86,10 +98,16 @@ IONUX2.Views.Region = Backbone.View.extend({
 	},
 
   select_all_regions: function(e) {
-    $('.list_regions').find('input').prop('checked', true);
+    var $check = $(e.currentTarget);
+    if ($check.is(':checked')) {
+      $('.list_regions').find('input').prop('checked', true);
+    }
+    else {
+      $('.list_regions').find('input').prop('checked', false);
+    }
   },
 
-  trigger_pan_map: function(e) {
+  /*trigger_pan_map: function(e) {
    IONUX2.Dashboard.MapResource.tmp = e.target.innerHTML.toString().trim();
    if (e.target.className =="primary-link nested-primary-link"){
       IONUX2.Dashboard.MapResource.resource_level = 3;
@@ -148,7 +166,7 @@ IONUX2.Views.Region = Backbone.View.extend({
        else {
            target.attr('class', 'toggle-all-menu pull-right')
        }
-   },
+   },*/
 
 	build_menu: function(){
     // Grab all spatial names, then uniques; separate for clarity.

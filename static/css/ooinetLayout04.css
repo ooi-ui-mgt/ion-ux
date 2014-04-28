@@ -327,7 +327,7 @@ ul.dropdown-menu li:hover {
 /* left sidebar accordion */
 #accordion_container {
   position: absolute;
-  top: 21px;
+  top: 28px;
   left: 0px;
   background-color: #384d68;
   padding-top: 0px;
@@ -353,16 +353,25 @@ ul.dropdown-menu li:hover {
   margin-left: 13px;
 }
 
+.spatial_details.align_left {
+  margin-left:0;
+}
+
+.list_regions {
+  margin-left: 13px;
+}
+
 .textRight {
-  height: 16px;
+  height: 18px;
   line-height: 12px;
   margin: 5px 3px 5px auto;
-  text-align: right;
+  /*text-align: right;*/
   background-color: #384d68;
   color: #fff;
   font-family: Arial;
   font-size: 12px; 
   overflow: none;
+  float: right;
 }
 
 .left_accordion {
@@ -371,7 +380,7 @@ ul.dropdown-menu li:hover {
   background: -webkit-linear-gradient(left, #5687AF, #3B5E7E);
   background: -moz-linear-gradient(left, #5687AF, #3B5E7E);
   background: -o-linear-gradient(left, #5687AF, #3B5E7E);
-  padding: 4px 10px 4px 4px;
+  padding: 4px 5px 4px 4px;
   /*width: 217px;*/
   margin-bottom: 5px;
   margin-right: 3px;
@@ -432,7 +441,7 @@ select.date_menu.day {
 }
 
 select.date_menu.hour {
-  width: 60px;
+  width: 58px;
 }
 
 #accordion_container input {
@@ -600,7 +609,7 @@ input.no_placeholder_radius {
 }
 
 .select_all {
-  text-align: right;
+  margin-bottom: 10px;
 }
 
 .two_nav_tabs {
