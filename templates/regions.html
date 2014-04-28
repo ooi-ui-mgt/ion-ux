@@ -2,9 +2,9 @@
   <div class="expand_hide arrow_right"></div><div class="accordion_label">Region</div>
 </span>
 <div class="spatial_details">
-    <ul>
-      <% _.each(this.collection.models, function(region) { %>
-        <li><%= region.attributes.name %></li>
-     <% }); %>
-    </ul>
-  </div>
+	<form action="">
+    	<% _.each(resources, function(nested_resources, san) { %>
+    		<input type="checkbox"/> <%= san %><br/>
+    	<% }) %>
+	</form>
+ </div>

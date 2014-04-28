@@ -93,7 +93,7 @@ IONUX2.build_menu = function(collection){
 
 IONUX2.Views.Region = Backbone.View.extend({
 	el: '#region',
-	template: _.template(IONUX2.getTemplate('templates/partials/dashboard_observatory_list.html')),
+	template: _.template(IONUX2.getTemplate('templates/regions.html')),
 	events: {
       'click .secondary-link': 'click_action',
       'click .secondary-nested-link': 'click_action_nested',
