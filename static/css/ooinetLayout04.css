@@ -511,6 +511,7 @@ display: inline-block;
   top: 0px;
   border: 0px;  
   -webkit-appearance: none;
+  -moz-appearance: none;
   height: 16px !important;
   padding: 0px;
   color: #fff;
