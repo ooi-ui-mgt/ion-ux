@@ -112,7 +112,13 @@ IONUX2.Views.Region = Backbone.View.extend({
     var $check = $(e.currentTarget);
     var $checked_item = $check.data('spatial');
     var select_data = '[data-sites="' + $checked_item + '"]';
-    $(select_data).prop('checked', 'true');
+    if ($check.is(':checked')) {
+      console.log('checkbox is checked');
+      $(select_data).prop('checked', true);
+    }
+    else {
+      $(select_data).prop('checked', false);
+    }
   },
 
   /*trigger_pan_map: function(e) {
