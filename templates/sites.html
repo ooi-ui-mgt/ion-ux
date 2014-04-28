@@ -1,10 +1,10 @@
 <span class="accordion_title">
-  <div class="expand_hide arrow_right"></div><div class="accordion_label">Region</div>
+  <div class="expand_hide arrow_right"></div><div class="accordion_label">Sites</div>
 </span>
-<div class="spatial_details">
+<div id="site_list" class="spatial_details">
 	<form action="">
-    	<% _.each(resources, function(nested_resources, san) { %>
-    		<input type="checkbox"/> <%= san %><br/>
+    	<% _.each(this.collection.models, function(site) { %>
+    		<input id="site_item" data-sites="<%= site.attributes.spatial_area_name %>" type="checkbox"/> <%= site.attributes.name %><br/>
     	<% }) %>
 	</form>
  </div>

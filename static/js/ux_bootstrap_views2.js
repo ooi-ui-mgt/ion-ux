@@ -66,7 +66,7 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
 });
 
 IONUX2.Views.Sites = Backbone.View.extend({
-  el: '#sites',
+  el: '#site',
   template: _.template(IONUX2.getTemplate('templates/sites.html')),
   initialize: function() {
     console.log('initializing sites view');
@@ -83,14 +83,15 @@ IONUX2.Views.Region = Backbone.View.extend({
 	el: '#region',
 	template: _.template(IONUX2.getTemplate('templates/regions.html')),
 	events: {
-      'click .secondary-link': 'click_action',
+      /*'click .secondary-link': 'click_action',
       'click .secondary-nested-link': 'click_action_nested',
       'click .secondary-link-selected': 'click_action',
       'click .secondary-nested-link-selected': 'click_action_nested',
       'click .toggle-all-menu': 'toggle_action',
       'click .toggle-all-menu-selected': 'toggle_action',
-      'click .primary-link': 'trigger_pan_map',
-      'click .checkAll': 'select_all_regions' 
+      'click .primary-link': 'trigger_pan_map',*/
+      'click .checkAll': 'select_all_regions',
+      'click #region_item': 'toggle_sites'
   },
 	initialize: function() {
 		console.log('initializing region view');
@@ -105,6 +106,13 @@ IONUX2.Views.Region = Backbone.View.extend({
     else {
       $('.list_regions').find('input').prop('checked', false);
     }
+  },
+
+  toggle_sites: function(e) {
+    var $check = $(e.currentTarget);
+    var $checked_item = $check.data('spatial');
+    var select_data = '[data-sites="' + $checked_item + '"]';
+    $(select_data).prop('checked', 'true');
   },
 
   /*trigger_pan_map: function(e) {

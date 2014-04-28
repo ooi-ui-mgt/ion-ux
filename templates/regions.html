@@ -8,9 +8,13 @@
 	</div>
 	<div class="list_regions">
 		<form action="">
+			
     		<% _.each(resources, function(nested_resources, san) { %>
-    			<input type="checkbox"/> <%= san %><br/>
-    		<% }) %>
+    			<input id="region_item" type="checkbox" data-spatial="<%= san %>"/> <%= san %><br/>
+    			<% _.each(nested_resources, function(nest) { %>
+    				<div style="display: none"><%= nest.name %></div>
+    			<% }); %>
+    		<% }); %>
 		</form>
 	</div>
  </div>
