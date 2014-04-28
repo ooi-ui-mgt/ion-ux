@@ -5,40 +5,31 @@ last edited 04-13 04-09 03-05 2014-03-02
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="/static/bootstrap/less/bootstrap.min.css" type="text/css" />
-    <link rel='stylesheet' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/black-tie/jquery-ui.css' />
-    <link rel="stylesheet" href="/static/css/jscrollpane.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/ooinetLayout04.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/css/ooinetAppearance04.css"/>
-    <link href='http://fonts.googleapis.com/css?family=Signika:300,400,600,700' rel='stylesheet' type='text/css'/>
-    <link href='http://fonts.googleapis.com/css?family=Signika+Negative:300,400,600,700' rel='stylesheet' type='text/css' />
 
     <title>OOINet</title>
 
-    <!-- Vendor JavaScripts -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCcEp2hQdftRhaYgonh1Vyv0JYi5KVvFI&amp;sensor=false&amp;libraries=drawing"> </script>
-    <script src="/static/js/jquery-1.9.1.min.js"> </script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    <script type='text/javascript' src='http://www.google.com/jsapi'> </script>
-    <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1'}]}"> </script>
-    <script src="/static/visualization/js/markerclusterer.js"> </script>
-            
-    <script src="/static/js/underscore-1.4.4.min.js "> </script>
-    <script src="/static/js/backbone-1.0.min.js"> </script>
-    <script src="/static/js/bootstrap.min.js"> </script>
-    <script src="/static/js/backbone.bootstrap-modal.js"> </script>
-    <script src="/static/js/jquery.jscrollpane.min.js"> </script>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
+    {% block inherit_css %}
 
-    <!-- UX JavaScripts --> 
-    <script src="/static/js/ion_ux2.js"> </script>
-    <script src="/static/js/ux_bootstrap_models2.js"> </script>
-    <script src="/static/js/ux_bootstrap_views2.js"> </script>
-    <script src="/static/js/ux-models-map2.js"> </script>
-    <script src="/static/js/ux-views-map2.js"> </script>
+    <link rel="stylesheet" href="/static/bootstrap/less/bootstrap.min.css" type="text/css" />
+    <link rel='stylesheet' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/black-tie/jquery-ui.css' />
+    <link rel="stylesheet" href="/static/css/jscrollpane.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Signika:300,400,600,700' rel='stylesheet' type='text/css'/>
+    <link href='http://fonts.googleapis.com/css?family=Signika+Negative:300,400,600,700' rel='stylesheet' type='text/css' />
+
+    <link rel="stylesheet/less" class="salt" href="/static/css/salt_images.less" />
+    <link rel="stylesheet" type="text/css" href="/static/css/salt.css"/>
+    {% endblock %}
+
+    {% block extra_css %}{% endblock %}
+
+    <link rel="stylesheet" type="text/css" href="/static/css/ooinetLayout04.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/ooinetAppearance04.css"/>
+
 </head>
 
 <body>
-	<div id="header" align="left">header</div>
+	<div id="header2" align="left">header</div>
 	<div id="leftSubheader" align="left">
     </div>
 	<div id="mainSubheader" align="left">
@@ -48,7 +39,7 @@ last edited 04-13 04-09 03-05 2014-03-02
             <div class="mapButtonHidden" title="Hidden Map View"></div>
         </div></div>
 
-    <div id="left">
+    <div id="left2">
         <div id="searchTabContent"></div>
         <div id="mySearchesTabContent" style="display:none;">
         <ul class="list_mysearches">
@@ -65,6 +56,47 @@ last edited 04-13 04-09 03-05 2014-03-02
 	   </div>
 	</div>
 
+    {% block inherit_templates %} {% endblock %}
+
+    {% block extra_templates %}
+        <script type="text/template" id="datatable-tmpl">{% include 'partials/datatable.html' %}</script>
+    {% endblock %}
+    
+    {% block inherit_vendor_js %}
+    <!-- Vendor JavaScripts -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCcEp2hQdftRhaYgonh1Vyv0JYi5KVvFI&amp;sensor=false&amp;libraries=drawing"> </script>
+    <script src="/static/js/jquery-1.9.1.min.js"> </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script type='text/javascript' src='http://www.google.com/jsapi'> </script>
+    <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1'}]}"> </script>
+    <script src="/static/visualization/js/markerclusterer.js"> </script>
+            
+    <script src="/static/js/underscore-1.4.4.min.js "> </script>
+    <script src="/static/js/backbone-1.0.min.js"> </script>
+    <script src="/static/js/bootstrap.min.js"> </script>
+    <script src="/static/js/backbone.bootstrap-modal.js"> </script>
+    <script src="/static/js/less-1.3.3.min.js"> </script>
+    <script src="/static/js/jquery.dataTables-1.9.3.js"> </script>
+    <script src="/static/js/jquery.dataTables-api-extensions.js"> </script>
+    <script src="/static/js/jquery.jscrollpane.min.js"> </script>
+    {% endblock %}
+
+    {% block extra_vendor_js %}{% endblock %}
+
+    <!-- UX JavaScripts --> 
+    {% block inherit_ionux_js %} {% endblock %}
+
+    <script src="/static/js/ion_ux2.js"> </script>    
+    <script src="/static/js/ux_bootstrap_models2.js"> </script>
+    <script src="/static/js/ux_bootstrap_views2.js"> </script>
+    <script src="/static/js/ux-models-map2.js"> </script>
+    <script src="/static/js/ux-views-map2.js"> </script>
+    <script src="/static/js/ux-views-datatable2.js"></script>
+
+    {% block extra_ionux_js %}
+    {% endblock %}
+
+        
     <script>
       $(function(){
         IONUX2.init();
@@ -97,6 +129,8 @@ last edited 04-13 04-09 03-05 2014-03-02
         });
         
       });
+      {% block document_ready %}
+      {% endblock %}
     </script>
 </body>
 </html>

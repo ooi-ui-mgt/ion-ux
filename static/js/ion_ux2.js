@@ -38,6 +38,13 @@ var get_template = function(url) {
     return data;
 };
 
+// Look up chained values found in data-path
+function get_descendant_properties(obj, desc) {
+  var arr = desc.split(".");
+  while(arr.length && (obj = obj[arr.shift()]));
+  return obj;
+};
+
 IONUX2 = {
 	Models: {},
 	Collections: {},
