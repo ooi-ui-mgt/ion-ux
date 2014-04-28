@@ -7,6 +7,7 @@ last edited 04-13 04-09 03-05 2014-03-02
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="/static/bootstrap/less/bootstrap.min.css" type="text/css" />
     <link rel='stylesheet' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/black-tie/jquery-ui.css' />
+    <link rel="stylesheet" href="/static/css/jscrollpane.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="/static/css/ooinetLayout04.css"/>
     <link rel="stylesheet" type="text/css" href="/static/css/ooinetAppearance04.css"/>
     <link href='http://fonts.googleapis.com/css?family=Signika:300,400,600,700' rel='stylesheet' type='text/css'/>
@@ -26,7 +27,7 @@ last edited 04-13 04-09 03-05 2014-03-02
     <script src="/static/js/backbone-1.0.min.js"> </script>
     <script src="/static/js/bootstrap.min.js"> </script>
     <script src="/static/js/backbone.bootstrap-modal.js"> </script>
-
+    <script src="/static/js/jquery.jscrollpane.min.js"> </script>
 
     <!-- UX JavaScripts --> 
     <script src="/static/js/ion_ux2.js"> </script>
@@ -40,11 +41,16 @@ last edited 04-13 04-09 03-05 2014-03-02
 	<div id="header" align="left">header</div>
 	<div id="leftSubheader" align="left">
     </div>
-	<div id="mainSubheader" align="left"><div id="search-production" class="span10"> 
-        <div id="maximizer" state="half"></div>
-    </div></div>
+	<div id="mainSubheader" align="left">
+        <div id="search-production"> 
+            <div class="mapButtonFull" title="Full Map View"></div>
+            <div class="mapButtonSplit" title="Split View"></div>
+            <div class="mapButtonHidden" title="Hidden Map View"></div>
+        </div></div>
 
-    <div id="left">left side menu here<br />
+    <div id="left">
+        <div id="searchTabContent"></div>
+        <div id="mySearchesTabContent" style="display:none;"></div>
     </div>
     <div id="main">
        <div id="upperMain">
@@ -55,38 +61,35 @@ last edited 04-13 04-09 03-05 2014-03-02
 
     <script>
       $(function(){
-        IONUX.init();
+        IONUX2.init();
 
-        $("#maximizer").click(function(){
-            if($("#maximizer").attr("state") == 'half'){
-                $("#maximizer").css("background-color","#0F0");
-                $("#upperMain").css("height", "100%");
-                $("#lowerMain").css("height", "0%");
-                $("#lowerMain").css("top", "100%");
-                $("#maximizer").attr("state", 'full');
-                $(window).trigger('resize');
-                IONUX.Dashboard.MapView.draw_map();
-                IONUX.Dashboard.MapView.draw_markers();
-            } else if($("#maximizer").attr("state") == 'full'){
-                $("#maximizer").css("background-color","#00F");
-                $("#upperMain").css("height", "0%");
-                $("#lowerMain").css("height", "100%");
-                $("#lowerMain").css("top", "0%");
-                $("#maximizer").attr("state", 'none');
-                $(window).trigger('resize');
-                IONUX.Dashboard.MapView.draw_map();
-                IONUX.Dashboard.MapView.draw_markers();
-            } else if($("#maximizer").attr("state") == 'none'){
-                $("#maximizer").css("background-color","#F00");
-                $("#upperMain").css("height", "60%");
-                $("#lowerMain").css("height", "40%");
-                $("#lowerMain").css("top", "60%");
-                $("#maximizer").attr("state", 'half');
-                $(window).trigger('resize');
-                IONUX.Dashboard.MapView.draw_map();
-                IONUX.Dashboard.MapView.draw_markers();
-            }
+        $(".mapButtonFull").click(function(){
+            $("#upperMain").css("height", "100%");
+            $("#lowerMain").css("height", "0%");
+            $("#lowerMain").css("top", "100%");
+            $(window).trigger('resize');
+            IONUX2.Dashboard.MapView.draw_map();
+            IONUX2.Dashboard.MapView.draw_markers();
         });
+
+        $(".mapButtonSplit").click(function(){
+            $("#upperMain").css("height", "60%");
+            $("#lowerMain").css("height", "40%");
+            $("#lowerMain").css("top", "60%");
+            $(window).trigger('resize');
+            IONUX2.Dashboard.MapView.draw_map();
+            IONUX2.Dashboard.MapView.draw_markers();
+        });
+        
+        $(".mapButtonHidden").click(function(){
+            $("#upperMain").css("height", "0%");
+            $("#lowerMain").css("height", "100%");
+            $("#lowerMain").css("top", "0%");
+            $(window).trigger('resize');
+            IONUX2.Dashboard.MapView.draw_map();
+            IONUX2.Dashboard.MapView.draw_markers();
+        });
+        
       });
     </script>
 </body>

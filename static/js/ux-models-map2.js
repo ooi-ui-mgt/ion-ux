@@ -1,4 +1,4 @@
-IONUX.Models.MapResource = Backbone.Model.extend({
+IONUX2.Models.MapResource = Backbone.Model.extend({
   defaults: {
     geospatial_point_center: {
       lat: 39.8106460,
@@ -8,7 +8,7 @@ IONUX.Models.MapResource = Backbone.Model.extend({
   }
 });
 
-IONUX.Collections.MapResources = Backbone.Collection.extend({
+IONUX2.Collections.MapResources = Backbone.Collection.extend({
   initialize: function(models, options){
     this.resource_id = options.resource_id;
   },
@@ -23,7 +23,7 @@ IONUX.Collections.MapResources = Backbone.Collection.extend({
   }
 });
 
-IONUX.Collections.MapDataProducts = Backbone.Collection.extend({
+IONUX2.Collections.MapDataProducts = Backbone.Collection.extend({
   initialize: function(models, options){
     this.resource_id = options.resource_id;
   },
