@@ -42,7 +42,8 @@ IONUX2.Views.Login = Backbone.View.extend({
 IONUX2.Views.SearchTabContent = Backbone.View.extend({
 	el: '#searchTabContent',
 	events: {
-		'click .accordion_title': 'expandHide'
+		'click .accordion_title': 'expandHide',
+    'click .textRight': 'saveSearch',
 	},
 	initialize: function() {
 		this.model.on('change:html', this.render, this);
@@ -58,6 +59,31 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
        		}        
 		});
 	},
+  saveSearch: function() {
+    var spatial_dropdown = $('.lat_long_menu option:selected').val(),
+      from_latitude = $('.latlong').data('fromlat').val(),
+      from_ns = $('.from_ns option:selected').val(),
+      from_longitude = $('.latlong').data('fromlong').val(),
+      from_ew = $('.from_ew option:selected').val(),
+      to_latitude = $('.placeholder_lat').val(),
+      to_ns = $('.north_south_menu option:selected').val(),
+      to_longitude = $('.show_hide_longitude').val(),
+      to_ew = $('.to_ew option:selected').val(),
+      radius = $('.no_placeholder_radius').val(),
+      miles_kilos = $('.miles_kilos_menu').val(),
+      vertical_from = $('.latlong').data('verticalfrom').val(),
+      vertical_to = $('.latlong').data('verticalto').val(),
+      feet_miles = $('.feet_miles option:selected').val();
+   // store this is in model
+    /*var spatial_search = {
+      'spatial_dropdown': spatial_dropdown,
+      'from_latitude': from_latitude,
+      'from_ns': from_ns,
+      'from_longitude': from_longitude,
+      ''
+    }*/
+
+  },
 	render: function() {
 		console.log('rendering left side view');
 		this.$el.html(this.model.html);

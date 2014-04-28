@@ -364,14 +364,16 @@ ul.dropdown-menu li:hover {
 .textRight {
   height: 18px;
   line-height: 12px;
-  margin: 5px 3px 5px auto;
+  margin: 5px 7px 5px auto;
   /*text-align: right;*/
-  background-color: #384d68;
-  color: #fff;
+  background-color: #00B8CC;
+  color: #000;
   font-family: Arial;
   font-size: 12px; 
   overflow: none;
   float: right;
+  border-radius: 5px;
+  border: none;
 }
 
 .left_accordion {
@@ -596,6 +598,18 @@ input.no_placeholder_radius {
   padding: 0px;
   display: inline-block;
   font-size:12px;
+}
+
+#mySearchesTabContent {
+  padding-top: 20px;
+}
+
+.list_mysearches {
+  list-style: none;
+}
+
+.list_mysearches a {
+  color: #fff;
 }
 
 .accordion_detail_container {
