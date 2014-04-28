@@ -3,7 +3,7 @@
 
 
 IONUX2.Views.Header = Backbone.View.extend({
-	el: '#header',
+	el: '#header2',
 	initialize: function() {
 		this.model.on('change:html', this.render, this);
 	},

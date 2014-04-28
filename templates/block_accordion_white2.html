@@ -5,7 +5,7 @@
 		</div>
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents">
-			Hi<br/><br/>there!
+			<div id="23456"></div>
 		</div>
 	</article>
 	<article class="accordionWhite collapsed" id="accordionAssets">
@@ -14,7 +14,7 @@
 		</div>
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents" style="display:none;">
-			Hi<br/><br/>there!
+			<div id="34567"></div>
 		</div>
 	</article>
 	<article class="accordionWhite collapsed" id="accordionPlatform">
@@ -23,7 +23,7 @@
 		</div>
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents" style="display:none;">
-			Hi<br/><br/>there!
+			<div id="45678"></div>
 		</div>
 	</article>
 	<article class="accordionWhite collapsed" id="accordionInstruments">
@@ -32,7 +32,7 @@
 		</div>
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents" style="display:none;">
-			Hi<br/><br/>there!
+			<div id="56789"></div>
 		</div>
 	</article>
 	<article class="accordionWhite collapsed" id="accordionDataType">
@@ -41,10 +41,38 @@
 		</div>
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents" style="display:none;">
-			Hi<br/><br/>there!
+			<div id="67890"></div>
 		</div>
 	</article>
 </div>
+
+<script id="TABLE_23456">
+var TABLE_23456 = [
+    ["icon_ooi", "Type", "type_", "T04", "0", "level-zero"], 
+    ["icon_ooi", "Status", "aggregated_status", "T01", "0", "level-zero"],
+    ["text_short_ooi", "Name", "name", "T05", "0", "level-zero"],
+    ["text_extended_ooi", "Description", "description", "T09", "0", "level-zero"],
+    ["text_short_ooi", "Created", "unknown1219", "T10", "2", "level-two"],
+    ["text_short_ooi", "Modified", "ts_updated", "T11", "0", "level-zero"],
+    ["text_short_ooi", "Lifecycle State", "lcstate", "T13", "0", "level-zero"]
+];
+</script>
+
+<script id="TABLE_34567">
+var TABLE_34567 = TABLE_23456;
+</script>
+
+<script id="TABLE_45678">
+var TABLE_45678 = TABLE_23456;
+</script>
+
+<script id="TABLE_56789">
+var TABLE_56789 = TABLE_23456;
+</script>
+
+<script id="TABLE_67890">
+var TABLE_67890 = TABLE_23456;
+</script>
 
 <script>
 	$(function(){
@@ -90,5 +118,11 @@
 				toggleAccordion( accordion.find('.accordionContents'));
 			}
 		});
+
+		new IONUX2.Views.DataTable({data:TEST_TABLE_DATA, el:'#23456', visibility_level:2});
+		new IONUX2.Views.DataTable({data:TEST_TABLE_DATA, el:'#34567', visibility_level:2});
+		new IONUX2.Views.DataTable({data:TEST_TABLE_DATA, el:'#45678', visibility_level:2});
+		new IONUX2.Views.DataTable({data:TEST_TABLE_DATA, el:'#56789', visibility_level:2});
+		new IONUX2.Views.DataTable({data:TEST_TABLE_DATA, el:'#67890', visibility_level:2});
 	});
 </script>

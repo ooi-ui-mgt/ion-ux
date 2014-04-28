@@ -24,7 +24,7 @@ body {
  padding:0px;
 }
 
-#header {
+#header2 {
  position:fixed;
  top:0px;
  left:0px;
@@ -36,7 +36,7 @@ body {
  'outline:1px solid #000; /* temp */
 }
 
-#header img[id=img_a] {
+#header2 img[id=img_a] {
  position: absolute;
  left: 0px;
  top: 0px;
@@ -136,7 +136,7 @@ body {
  otherwise there will be 2 vertical scroll bars (might be a browser bug). */
 }
 
-#left {
+#left2 {
  background-color: #384d68;
  position:absolute;
  top:104px;
@@ -245,7 +245,6 @@ body {
 
 .navLeftMinimizeArrow {
   display: inline-block;
-  float: left;
   width: 14px;
   height: 14px;
   background: url('../img/navLeftMinimizeArrow.png') no-repeat left;
@@ -343,7 +342,7 @@ ul.dropdown-menu li:hover {
   font-family: Arial;
   font-size: 12px; 
   width: 100%;
-  height:calc(100% - 21px);
+  height:calc(100% - 28px);
   overflow: auto;
 }
 
@@ -683,15 +682,19 @@ input.no_placeholder_radius {
   background: url('../img/map-button-03-03.png');
 }
 
-.jspVerticalBar {
+#map_bounds {
+  background: transparent;
+}
+
+#accordion_container .jspVerticalBar {
   right: 4px;
 }
 
-.jspTrack {
+#accordion_container .jspTrack {
   background: none;
 }
 
-.jspDrag {
+#accordion_container .jspDrag {
   background: #88A9CC;
 }
 
