@@ -596,7 +596,6 @@ IONUX2.Views.Map = Backbone.View.extend({
     //stops zoom out to max level
      this.pan_map();
   },
-  
 
   pan_map: function() {
     //set the bounds var

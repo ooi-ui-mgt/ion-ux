@@ -3,7 +3,7 @@
 
 
 IONUX2.Views.Header = Backbone.View.extend({
-	el: '#header',
+	el: '#header2',
 	initialize: function() {
 		this.model.on('change:html', this.render, this);
 	},
@@ -42,7 +42,8 @@ IONUX2.Views.Login = Backbone.View.extend({
 IONUX2.Views.SearchTabContent = Backbone.View.extend({
 	el: '#searchTabContent',
 	events: {
-		'click .accordion_title': 'expandHide'
+		'click .accordion_title': 'expandHide',
+    'click .textRight': 'saveSearch',
 	},
 	initialize: function() {
 		this.model.on('change:html', this.render, this);
@@ -58,6 +59,39 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
        		}        
 		});
 	},
+  saveSearch: function() {
+    var spatial_dropdown = $('.lat_long_menu option:selected').val(),
+      from_latitude = $('[data-fromlat]').val(),
+      from_ns = $('.from_ns option:selected').val(),
+      from_longitude = $('[data-fromlong]').val(),
+      from_ew = $('.from_ew option:selected').val(),
+      to_latitude = $('.placeholder_lat').val(),
+      to_ns = $('.north_south_menu option:selected').val(),
+      to_longitude = $('.show_hide_longitude').val(),
+      to_ew = $('.to_ew option:selected').val(),
+      radius = $('.no_placeholder_radius').val(),
+      miles_kilos = $('.miles_kilos_menu').val(),
+      vertical_from = $('[data-verticalfrom]').val(),
+      vertical_to = $('[data-verticalto]').val(),
+      feet_miles = $('.feet_miles option:selected').val();
+
+      IONUX2.Models.saveSpatialSearch = new IONUX2.Models.SaveSpatialSearch({
+        'spatial_dropdown': this.spatial_dropdown,
+        'from_latitude': from_latitude,
+        'from_ns': from_ns,
+        'from_longitude': from_longitude,
+        'from_ew': from_ew,
+        'to_latitude': to_latitude,
+        'to_ns': to_ns,
+        'to_longitude': to_longitude,
+        'to_ew': to_ew,
+        'radius': radius,
+        'miles_kilos': miles_kilos,
+        'vertical_from': vertical_from,
+        'vertical_to': vertical_to,
+        'feet_miles': feet_miles
+      });
+  },
 	render: function() {
 		console.log('rendering left side view');
 		this.$el.html(this.model.html);
@@ -66,12 +100,32 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
 });
 
 IONUX2.Views.Sites = Backbone.View.extend({
-  el: '#sites',
+  el: '#site',
   template: _.template(IONUX2.getTemplate('templates/sites.html')),
+  events: {
+    'click .checkAllSites': 'select_all_sites',
+    'click .resource_id': 'getInstrument'
+  },
+
   initialize: function() {
     console.log('initializing sites view');
     this.render();
   },
+
+  select_all_sites: function(e) {
+    var $check = $(e.currentTarget);
+    if ($check.is(':checked')) {
+      $('.list_sites').find('input').prop('checked', true);
+    }
+    else {
+      $('.list_sites').find('input').prop('checked', false);
+    }
+  },
+
+  get_instrument: function(e) {
+
+  },
+
   render: function() {
     console.log('rendering sites');
     this.$el.html(this.template(this.collection.toJSON()));
@@ -83,14 +137,15 @@ IONUX2.Views.Region = Backbone.View.extend({
 	el: '#region',
 	template: _.template(IONUX2.getTemplate('templates/regions.html')),
 	events: {
-      'click .secondary-link': 'click_action',
+      /*'click .secondary-link': 'click_action',
       'click .secondary-nested-link': 'click_action_nested',
       'click .secondary-link-selected': 'click_action',
       'click .secondary-nested-link-selected': 'click_action_nested',
       'click .toggle-all-menu': 'toggle_action',
       'click .toggle-all-menu-selected': 'toggle_action',
-      'click .primary-link': 'trigger_pan_map',
-      'click .checkAll': 'select_all_regions' 
+      'click .primary-link': 'trigger_pan_map',*/
+      'click .checkAll': 'select_all_regions',
+      'click #region_item': 'toggle_sites'
   },
 	initialize: function() {
 		console.log('initializing region view');
@@ -104,6 +159,19 @@ IONUX2.Views.Region = Backbone.View.extend({
     }
     else {
       $('.list_regions').find('input').prop('checked', false);
+    }
+  },
+
+  toggle_sites: function(e) {
+    var $check = $(e.currentTarget);
+    var $checked_item = $check.data('spatial');
+    var select_data = '[data-sites="' + $checked_item + '"]';
+    if ($check.is(':checked')) {
+      console.log('checkbox is checked');
+      $(select_data).prop('checked', true);
+    }
+    else {
+      $(select_data).prop('checked', false);
     }
   },
 

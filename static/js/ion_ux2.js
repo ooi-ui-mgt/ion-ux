@@ -38,6 +38,13 @@ var get_template = function(url) {
     return data;
 };
 
+// Look up chained values found in data-path
+function get_descendant_properties(obj, desc) {
+  var arr = desc.split(".");
+  while(arr.length && (obj = obj[arr.shift()]));
+  return obj;
+};
+
 IONUX2 = {
 	Models: {},
 	Collections: {},
@@ -75,6 +82,9 @@ IONUX2 = {
       		},
       	});
 	    IONUX2.Views.spatial = new IONUX2.Views.Spatial();
+
+	    IONUX2.Models.SaveSpatialSearch = Backbone.Model.extend({});
+
 	    //IONUX2.Views.RegionObservatory = new IONUX.Views.ObservatorySelector({collection: IONUX2.Dashboard.Observatories});
       	this.dashboard_map();
 	},

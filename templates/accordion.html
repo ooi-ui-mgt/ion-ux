@@ -1,4 +1,5 @@
-<button class="textRight">Save this Search</button>
+<div class="navLeftMinimizeArrow"></div>
+<button class="textRight">Search</button> <button class="textRight">Save this Search</button>
 <div id="accordion_container">
 <article class="left_accordion accordion_fixed" id="keyword">
   <div class="accordion_label">Keyword</div>
@@ -36,8 +37,6 @@
     </div>
 	</div>
 </article>
-<article class="left_accordion" id="region">
-</article>
 <article class="left_accordion" id="facility">
   <span class="accordion_title">
     <div class="expand_hide arrow_right"></div><div class="accordion_label">Facility</div>
@@ -46,13 +45,9 @@
     More information
   </div>
 </article>
+<article class="left_accordion" id="region">
+</article>
 <article class="left_accordion" id="site">
-  <span class="accordion_title">
-    <div class="expand_hide arrow_right"></div><div class="accordion_label">Site</div>
-  </span>
-  <div class="spatial_details">
-    More information
-  </div>
 </article>
 <article class="left_accordion" id="platform">
   <span class="accordion_title">
@@ -93,6 +88,7 @@
       $(function(){
 
         IONUX2.Views.RegionList = new IONUX2.Views.Region({collection: IONUX2.Dashboard.Observatories });
+        IONUX2.Views.SitesList = new IONUX2.Views.Sites({collection: IONUX2.Dashboard.Observatories });
 
         $('.spatial_details').hide();
         $('#accordion_container').sortable({
