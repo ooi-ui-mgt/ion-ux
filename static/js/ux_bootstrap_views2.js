@@ -103,7 +103,8 @@ IONUX2.Views.Sites = Backbone.View.extend({
   el: '#site',
   template: _.template(IONUX2.getTemplate('templates/sites.html')),
   events: {
-    'click .checkAllSites': 'select_all_sites'
+    'click .checkAllSites': 'select_all_sites',
+    'click .resource_id': 'getInstrument'
   },
 
   initialize: function() {
@@ -119,6 +120,10 @@ IONUX2.Views.Sites = Backbone.View.extend({
     else {
       $('.list_sites').find('input').prop('checked', false);
     }
+  },
+
+  get_instrument: function(e) {
+
   },
 
   render: function() {
