@@ -368,6 +368,10 @@ ul.dropdown-menu li:hover {
   margin-left: 13px;
 }
 
+.list_sites a {
+  color: #fff;
+}
+
 .textRight {
   height: 18px;
   line-height: 12px;

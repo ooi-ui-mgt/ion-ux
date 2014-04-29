@@ -8,7 +8,8 @@
 	<div class="list_sites">
 		<form action="">
     		<% _.each(this.collection.models, function(site) { %>
-    			<input id="site_item" data-sites="<%= site.attributes.spatial_area_name %>" type="checkbox"/> <%= site.attributes.name %><br/>
+    			<input id="site_item" data-sites="<%= site.attributes.spatial_area_name %>" type="checkbox"/> <a class="resource_id" href="#" data-id="<%= site.attributes._id %>">
+    			<%= site.attributes.name %></a><br/>
     		<% }) %>
 		</form>
 	</div>
