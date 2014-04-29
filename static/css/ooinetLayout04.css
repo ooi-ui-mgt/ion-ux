@@ -588,6 +588,15 @@ input.no_placeholder_radius {
   border-top: 7px solid #fff;
 }
 
+.arrow_down.blue {
+  position: absolute;
+  left: 6px;
+  top: 11px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid #3e6586;
+}
+
 .arrow_right {
   cursor: pointer;
   width: 0px;
@@ -600,6 +609,16 @@ input.no_placeholder_radius {
   border-bottom: 5px solid transparent;
   border-left: 7px solid #fff;
 }
+
+.arrow_right.blue {
+  position: absolute;
+  left: 6px;
+  top: 10px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid #3e6586;
+}
+
 #search_bar_container {
   background-color: #3b5e7e;
   padding-left: 10px;
@@ -766,6 +785,7 @@ input.no_placeholder_radius {
 
 .accordionWhiteLabel {
   padding: 5px 8px;
+  padding-left: 18px;
   border-radius: 5px;
   color:#3e6586;
   font-size:14px;

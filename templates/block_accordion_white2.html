@@ -1,7 +1,7 @@
 <div id="accordionContainerWhite">
 	<article class="accordionWhite pinned" id="accordionData">
 		<div class="accordionWhiteLabel">Data
-			<i class="icon-chevron accordionWhiteChevron"></i>
+			<div class="expand_hide arrow_down blue"></div>
 		</div>
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents">
@@ -10,7 +10,7 @@
 	</article>
 	<article class="accordionWhite collapsed" id="accordionAssets">
 		<div class="accordionWhiteLabel">Assets
-			<i class="icon-chevron accordionWhiteChevron"></i>
+			<div class="expand_hide arrow_right blue"></div>
 		</div>
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents" style="display:none;">
@@ -19,7 +19,7 @@
 	</article>
 	<article class="accordionWhite collapsed" id="accordionPlatform">
 		<div class="accordionWhiteLabel">Platform
-			<i class="icon-chevron accordionWhiteChevron"></i>
+			<div class="expand_hide arrow_right blue"></div>
 		</div>
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents" style="display:none;">
@@ -28,7 +28,7 @@
 	</article>
 	<article class="accordionWhite collapsed" id="accordionInstruments">
 		<div class="accordionWhiteLabel">Instrument
-			<i class="icon-chevron accordionWhiteChevron"></i>
+			<div class="expand_hide arrow_right blue"></div>
 		</div>
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents" style="display:none;">
@@ -37,7 +37,7 @@
 	</article>
 	<article class="accordionWhite collapsed" id="accordionDataType">
 		<div class="accordionWhiteLabel">Data Type
-			<i class="icon-chevron accordionWhiteChevron"></i>
+			<div class="expand_hide arrow_right blue"></div>
 		</div>
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents" style="display:none;">
@@ -84,8 +84,12 @@ var TABLE_67890 = TABLE_23456;
 			accordion_contents.slideToggle('fast', function() {
 				if ($(this).is(':visible')) {
 					$(this).parent().removeClass('collapsed');
+					$(this).parent().find('.expand_hide').removeClass('arrow_right');
+					$(this).parent().find('.expand_hide').addClass('arrow_down');
 				} else {
 					$(this).parent().addClass('collapsed');
+					$(this).parent().find('.expand_hide').removeClass('arrow_down');
+					$(this).parent().find('.expand_hide').addClass('arrow_right');
 				}
 			});
         }
@@ -105,6 +109,10 @@ var TABLE_67890 = TABLE_23456;
         		}
         		accordion.removeClass('pinned');
         	}
+		    $('#accordionContainerWhite').sortable({
+		      items: ".accordionWhite:not(.pinned)"
+		    });
+
         });
 
 		$('.accordionWhiteLabel').click(function(e){
@@ -112,9 +120,11 @@ var TABLE_67890 = TABLE_23456;
 			var link = $(e.currentTarget);
 			var accordion = link.closest('.accordionWhite');
 			if( !accordion.hasClass('pinned')){
-				if( accordion.hasClass('collapsed')){
+				// this code would collapse other non-pinned accordions
+				// when you open one, but we don't do that anymore.
+				/* if( accordion.hasClass('collapsed')){
 					toggleAccordion( accordion.siblings('.accordionWhite:not(.pinned)').find('.accordionContents:visible'));
-				}
+				} */
 				toggleAccordion( accordion.find('.accordionContents'));
 			}
 		});
