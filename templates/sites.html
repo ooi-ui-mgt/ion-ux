@@ -1,10 +1,15 @@
 <span class="accordion_title">
   <div class="expand_hide arrow_right"></div><div class="accordion_label">Sites</div>
 </span>
-<div id="site_list" class="spatial_details">
-	<form action="">
-    	<% _.each(this.collection.models, function(site) { %>
-    		<input id="site_item" data-sites="<%= site.attributes.spatial_area_name %>" type="checkbox"/> <%= site.attributes.name %><br/>
-    	<% }) %>
-	</form>
+<div id="site_list" class="spatial_details align_left">
+	<div class="select_all">
+		<input class="checkAllSites" type="checkbox"/> Select All
+	</div>
+	<div class="list_sites">
+		<form action="">
+    		<% _.each(this.collection.models, function(site) { %>
+    			<input id="site_item" data-sites="<%= site.attributes.spatial_area_name %>" type="checkbox"/> <%= site.attributes.name %><br/>
+    		<% }) %>
+		</form>
+	</div>
  </div>
