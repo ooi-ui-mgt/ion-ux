@@ -311,6 +311,31 @@ IONUX2.Views.Map = Backbone.View.extend({
     
     }, this); // _.each
   },
+
+  clear_inputs: function(){
+    $("#south").val("");
+    $("#west").val("");
+    $("#north").val("");
+    $("#east").val("");
+    $("#radius").val("");
+  },
+
+  update_latlon: function (sw, ne){
+
+    $("#south").val(sw.lat().toFixed(2));
+    $("#west").val(sw.lng().toFixed(2));
+    $("#north").val(ne.lat().toFixed(2));
+    $("#east").val(ne.lng().toFixed(2));
+
+  },
+
+  update_pointradius: function (radius, sw){
+
+    $("#south").val(sw.lat().toFixed(2));
+    $("#west").val(sw.lng().toFixed(2));
+    $("#radius").val((radius/1000).toFixed(2));
+
+  },
   
   draw_map: function(map_options, container_server) {
     console.log('draw_map');
@@ -336,6 +361,86 @@ IONUX2.Views.Map = Backbone.View.extend({
       ,clickable           : false
       ,suppressInfoWindows : true
       ,map                 : this.map
+    });
+
+    this.overlay_options =  {
+      fillColor     : '#c4e5fc',
+      fillOpacity   : 0.5,
+      strokeWeight  : 1.0,
+      strokeColor   : '#0cc1ff',
+      strokeOpacity : 0.8,
+      draggable     : true,
+      editable      : true
+    };
+
+    this.drawingManager = new google.maps.drawing.DrawingManager({
+      drawingControl: true,
+      drawingControlOptions: {
+        position: google.maps.ControlPosition.TOP_CENTER,
+        drawingModes: [
+          google.maps.drawing.OverlayType.RECTANGLE,
+          google.maps.drawing.OverlayType.CIRCLE
+        ]
+      },
+      rectangleOptions: this.overlay_options,
+      circleOptions: this.overlay_options
+    });
+    this.drawingManager.setMap(this.map);
+
+    //DRAWING EVENT LISTENERS
+    var self = this;
+    google.maps.event.addListener(this.drawingManager, 'overlaycomplete', function(event) {
+      // Switch back to non-drawing mode after drawing a shape.
+      self.drawingManager.setDrawingMode(null);
+
+      if (event.type == google.maps.drawing.OverlayType.RECTANGLE){
+        self.rectangle = event.overlay;
+        self.update_latlon(self.rectangle.getBounds().getNorthEast(), self.rectangle.getBounds().getSouthWest());
+        // And we have to create a listener on the rectangle to catch modifications / dragging.
+        google.maps.event.addListener(self.rectangle, 'bounds_changed', function() {
+          self.update_latlon(self.rectangle.getBounds().getNorthEast(), self.rectangle.getBounds().getSouthWest());
+        });
+
+
+      } else if (event.type == google.maps.drawing.OverlayType.CIRCLE){
+        self.circle = event.overlay;
+        self.update_pointradius(self.circle.getRadius(), self.circle.getCenter());         
+
+        google.maps.event.addListener(self.circle, 'radius_changed', function() {
+          self.update_pointradius(self.circle.getRadius(), self.circle.getCenter());
+        });
+        google.maps.event.addListener(self.circle, 'center_changed', function() {
+          self.update_pointradius(self.circle.getRadius(), self.circle.getCenter());
+        });
+
+      }
+          
+    });
+
+    this.spatial_open = false;
+
+    google.maps.event.addListener(this.drawingManager, 'drawingmode_changed', function(event) {
+      self.clear_inputs();
+
+      if(!self.spatial_open){
+        $("#spatial_title").click();
+        self.spatial_open = true;
+      }
+
+      if (this.getDrawingMode() == "rectangle"){
+        $(".lat_long_menu").val("1").change();
+      } else if (this.getDrawingMode() == "circle"){
+        $(".lat_long_menu").val("2").change();
+      }
+
+      // Clear out the rectangle if necessary.
+      if (self.rectangle) {
+        self.rectangle.setMap(null);
+        delete self.rectangle;
+      } else if(self.circle){
+        self.circle.setMap(null);
+        delete self.circle;
+      } 
     });
 
     // register event to get and render map bounds
