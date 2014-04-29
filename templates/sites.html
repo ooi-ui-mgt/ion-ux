@@ -1,0 +1,10 @@
+<span class="accordion_title">
+  <div class="expand_hide arrow_right"></div><div class="accordion_label">Region</div>
+</span>
+<div class="spatial_details">
+	<form action="">
+    	<% _.each(resources, function(nested_resources, san) { %>
+    		<input type="checkbox"/> <%= san %><br/>
+    	<% }) %>
+	</form>
+ </div>

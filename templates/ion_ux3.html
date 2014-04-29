@@ -4,23 +4,93 @@ last edited 04-13 04-09 03-05 2014-03-02
 -->
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" type="text/css" href="styles/ooinet-04.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="/static/bootstrap/less/bootstrap.min.css" type="text/css" />
+    <link rel='stylesheet' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/black-tie/jquery-ui.css' />
+    <link rel="stylesheet" href="/static/css/jscrollpane.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/ooinetLayout04.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/ooinetAppearance04.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Signika:300,400,600,700' rel='stylesheet' type='text/css'/>
+    <link href='http://fonts.googleapis.com/css?family=Signika+Negative:300,400,600,700' rel='stylesheet' type='text/css' />
+
     <title>OOINet</title>
+
+    <!-- Vendor JavaScripts -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCcEp2hQdftRhaYgonh1Vyv0JYi5KVvFI&amp;sensor=false&amp;libraries=drawing"> </script>
+    <script src="/static/js/jquery-1.9.1.min.js"> </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script type='text/javascript' src='http://www.google.com/jsapi'> </script>
+    <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1'}]}"> </script>
+    <script src="/static/visualization/js/markerclusterer.js"> </script>
+            
+    <script src="/static/js/underscore-1.4.4.min.js "> </script>
+    <script src="/static/js/backbone-1.0.min.js"> </script>
+    <script src="/static/js/bootstrap.min.js"> </script>
+    <script src="/static/js/backbone.bootstrap-modal.js"> </script>
+    <script src="/static/js/jquery.jscrollpane.min.js"> </script>
+
+    <!-- UX JavaScripts --> 
+    <script src="/static/js/ion_ux2.js"> </script>
+    <script src="/static/js/ux_bootstrap_models2.js"> </script>
+    <script src="/static/js/ux_bootstrap_views2.js"> </script>
+    <script src="/static/js/ux-models-map2.js"> </script>
+    <script src="/static/js/ux-views-map2.js"> </script>
 </head>
 
 <body>
-	<div id="header" align="center">header</div>
-	<div id="left-subheader" align="center">left-subheader</div>
-	<div id="main-subheader" align="left">main-subheader</div>
+	<div id="header" align="left">header</div>
+	<div id="leftSubheader" align="left">
+    </div>
+	<div id="mainSubheader" align="left">
+        <div id="search-production"> 
+            <div class="mapButtonFull" title="Full Map View"></div>
+            <div class="mapButtonSplit" title="Split View"></div>
+            <div class="mapButtonHidden" title="Hidden Map View"></div>
+        </div></div>
 
-    <div id="left">left side menu here<br />
+    <div id="left">
+        <div id="searchTabContent"></div>
+        <div id="mySearchesTabContent" style="display:none;"></div>
     </div>
     <div id="main">
-       <div id="upper-main">&nbsp;
+       <div id="upperMain">
 	   </div>
-	   <div id="lower-main">&nbsp;
+	   <div id="lowerMain">
 	   </div>
 	</div>
+
+    <script>
+      $(function(){
+        IONUX2.init();
+
+        $(".mapButtonFull").click(function(){
+            $("#upperMain").css("height", "100%");
+            $("#lowerMain").css("height", "0%");
+            $("#lowerMain").css("top", "100%");
+            $(window).trigger('resize');
+            IONUX2.Dashboard.MapView.draw_map();
+            IONUX2.Dashboard.MapView.draw_markers();
+        });
+
+        $(".mapButtonSplit").click(function(){
+            $("#upperMain").css("height", "60%");
+            $("#lowerMain").css("height", "40%");
+            $("#lowerMain").css("top", "60%");
+            $(window).trigger('resize');
+            IONUX2.Dashboard.MapView.draw_map();
+            IONUX2.Dashboard.MapView.draw_markers();
+        });
+        
+        $(".mapButtonHidden").click(function(){
+            $("#upperMain").css("height", "0%");
+            $("#lowerMain").css("height", "100%");
+            $("#lowerMain").css("top", "0%");
+            $(window).trigger('resize');
+            IONUX2.Dashboard.MapView.draw_map();
+            IONUX2.Dashboard.MapView.draw_markers();
+        });
+        
+      });
+    </script>
 </body>
 </html>
