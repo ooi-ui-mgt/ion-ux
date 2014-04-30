@@ -127,8 +127,9 @@ IONUX2.Views.Sites = Backbone.View.extend({
     IONUX2.Models.instruments.set({'id': resource_id});
     $.getJSON('/find_site_data_products/'+ resource_id +'/', function(data) {
       $.extend(IONUX2.siteDataObj, data);
-      model = data;
-      IONUX2.Views.instruments = new IONUX2.Views.Instruments({data: model});
+      IONUX2.Collections.instruments = data;
+      collection = IONUX2.Collections.instruments;
+      IONUX2.Views.instruments = new IONUX2.Views.Instruments({data: collection});
       
       //IONUX2.Collections.instruments.add(IONUX2.siteDataObj);
       //console.log(data);
@@ -181,15 +182,15 @@ IONUX2.Views.Instruments = Backbone.View.extend({
   el: '#instrument',
   template: _.template(IONUX2.getTemplate('templates/instruments.html')),
   initialize: function() {
-    console.log('initializing instruments view');
+    console.log('initializing instruments view ' + this.collection);
     this.render();
   },
   render: function() {
     console.log('rendering instruments');
-    //this.$el.html(this.template(this.collection.toJSON()));
-     this.$el.removeClass('placeholder');
-     this.$el.html(this.template({resources: this.build_menu(), title: this.title}));
-       this.$el.find('#list').jScrollPane({autoReinitialise: true});
+    this.$el.html(this.template(this.collection));
+     //this.$el.removeClass('placeholder');
+     //this.$el.html(this.template({resources: this.build_menu(), title: this.title}));
+       //this.$el.find('#list').jScrollPane({autoReinitialise: true});
        return this;
   }
 });
