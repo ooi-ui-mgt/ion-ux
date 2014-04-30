@@ -202,7 +202,7 @@ IONUX2.Views.Sites = Backbone.View.extend({
     if ($check.is(':checked')) {
       IONUX2.Collections.instruments.fetch({
         success : function(collection) {
-          $('#instrument .spatial_details').append(IONUX2.Views.instruments.render().el);
+          $('#instrument .spatialDetails').append(IONUX2.Views.instruments.render().el);
         }
       });
     }
@@ -212,10 +212,10 @@ IONUX2.Views.Sites = Backbone.View.extend({
       /*IONUX2.Collections.instruments.fetch({
         success : function(collection) {
           IONUX2.Views.instruments.removeView();
-          $('#instrument .spatial_details').append(IONUX2.Views.instruments.render().el);
-          //$('#instrument .spatial_details').append(IONUX2.Views.instruments.render().el);
+          $('#instrument .spatialDetails').append(IONUX2.Views.instruments.render().el);
+          //$('#instrument .spatialDetails').append(IONUX2.Views.instruments.render().el);
         }
-      //$('#instrument .spatial_details').html(IONUX2.Views.instruments.removeView().el);
+      //$('#instrument .spatialDetails').html(IONUX2.Views.instruments.removeView().el);
       
     });*/
     }

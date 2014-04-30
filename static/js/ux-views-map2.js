@@ -1,5 +1,5 @@
 IONUX2.Views.Map = Backbone.View.extend({
-  el: '#map_canvas2',
+  el: '#mapCanvas2',
 
   // From worst to best ('na' considered the catch-all).
   icons_rank: [
@@ -128,7 +128,7 @@ IONUX2.Views.Map = Backbone.View.extend({
     this.sprite_url = '/static/img/pepper_sprite.png';
     this.active_marker = null; // Track clicked icon
     this.sites_status_loaded = false;
-    this.map_bounds_elmt = $('#map_bounds2');
+    this.map_bounds_elmt = $('#mapBounds2');
     this.data_types();
     this.model.on('pan:map', this.pan_map);
     this.model.on('set:active', this.set_active_marker);
@@ -141,7 +141,7 @@ IONUX2.Views.Map = Backbone.View.extend({
     // This is a hack until something can be done more elegantly in the CSS!
     if (!window.resize) {
       window.resize = $(window).resize(function() {
-        $('#map_canvas2').height($('#map_canvas2').parent().height() - 20); // Leave enough room for the banner.
+        $('#mapCanvas2').height($('#mapCanvas2').parent().height() - 20); // Leave enough room for the banner.
       });
     }
 
@@ -241,7 +241,7 @@ IONUX2.Views.Map = Backbone.View.extend({
 
   get_sites_status: function() {
     var resource_ids = this.collection.pluck('_id');
-    $('#map_canvas2').append('<div id="loading-status2" style="">Loading Status...</div>')
+    $('#mapCanvas2').append('<div id="loadingStatus2" style="">Loading Status...</div>')
     
     var self = this;
     $.ajax({
@@ -339,9 +339,9 @@ IONUX2.Views.Map = Backbone.View.extend({
   
   draw_map: function(map_options, container_server) {
     console.log('draw_map');
-    $('#map_canvas2').empty().show();
+    $('#mapCanvas2').empty().show();
 
-    this.map = new google.maps.Map(document.getElementById('map_canvas2'), {
+    this.map = new google.maps.Map(document.getElementById('mapCanvas2'), {
       center: new google.maps.LatLng(39.8106460, -98.5569760),
       zoom: 3,
       mapTypeId: google.maps.MapTypeId.SATELLITE,
