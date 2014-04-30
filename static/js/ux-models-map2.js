@@ -38,8 +38,37 @@ IONUX2.Collections.MapDataProducts = Backbone.Collection.extend({
       });
       make_iso_timestamps(data_products);
     };
-    
     return data_products;
+  }
+});
+
+IONUX2.Collections.Instruments = Backbone.Collection.extend({
+  initialize: function(models, options){
+    console.log("resource id is " + options.resource_id);
+    this.resource_id = options.resource_id;
+    this.fetch();
+    //console.log("resource id is " + this.resource_id);
+  },
+  url: function() {
+   return '/find_site_data_products/'+this.resource_id+'/';
+  },
+  model: IONUX2.Models.Instruments,
+  parse: function(resp) {
+    var data_products = [];
+    //console.log("site resources are " + resp.data.site_resources);
+    if (!_.isEmpty(resp.data.site_resources)) {
+      site_resources = _.filter(resp.data.site_resources, function(v,k) {
+        return !_.isEmpty(v); // Only display those with ooi_product_name
+      });
+      make_iso_timestamps(site_resources);
+    };
+    for (item in site_resources) {
+      //console.log("items are " + site_resources[item].name);
+      $('.instrument_list').append('<li>' + site_resources[item].name + '</li>');
+    }
+    console.log('site resources are ' + site_resources);
+    //return new Backbone.Collection(site_resources);
+    return site_resources;
   }
 });
 

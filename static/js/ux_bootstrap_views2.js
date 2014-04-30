@@ -125,11 +125,12 @@ IONUX2.Views.Sites = Backbone.View.extend({
   get_instrument: function(e) {
     var resourceId = $(e.currentTarget).data('id');
     console.log(resourceId);
-    IONUX2.Dashboard.MapResource = new IONUX2.Models.MapResource();
-    IONUX2.Dashboard.MapResource.set({resource_id: resourceId});
-    console.log(IONUX2.Dashboard.MapResource);
-    IONUX2.Dashboard.MapDataResources = new IONUX2.Collections.MapDataProducts([], {resource_id: resourceId});
-    console.log(IONUX2.Dashboard.MapDataResources);
+    //IONUX2.Dashboard.MapResource = new IONUX2.Models.MapResource();
+    //IONUX2.Dashboard.MapResource.set({resource_id: resourceId});
+    //console.log(IONUX2.Dashboard.MapResource);
+    IONUX2.Collections.instruments = new IONUX2.Collections.Instruments([], {resource_id: resourceId});
+    //console.log("collection is " + IONUX2.Dashboard.MapDataResources);
+    IONUX2.Views.instrument = new IONUX2.Views.Instruments({collection: IONUX2.Collections.instruments});
     /*IONUX2.Models.instruments.set({'id': resource_id});
     $.getJSON('/find_site_data_products/'+ resource_id +'/', function(data) {
       $.extend(IONUX2.siteDataObj, data);
@@ -188,12 +189,13 @@ IONUX2.Views.Instruments = Backbone.View.extend({
   el: '#instrument',
   template: _.template(IONUX2.getTemplate('templates/instruments.html')),
   initialize: function() {
+    this.collection.fetch();
     console.log('initializing instruments view ' + this.collection);
     this.render();
   },
   render: function() {
     console.log('rendering instruments');
-    this.$el.html(this.template(this.collection));
+    //this.$el.html(this.template(this.collection.tojSON()));
      //this.$el.removeClass('placeholder');
      //this.$el.html(this.template({resources: this.build_menu(), title: this.title}));
        //this.$el.find('#list').jScrollPane({autoReinitialise: true});
