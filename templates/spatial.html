@@ -13,7 +13,7 @@
   <span class="label_through">From:</span>
   <input class="spatial_duration latlong" type="text" placeholder="Lat" id="south"/>
   <div class="left_navi_narrow_select_container">
-    <select>
+    <select class="from_ns">
       <option>N</option>
       <option>S</option>
     </select>
@@ -21,7 +21,7 @@
   </div>
   <input class="spatial_duration latlong" type="text" placeholder="Long" id="west"/>
   <div class="left_navi_narrow_select_container">
-    <select>
+    <select class="from_ew">
       <option>E</option>
       <option>W</option>
     </select>
@@ -44,7 +44,7 @@
   </div>
   <input class="spatial_duration latlong show_hide_longitude" type="text" placeholder="Long" id="east"/>
   <div class="left_navi_narrow_select_container show_hide_longitude">
-    <select>
+    <select class="to_ew">
       <option>E</option>
       <option>W</option>
     </select>
@@ -53,11 +53,11 @@
   <span class="vertical_extents">Vertical Extents (positive downward)</span>
   <div class="accordion_detail_container">
     <div class="accordion_label">From:</div>
-    <input class="spatial_duration latlong" type="text" placeholder="0" />
+    <input class="spatial_duration latlong" type="text" placeholder="0" data-verticalfrom="from" />
     <div class="accordion_label">To:</div>
-    <input class="spatial_duration latlong" type="text" placeholder="Depth" />
+    <input class="spatial_duration latlong" type="text" placeholder="Depth" data-verticalto="to" />
     <div class="left_navi_narrow_select_container">
-      <select>
+      <select class="feet_miles">
         <option>m</option>
         <option>ft</option>
       </select>

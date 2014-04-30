@@ -60,10 +60,10 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
 		});
 	},
   saveSearch: function() {
-    var spatial_dropdown = $('.lat_long_menu option:selected').val(),
-      from_latitude = $('[data-fromlat]').val(),
+    var spatial_dropdown = $('.lat_long_menu option:selected').attr('value'),
+      from_latitude = $('#south').val(),
       from_ns = $('.from_ns option:selected').val(),
-      from_longitude = $('[data-fromlong]').val(),
+      from_longitude = $('#west').val(),
       from_ew = $('.from_ew option:selected').val(),
       to_latitude = $('.placeholder_lat').val(),
       to_ns = $('.north_south_menu option:selected').val(),
@@ -76,7 +76,7 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
       feet_miles = $('.feet_miles option:selected').val();
 
       IONUX2.Models.saveSpatialSearch = new IONUX2.Models.SaveSpatialSearch({
-        'spatial_dropdown': this.spatial_dropdown,
+        'spatial_dropdown': spatial_dropdown,
         'from_latitude': from_latitude,
         'from_ns': from_ns,
         'from_longitude': from_longitude,
