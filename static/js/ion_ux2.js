@@ -83,8 +83,7 @@ IONUX2 = {
       	});
 	    IONUX2.Views.spatial = new IONUX2.Views.Spatial();
 
-	    IONUX2.Models.SaveSpatialSearch = Backbone.Model.extend({});
-
+	    
 	    
         //new IONUX.Views.OrgSelector({collection: IONUX.Dashboard.Orgs, title: 'Facility'}).render().el;
 

@@ -60,22 +60,24 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
 		});
 	},
   saveSearch: function() {
-    var spatial_dropdown = $('.lat_long_menu option:selected').attr('value'),
-      from_latitude = $('#south').val(),
-      from_ns = $('.from_ns option:selected').val(),
-      from_longitude = $('#west').val(),
-      from_ew = $('.from_ew option:selected').val(),
-      to_latitude = $('.placeholder_lat').val(),
-      to_ns = $('.north_south_menu option:selected').val(),
-      to_longitude = $('.show_hide_longitude').val(),
-      to_ew = $('.to_ew option:selected').val(),
-      radius = $('.no_placeholder_radius').val(),
-      miles_kilos = $('.miles_kilos_menu').val(),
-      vertical_from = $('[data-verticalfrom]').val(),
-      vertical_to = $('[data-verticalto]').val(),
-      feet_miles = $('.feet_miles option:selected').val();
+    (function() {
+      var spatial_dropdown = $('.lat_long_menu option:selected').attr('value'),
+        from_latitude = $('#south').val(),
+        from_ns = $('.from_ns option:selected').val(),
+        from_longitude = $('#west').val(),
+        from_ew = $('.from_ew option:selected').val(),
+        to_latitude = $('.placeholder_lat').val(),
+        to_ns = $('.north_south_menu option:selected').val(),
+        to_longitude = $('.show_hide_longitude').val(),
+        to_ew = $('.to_ew option:selected').val(),
+        radius = $('.no_placeholder_radius').val(),
+        miles_kilos = $('.miles_kilos_menu').val(),
+        vertical_from = $('[data-verticalfrom]').val(),
+        vertical_to = $('[data-verticalto]').val(),
+        feet_miles = $('.feet_miles option:selected').val();
 
-      IONUX2.Models.saveSpatialSearch = new IONUX2.Models.SaveSpatialSearch({
+
+      IONUX2.Models.saveSpatialSearch.set({
         'spatial_dropdown': spatial_dropdown,
         'from_latitude': from_latitude,
         'from_ns': from_ns,
@@ -91,6 +93,32 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
         'vertical_to': vertical_to,
         'feet_miles': feet_miles
       });
+    })();
+
+    (function() {
+      var temporal_dropdown = $('.temporal_menu option:selected').attr('value'),
+        from_year = $('.from_date_menu .year').val(),
+        from_month = $('.from_date_menu .month').val(),
+        from_day = $('.from_date_menu .day').val(),
+        from_hour = $('.from_date_menu .hour').val(),
+        to_year = $('.to_date_menu .year').val(),
+        to_month = $('.to_date_menu .month').val(),
+        to_day = $('.to_date_menu .day').val(),
+        to_hour = $('.to_date_menu .hour').val();
+
+      IONUX2.Models.saveTemporalSearch.set({
+        'temporal_dropdown': temporal_dropdown,
+        'from_year': from_year,
+        'from_month': from_month,
+        'from_day': from_day,
+        'from_hour': from_hour,
+        'to_year': to_year,
+        'to_month': to_month,
+        'to_day': to_day,
+        'to_hour': to_hour,
+      });
+    })();
+
   },
 	render: function() {
 		console.log('rendering left side view');

@@ -215,6 +215,43 @@ IONUX2.Models.Instruments = Backbone.Model.extend({
 });
 IONUX2.Models.instruments = new IONUX2.Models.Instruments();
 
+IONUX2.Models.SaveSpatialSearch = Backbone.Model.extend({
+  defaults: {
+      spatial_dropdown: "1",
+      from_latitude: "",
+      from_ns: "",
+      from_longitude: "",
+      from_ew: "",
+      to_latitude: "",
+      to_ns: "",
+      to_longitude: "",
+      to_ew: "",
+      radius: "",
+      miles_kilos: "",
+      vertical_from: "",
+      vertical_to: "",
+      feet_miles: ""
+  }
+});
+
+IONUX2.Models.saveSpatialSearch = new IONUX2.Models.SaveSpatialSearch();
+
+IONUX2.Models.SaveTemporalSearch = Backbone.Model.extend({
+  defaults: {
+    temporal_dropdown: '',
+    from_year: '',
+    from_month: '',
+    from_day: '',
+    from_hour: '',
+    to_year: '',
+    to_month: '',
+    to_day: '',
+    to_hour: '',
+  }
+});
+
+IONUX2.Models.saveTemporalSearch = new IONUX2.Models.SaveTemporalSearch();
+
 IONUX2.siteData = [];
 IONUX2.siteDataObj = {};
 

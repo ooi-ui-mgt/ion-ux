@@ -149,6 +149,32 @@ last edited 04-13 04-09 03-05 2014-03-02
             IONUX2.Dashboard.MapView.markerClusterer.setMap(null);
             IONUX2.Dashboard.MapView.markerClusterer.setMap(IONUX2.Dashboard.MapView.map);*/
         });
+
+
+        // update accordion views with saved data
+        $('.list_mysearches a').on('click', function(e) {
+            e.preventDefault();
+            /*$(".lat_long_menu").find('option').each(function( i, opt ) {
+                if ( opt.value === IONUX2.Models.saveSpatialSearch.attributes.spatial_dropdown ) {
+                    console.log('found menu match');
+                    $(opt).attr('selected', 'selected');
+                }
+            });*/
+            $('.lat_long_menu option[value="' + IONUX2.Models.saveSpatialSearch.attributes.spatial_dropdown + '"]').attr('selected', 'selected');
+            $('#south').val(IONUX2.Models.saveSpatialSearch.attributes.from_latitude),
+            $('.from_ns option[value="' + IONUX2.Models.saveSpatialSearch.attributes.from_ns + '"]').attr('selected', 'selected');
+            $('#west').val(IONUX2.Models.saveSpatialSearch.attributes.from_longitude),
+            $('.from_ew option[value="' + IONUX2.Models.saveSpatialSearch.attributes.from_ew + '"]').attr('selected', 'selected');
+            $('.placeholder_lat').val(IONUX2.Models.saveSpatialSearch.attributes.to_latitude),
+            $('.north_south_menu option[value="' + IONUX2.Models.saveSpatialSearch.attributes.to_ns + '"]').attr('selected', 'selected');
+            $('.show_hide_longitude').val(IONUX2.Models.saveSpatialSearch.attributes.to_longitude),
+            $('.to_ew option[value="'+ IONUX2.Models.saveSpatialSearch.attributes.to_ew + '"]').attr('selected', 'selected');
+            $('.no_placeholder_radius').val(IONUX2.Models.saveSpatialSearch.attributes.radius),
+            $('.miles_kilos_menu').val(IONUX2.Models.saveSpatialSearch.attributes.miles_kilos),
+            $('[data-verticalfrom]').val(IONUX2.Models.saveSpatialSearch.attributes.vertical_from),
+            $('[data-verticalto]').val(IONUX2.Models.saveSpatialSearch.attributes.vertical_to),
+            $('.feet_miles option[value="' + IONUX2.Models.saveSpatialSearch.attributes.feet_miles + '"]').attr('selected', 'selected');
+        });
         
       });
       {% block document_ready %}
