@@ -4,7 +4,7 @@ by Peter Rosti
 last edited 04-22 04-14 04-09 03-06 03-05 2014-03-03
 
 This layout uses calc() to set height and width values
-Note: calc must have spaces in the formula, to accomodate IE bug,
+Note: calc must have spaces in the formula,
 like this: calc(100% - 100px), instead of like this: calc(100%-100px)
 DIVS in their native state stretch in WIDTH but not in HEIGHT, so heights have to be handled very specifically for calculated
 heights to work at all.
@@ -33,7 +33,6 @@ body {
  width:100%;
  height:72px;
  z-index: 50;
- 'outline:1px solid #000; /* temp */
 }
 
 #header2 img[id=img_a] {
