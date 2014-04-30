@@ -158,6 +158,14 @@ IONUX2.Collections.Observatories = Backbone.Collection.extend({
   }
 });
 
+IONUX2.Collections.Orgs = Backbone.Collection.extend({
+  url: '/Org/list/',
+  parse: function(resp) {
+    console.log("organiztaion response is " + resp.data);
+    return resp.data;
+  }
+});
+
 IONUX2.Models.Instruments = Backbone.Model.extend({});
 IONUX2.Models.instruments = new IONUX2.Models.Instruments({
     id: 'f14c3dd1c73d4a36a7a76f942561bfe0',

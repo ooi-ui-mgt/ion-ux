@@ -195,6 +195,19 @@ IONUX2.Views.Instruments = Backbone.View.extend({
   }
 });
 
+IONUX2.Views.Facility = Backbone.View.extend({
+  el: '#facility',
+  template: _.template(IONUX2.getTemplate('templates/facility.html')),
+  initialize: function() {
+    this.render();
+  },
+  render: function() {
+    this.$el.html(this.template(this.collection.toJSON()));
+    return this;
+  }
+
+});
+
 IONUX2.Views.Region = Backbone.View.extend({
 	el: '#region',
 	template: _.template(IONUX2.getTemplate('templates/regions.html')),

@@ -78,12 +78,16 @@ IONUX2 = {
 			url: '/ui/navigation/',
 			success: function(resp) {
 		        // MAPS Sidebar (initially shown)
-		        IONUX2.Dashboard.Observatories = new IONUX2.Collections.Observatories(_.sortBy(resp.data.observatories,function(o){return o.spatial_area_name + (o.local_name ? o.local_name : '') + o.name}))
+		        IONUX2.Dashboard.Observatories = new IONUX2.Collections.Observatories(_.sortBy(resp.data.observatories,function(o){return o.spatial_area_name + (o.local_name ? o.local_name : '') + o.name}));
+		        IONUX2.Dashboard.Orgs = new IONUX2.Collections.Orgs(_.sortBy(resp.data.orgs,function(o){return o.name}));
       		},
       	});
 	    IONUX2.Views.spatial = new IONUX2.Views.Spatial();
 
 	    IONUX2.Models.SaveSpatialSearch = Backbone.Model.extend({});
+
+	    
+        //new IONUX.Views.OrgSelector({collection: IONUX.Dashboard.Orgs, title: 'Facility'}).render().el;
 
 	    //IONUX2.Views.RegionObservatory = new IONUX.Views.ObservatorySelector({collection: IONUX2.Dashboard.Observatories});
       	this.dashboard_map();

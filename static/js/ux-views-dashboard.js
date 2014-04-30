@@ -69,13 +69,6 @@ IONUX.Views.DataAssetFilter = Backbone.View.extend({
 - - - - - - - - - - - - - - - - - 
 */
 
-IONUX.Collections.Orgs = Backbone.Collection.extend({
-  url: '/Org/list/',
-  parse: function(resp) {
-    return resp.data;
-  }
-});
-
 IONUX.Collections.Observatories = Backbone.Collection.extend({
   url: '/Observatory/list/',
   parse: function(resp) {
