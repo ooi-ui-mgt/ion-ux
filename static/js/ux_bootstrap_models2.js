@@ -158,6 +158,40 @@ IONUX2.Collections.Observatories = Backbone.Collection.extend({
   }
 });
 
+IONUX2.Models.Instruments = Backbone.Model.extend({});
+IONUX2.Models.instruments = new IONUX2.Models.Instruments({
+    id: 'f14c3dd1c73d4a36a7a76f942561bfe0',
+    name: 'glider'
+});
+
+IONUX2.siteData = [];
+IONUX2.siteDataObj = {};
+
+IONUX2.Collections.Instruments = Backbone.Collection.extend({
+  /*initialize: function(models, options){
+    this.resource_id = options.id;
+  },
+  url: function() {
+   return '/find_site_data_products/'+this.resource_id+'/';
+  },
+  parse: function(resp) {
+    console.log("response is " + resp);
+    var data_products = [];
+    if (!_.isEmpty(resp.data.data_product_resources)) {
+      data_products = _.filter(resp.data.data_product_resources, function(v,k) {
+        return !_.isEmpty(v.ooi_product_name); // Only display those with ooi_product_name
+      });
+      make_iso_timestamps(data_products);
+    };
+    
+    return data_products;
+  }*/
+});
+
+IONUX2.Collections.instruments = new IONUX2.Collections.Instruments();
+
+
+
 IONUX2.Collections.MapDataProducts = Backbone.Collection.extend({
   initialize: function(models, options){
     this.resource_id = options.resource_id;
@@ -177,4 +211,6 @@ IONUX2.Collections.MapDataProducts = Backbone.Collection.extend({
     return data_products;
   }
 });
+
+//IONUX2.Collections.mapDataProducts = new IONUX2.Collections.MapDataProducts();
 

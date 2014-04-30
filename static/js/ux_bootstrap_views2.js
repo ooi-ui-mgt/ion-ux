@@ -104,7 +104,7 @@ IONUX2.Views.Sites = Backbone.View.extend({
   template: _.template(IONUX2.getTemplate('templates/sites.html')),
   events: {
     'click .checkAllSites': 'select_all_sites',
-    'click .resource_id': 'getInstrument'
+    'click .resource_id': 'get_instrument'
   },
 
   initialize: function() {
@@ -123,13 +123,74 @@ IONUX2.Views.Sites = Backbone.View.extend({
   },
 
   get_instrument: function(e) {
-
+    var resource_id = $(e.currentTarget).data('id');
+    IONUX2.Models.instruments.set({'id': resource_id});
+    $.getJSON('/find_site_data_products/'+ resource_id +'/', function(data) {
+      $.extend(IONUX2.siteDataObj, data);
+      model = data;
+      IONUX2.Views.instruments = new IONUX2.Views.Instruments({data: model});
+      
+      //IONUX2.Collections.instruments.add(IONUX2.siteDataObj);
+      //console.log(data);
+      /*for (var item in data) {
+        //console.log(data[item].site_resources);
+        var site_resource = data[item].site_resources;
+        for (var resource in site_resource) {
+          //console.log(site_resource[resource]);
+          if (site_resource[resource] !== null) {
+            //IONUX2.Collections.instruments.add({'id': resource_id, 'name': site_resource[resource].name});
+            //$.extend(IONUX2.siteDataObj, {'id': resource_id, 'name': site_resource[resource].name});
+            //IONUX2.Models.instruments.set({'id': resource_id, 'name': site_resource[resource].name});
+            //console.log("models are " + IONUX2.Models.instruments);
+            //IONUX2.Collections.instruments.add(IONUX2.Models.instruments);
+            IONUX2.siteData.push({'id': resource_id, 'name': site_resource[resource].name});
+            //instrument_list.add(IONUX2.Models.instruments);
+            //IONUX2.Collections.instruments.add(IONUX2.Models.instruments);
+            console.log(site_resource[resource].name);
+          }
+        }
+      }*/
+      /*IONUX2.Collections.instruments = new IONUX2.Collections.Instruments({
+        model: IONUX2.Models.instruments
+      });*/
+    //console.log(IONUX2.siteDataObj);
+    });
+    //IONUX2.Collections.instruments.reset(IONUX2.siteData);
+    //console.log(IONUX2.Collections.instruments.toJSON());
+    console.log(IONUX2.Collections.instruments);
+    /*IONUX2.Collections.instruments = _.map(IONUX2.siteData, function(items) {
+      return {
+        id: items[0],
+        name: items[1]
+      }
+    });*/
+    //console.log(IONUX2.Collections.instruments);
+    //IONUX2.Collections.instruments.add(instrument_list);
+    //console.log("length is " + IONUX2.Collections.instruments.length);
+    //IONUX2.Views.instruments = new IONUX2.Views.Instruments({model: IONUX2.Models.instruments});
   },
 
   render: function() {
     console.log('rendering sites');
     this.$el.html(this.template(this.collection.toJSON()));
     return this;
+  }
+});
+
+IONUX2.Views.Instruments = Backbone.View.extend({
+  el: '#instrument',
+  template: _.template(IONUX2.getTemplate('templates/instruments.html')),
+  initialize: function() {
+    console.log('initializing instruments view');
+    this.render();
+  },
+  render: function() {
+    console.log('rendering instruments');
+    //this.$el.html(this.template(this.collection.toJSON()));
+     this.$el.removeClass('placeholder');
+     this.$el.html(this.template({resources: this.build_menu(), title: this.title}));
+       this.$el.find('#list').jScrollPane({autoReinitialise: true});
+       return this;
   }
 });
 
