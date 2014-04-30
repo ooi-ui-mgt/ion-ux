@@ -67,9 +67,17 @@
 </section>
 <script>
 $(function(){
-        $('.lat_long_menu').on('change', function(e) {
-          $('.top_search_to, .placeholder_lat, .north_south_menu, .show_hide_longitude').hide();
-          $('.top_search_radius, .no_placeholder_radius, .miles_kilos_menu').show();
-        });
-      });
+  $('.lat_long_menu').on('change', function(e) {
+    $('.top_search_to, .placeholder_lat, .north_south_menu, .show_hide_longitude').hide();
+    $('.top_search_radius, .no_placeholder_radius, .miles_kilos_menu').show();
+    if ($(this).find('option:selected').attr('value') == "2") {
+      $('.top_search_to, .placeholder_lat, .north_south_menu, .show_hide_longitude').hide();
+      $('.top_search_radius, .no_placeholder_radius, .miles_kilos_menu').show();
+    }
+    else {
+      $('.top_search_radius, .no_placeholder_radius, .miles_kilos_menu').hide();
+      $('.top_search_to, .placeholder_lat, .north_south_menu, .show_hide_longitude').show();
+    }
+  });
+});
 </script>
