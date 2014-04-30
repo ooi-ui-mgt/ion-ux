@@ -4,7 +4,7 @@
 </span>
 <section class="spatial_details">
   <div class="left_navi_select_container">
-    <select class="lat_long_menu" id="lat_long_menu">
+    <select class="lat_long_menu">
       <option value="1">Lat/Long - Rect</option>
       <option value="2">Point/Radius</option>
     </select>
@@ -65,23 +65,3 @@
     </div>
   </div>
 </section>
-
-  
-
-   
- <script>
-      $(function(){
-        $('.lat_long_menu').on('change', function(e) {
-          console.log('changed option ' + $(this).find('option:selected').attr('value'));
-          IONUX2.Dashboard.MapView.clear_inputs();
-          if ($(this).find('option:selected').attr('value') == "2") {
-            $('.top_search_to, .placeholder_lat, .north_south_menu, .show_hide_longitude').hide();
-            $('.top_search_radius, .no_placeholder_radius, .miles_kilos_menu').show();
-          }
-          else {
-            $('.top_search_radius, .no_placeholder_radius, .miles_kilos_menu').hide();
-            $('.top_search_to, .placeholder_lat, .north_south_menu, .show_hide_longitude').show();
-          }
-        });
-      });
-</script>
