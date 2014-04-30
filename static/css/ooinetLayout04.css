@@ -402,6 +402,10 @@ ul.dropdown-menu li:hover {
   border-radius: 7px;
 }
 
+.left_accordion#spatial {
+  padding: 4px 13px 4px 4px;
+}
+
 .spatial_duration, .latlong {
   height: 13px !important;
   color: #969fa6;

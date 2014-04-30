@@ -1,0 +1,20 @@
+<span class="accordion_title">
+  <div class="expand_hide arrow_right"></div><div class="accordion_label">Instruments</div>
+</span>
+<div id="instrument_list" class="spatial_details">
+    <!--<div class="select_all">
+        <input class="checkAllSites" type="checkbox"/> Select All
+    </div>-->
+    <div class="list_instruments">
+    	<form action="">
+    		<ul>
+        	<% _.each(this.collection, function(instrument) { %>
+				<%_.each(instrument.data, function(item) { %>
+					<li><%= item.site_resource %></li>
+				<% }); %>
+			<% }); %> 
+			</ul>
+		</form>
+	</div>
+</div>
+ 
