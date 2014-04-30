@@ -128,7 +128,7 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
     })();
 
     (function() {
-      // get facility checkbox values
+      // get facility checkbox values and add to collection
       var accordion_visible = $('#orgSelector .spatialDetails').is(':visible');
       var facilities_checked = [];
       $('.list_facilities input').each(function(data) {
@@ -141,7 +141,7 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
     })();
 
     (function() {
-      // get region checkbox values
+      // get region checkbox values and add to collection
       var accordion_visible = $('#region .spatialDetails').is(':visible');
       var regions_checked = [];
       $('.list_regions input').each(function(data) {
@@ -154,7 +154,7 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
     })();
 
     (function() {
-      // get sites checkbox values
+      // get sites checkbox values and add to collection
       var accordion_visible = $('#sites .spatialDetails').is(':visible');
       var sites_checked = [];
       $('.list_sites input').each(function(data) {
@@ -164,6 +164,19 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
       });
       IONUX2.Collections.saveSiteSearch.add(sites_checked);
       console.log(IONUX2.Collections.saveSiteSearch);
+    })();
+
+    (function() {
+      // get data type checkbox values and add to collection
+      var accordion_visible = $('#dataTypesList .spatialDetails').is(':visible');
+      var datatype_checked = [];
+      $('.listDataTypes input').each(function(data) {
+        var datatype_value = $(this).val();
+        var is_checked = $(this).prop('checked');
+        datatype_checked.push({'accordion_visible' : accordion_visible, 'datatype_value' : datatype_value, 'is_checked' : is_checked });
+      });
+      IONUX2.Collections.saveDataTypeSearch.add(datatype_checked);
+      console.log(IONUX2.Collections.saveDataTypeSearch);
     })();
 
 

@@ -239,6 +239,9 @@ IONUX2.Collections.saveRegionSearch = new IONUX2.Collections.SaveRegionSearch();
 IONUX2.Collections.SaveSiteSearch = Backbone.Collection.extend({});
 IONUX2.Collections.saveSiteSearch = new IONUX2.Collections.SaveSiteSearch();
 
+IONUX2.Collections.SaveDataTypeSearch = Backbone.Collection.extend({});
+IONUX2.Collections.saveDataTypeSearch = new IONUX2.Collections.SaveDataTypeSearch();
+
 IONUX2.Models.saveSpatialSearch = new IONUX2.Models.SaveSpatialSearch();
 
 IONUX2.Models.SaveTemporalSearch = Backbone.Model.extend({
