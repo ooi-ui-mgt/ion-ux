@@ -128,7 +128,6 @@ IONUX2.Views.Sites = Backbone.View.extend({
     IONUX2.Views.instruments = new IONUX2.Views.Instruments({collection: IONUX2.Collections.instruments});
     IONUX2.Collections.instruments.fetch({
       success : function(collection) {
-        console.log('rendering collection ' + collection);
         $('#instrument .spatial_details').html(IONUX2.Views.instruments.render().el);
       }
     });
@@ -146,7 +145,7 @@ IONUX2.Views.InstrumentView = Backbone.View.extend({
   className : "instrument_item",
   render : function() {
     // just render the tweet text as the content of this element.
-    $(this.el).html(this.model.get("name"));
+    $(this.el).html('<input type="checkbox" /> ' + this.model.get("name") + '<br/>');
     return this;
   }
 });
@@ -154,24 +153,14 @@ IONUX2.Views.InstrumentView = Backbone.View.extend({
 IONUX2.Views.Instruments = Backbone.View.extend({
   tagName: "ul",
   className: "instrument_list",
-  //el: '#instrument',
-  //template: _.template(IONUX2.getTemplate('templates/instruments.html')),
   initialize: function() {},
   render: function() {
     this.collection.each(function(instrument_name) {
       var instrumentView = new IONUX2.Views.InstrumentView({ model : instrument_name });
       $(this.el).prepend(instrumentView.render().el);
     }, this);
- 
     return this;
   }
-    //console.log('rendering instruments');
-    //this.$el.html(this.template(this.collection.tojSON()));
-     //this.$el.removeClass('placeholder');
-     //this.$el.html(this.template({resources: this.build_menu(), title: this.title}));
-       //this.$el.find('#list').jScrollPane({autoReinitialise: true});
-       //return this;
-  //}
 });
 
 

@@ -9,11 +9,10 @@
         test instrument
     	<form action="">
     		<ul>
-        	<% _.each(this.collection.models, function(instrument) { %>
+        	<% _.each(this.collection, function(instrument) { %>
                 <li><%= instrument %></li>
 			<% }); %> 
 			</ul>
 		</form>
 	</div>
 </div>
- 
