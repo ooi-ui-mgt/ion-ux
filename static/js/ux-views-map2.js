@@ -311,6 +311,31 @@ IONUX2.Views.Map = Backbone.View.extend({
     
     }, this); // _.each
   },
+
+  clear_inputs: function(){
+    $("#south").val("");
+    $("#west").val("");
+    $("#north").val("");
+    $("#east").val("");
+    $("#radius").val("");
+  },
+
+  update_latlon: function (ne, sw){
+
+    $("#south").val(sw.lat().toFixed(2));
+    $("#west").val(sw.lng().toFixed(2));
+    $("#north").val(ne.lat().toFixed(2));
+    $("#east").val(ne.lng().toFixed(2));
+
+  },
+
+  update_pointradius: function (radius, sw){
+
+    $("#south").val(sw.lat().toFixed(2));
+    $("#west").val(sw.lng().toFixed(2));
+    $("#radius").val((radius/1000).toFixed(2));
+
+  },
   
   draw_map: function(map_options, container_server) {
     console.log('draw_map');
@@ -338,7 +363,175 @@ IONUX2.Views.Map = Backbone.View.extend({
       ,map                 : this.map
     });
 
-    // register event to get and render map bounds
+    // add drawing manager
+    this.overlay_options =  {
+      fillColor     : '#c4e5fc',
+      fillOpacity   : 0.5,
+      strokeWeight  : 1.0,
+      strokeColor   : '#0cc1ff',
+      strokeOpacity : 0.8,
+      draggable     : true,
+      editable      : true
+    };
+
+    this.drawingManager = new google.maps.drawing.DrawingManager({
+      drawingControl: true,
+      drawingControlOptions: {
+        position: google.maps.ControlPosition.TOP_CENTER,
+        drawingModes: [
+          google.maps.drawing.OverlayType.RECTANGLE,
+          google.maps.drawing.OverlayType.CIRCLE
+        ]
+      },
+      rectangleOptions: this.overlay_options,
+      circleOptions: this.overlay_options
+    });
+    this.drawingManager.setMap(this.map);
+
+    //DRAWING EVENT LISTENERS
+    var self = this;
+    google.maps.event.addListener(this.drawingManager, 'overlaycomplete', function(event) {
+      // Switch back to non-drawing mode after drawing a shape.
+      self.drawingManager.setDrawingMode(null);
+
+      if (event.type == google.maps.drawing.OverlayType.RECTANGLE){
+        self.rectangle = event.overlay;
+        self.update_latlon(self.rectangle.getBounds().getNorthEast(), self.rectangle.getBounds().getSouthWest());
+        // And we have to create a listener on the rectangle to catch modifications / dragging.
+        google.maps.event.addListener(self.rectangle, 'bounds_changed', function() {
+          self.update_latlon(self.rectangle.getBounds().getNorthEast(), self.rectangle.getBounds().getSouthWest());
+        });
+
+
+      } else if (event.type == google.maps.drawing.OverlayType.CIRCLE){
+        self.circle = event.overlay;
+        self.update_pointradius(self.circle.getRadius(), self.circle.getCenter());         
+
+        google.maps.event.addListener(self.circle, 'radius_changed', function() {
+          self.update_pointradius(self.circle.getRadius(), self.circle.getCenter());
+        });
+        google.maps.event.addListener(self.circle, 'center_changed', function() {
+          self.update_pointradius(self.circle.getRadius(), self.circle.getCenter());
+        });
+
+      }
+          
+    });
+
+    this.spatial_open = false;
+    this.from_click = false;
+
+    $("#spatial_title").on("click", function(){
+      if(self.spatial_open){
+        self.spatial_open = false;
+      } else {
+        self.spatial_open = true;
+      }
+      
+    });
+
+    var self = this;
+    google.maps.event.addListener(this.drawingManager, 'drawingmode_changed', function(event) {
+      var mode = this.getDrawingMode();
+
+      if(!self.spatial_open){
+        $("#spatial_title").click();
+      }
+
+      if (mode == "rectangle"){
+        self.clear_inputs();
+        if(!self.from_click){
+          $(".lat_long_menu").val("1").change();
+        }
+         self.from_click = false;
+      } else if (mode == "circle"){
+        self.clear_inputs();
+        if(!self.from_click){
+          $(".lat_long_menu").val("2").change();
+        }
+        self.from_click = false;
+      }
+
+      if(mode != null){
+        // Clear out the rectangle if necessary.
+        if (self.rectangle) {
+          self.rectangle.setMap(null);
+          delete self.rectangle;
+        } else if(self.circle){
+          self.circle.setMap(null);
+          delete self.circle;
+        } 
+      }
+    });
+
+    //Moved here for toggle between drop-down and drawing selector on Map
+    $('.lat_long_menu').on('change', function(e) {
+      console.log('changed option ' + $(this).find('option:selected').attr('value'));
+      self.clear_inputs();
+      if ($(this).find('option:selected').attr('value') == "2") {
+        $('.top_search_to, .placeholder_lat, .north_south_menu, .show_hide_longitude').hide();
+        $('.top_search_radius, .no_placeholder_radius, .miles_kilos_menu').show();
+        self.from_click = true;
+        self.drawingManager.setDrawingMode(google.maps.drawing.OverlayType.CIRCLE);
+      } else {
+        $('.top_search_radius, .no_placeholder_radius, .miles_kilos_menu').hide();
+        $('.top_search_to, .placeholder_lat, .north_south_menu, .show_hide_longitude').show();
+        self.from_click = true;
+        self.drawingManager.setDrawingMode(google.maps.drawing.OverlayType.RECTANGLE);
+      }
+    });
+
+    //Input to drawing manager mapping
+    $('#west, #east, #north, #south, #radius').on('change', function(){
+      
+      if($(".lat_long_menu").val() == "1"){
+       
+        var bounds = new google.maps.LatLngBounds(
+          new google.maps.LatLng($('#south').val(), $('#west').val()),
+          new google.maps.LatLng($('#north').val(), $('#east').val())
+        );
+
+        if (!self.rectangle) {
+          // make a rectangle if a user hasn't drawn one
+          self.rectangle = new google.maps.Rectangle();
+          self.rectangle.setOptions(self.overlay_options);
+          // create a listener on the rectangle to catch modifications / dragging
+          google.maps.event.addListener(self.rectangle, 'bounds_changed', function(e) {
+            self.update_latlon(self.rectangle.getBounds().getNorthEast(), self.rectangle.getBounds().getSouthWest());
+          });
+          self.rectangle.setMap(self.map);
+        }
+
+        self.rectangle.setBounds(bounds);
+        self.drawingManager.setDrawingMode(null);
+
+      } else if($(".lat_long_menu").val() == "2"){
+     
+        var point = new google.maps.LatLng($('#south').val(), $('#west').val());
+        var radius = parseInt($("#radius").val())*1000;
+
+        if (!self.circle) {
+          // make a rectangle if a user hasn't drawn one
+          self.circle = new google.maps.Circle();
+          self.circle.setOptions(self.overlay_options);
+          // create a listener on the rectangle to catch modifications / dragging
+          google.maps.event.addListener(self.circle, 'radius_changed', function() {
+            self.update_pointradius(self.circle.getRadius(), self.circle.getCenter());
+          });
+          google.maps.event.addListener(self.circle, 'center_changed', function() {
+            self.update_pointradius(self.circle.getRadius(), self.circle.getCenter());
+          });
+
+          self.circle.setMap(self.map);
+        }
+
+        self.circle.setCenter(point);
+        self.circle.setRadius(radius);
+        self.drawingManager.setDrawingMode(null);
+
+      }
+    });
+
     var self = this;
     google.maps.event.addListener(this.map, "bounds_changed", function(e) {
        self.hide_info_window({rank : 0}); // always hide the infoWindow
