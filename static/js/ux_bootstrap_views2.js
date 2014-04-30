@@ -123,13 +123,19 @@ IONUX2.Views.Sites = Backbone.View.extend({
   },
 
   get_instrument: function(e) {
-    var resource_id = $(e.currentTarget).data('id');
-    IONUX2.Models.instruments.set({'id': resource_id});
+    var resourceId = $(e.currentTarget).data('id');
+    console.log(resourceId);
+    IONUX2.Dashboard.MapResource = new IONUX2.Models.MapResource();
+    IONUX2.Dashboard.MapResource.set({resource_id: resourceId});
+    console.log(IONUX2.Dashboard.MapResource);
+    IONUX2.Dashboard.MapDataResources = new IONUX2.Collections.MapDataProducts([], IONUX.Dashboard.MapResource);
+    console.log(IONUX2.Dashboard.MapDataResources);
+    /*IONUX2.Models.instruments.set({'id': resource_id});
     $.getJSON('/find_site_data_products/'+ resource_id +'/', function(data) {
       $.extend(IONUX2.siteDataObj, data);
       IONUX2.Collections.instruments = data;
       collection = IONUX2.Collections.instruments;
-      IONUX2.Views.instruments = new IONUX2.Views.Instruments({data: collection});
+      IONUX2.Views.instruments = new IONUX2.Views.Instruments({data: collection});*/
       
       //IONUX2.Collections.instruments.add(IONUX2.siteDataObj);
       //console.log(data);
@@ -155,10 +161,10 @@ IONUX2.Views.Sites = Backbone.View.extend({
         model: IONUX2.Models.instruments
       });*/
     //console.log(IONUX2.siteDataObj);
-    });
+    //});
     //IONUX2.Collections.instruments.reset(IONUX2.siteData);
     //console.log(IONUX2.Collections.instruments.toJSON());
-    console.log(IONUX2.Collections.instruments);
+    //console.log(IONUX2.Collections.instruments);
     /*IONUX2.Collections.instruments = _.map(IONUX2.siteData, function(items) {
       return {
         id: items[0],
