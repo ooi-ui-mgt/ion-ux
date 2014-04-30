@@ -187,10 +187,12 @@ IONUX2.Collections.Orgs = Backbone.Collection.extend({
   }
 });*/
 
-IONUX2.Models.Instruments = Backbone.Model.extend({});
-/*IONUX2.Models.instruments = new IONUX2.Models.Instruments({
+IONUX2.Models.Instruments = Backbone.Model.extend({
+  defaults: {
     name: 'glider'
-});*/
+  }
+});
+IONUX2.Models.instruments = new IONUX2.Models.Instruments();
 
 IONUX2.siteData = [];
 IONUX2.siteDataObj = {};
