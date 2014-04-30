@@ -129,36 +129,41 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
 
     (function() {
       // get facility checkbox values
+      var accordion_visible = $('#orgSelector .spatialDetails').is(':visible');
       var facilities_checked = [];
       $('.list_facilities input').each(function(data) {
         var facility_value = $(this).val();
         var is_checked = $(this).prop('checked');
-        facilities_checked.push({'value' : facility_value, 'is_checked' : is_checked });
+        facilities_checked.push({'accordion_visible' : accordion_visible, 'value' : facility_value, 'is_checked' : is_checked });
       });
-      
-      console.log(facilities_checked);
+      IONUX2.Collections.saveFacilitySearch.add(facilities_checked);
+      console.log(IONUX2.Collections.saveFacilitySearch);
     })();
 
     (function() {
       // get region checkbox values
+      var accordion_visible = $('#region .spatialDetails').is(':visible');
       var regions_checked = [];
       $('.list_regions input').each(function(data) {
         var region_name = $(this).data('spatial');
         var is_checked = $(this).prop('checked');
-        regions_checked.push({'name' : region_name, 'is_checked' : is_checked });
+        regions_checked.push({'accordion_visible' : accordion_visible, 'name' : region_name, 'is_checked' : is_checked });
       });
-      console.log(regions_checked);
+      IONUX2.Collections.saveRegionSearch.add(regions_checked);
+      console.log(IONUX2.Collections.saveRegionSearch);
     })();
 
     (function() {
       // get sites checkbox values
+      var accordion_visible = $('#sites .spatialDetails').is(':visible');
       var sites_checked = [];
       $('.list_sites input').each(function(data) {
         var site_id = $(this).data('id');
         var is_checked = $(this).prop('checked');
-        sites_checked.push({'id' : site_id, 'is_checked' : is_checked });
+        sites_checked.push({'accordion_visible' : accordion_visible, 'id' : site_id, 'is_checked' : is_checked });
       });
-      console.log(sites_checked);
+      IONUX2.Collections.saveSiteSearch.add(sites_checked);
+      console.log(IONUX2.Collections.saveSiteSearch);
     })();
 
 
