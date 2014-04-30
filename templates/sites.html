@@ -4,7 +4,12 @@
 <div id="site_list" class="spatial_details">
 	<form action="">
     	<% _.each(this.collection.models, function(site) { %>
-    		<input id="site_item" data-sites="<%= site.attributes.spatial_area_name %>" type="checkbox"/> <%= site.attributes.name %><br/>
+    		<input id="site_item" data-sites="<%= site.attributes.spatial_area_name %>" type="checkbox"/> 
+    		<% if (site.attributes.local_name) { %>
+    			<%= site.attributes.local_name %><br/>
+            <% } else { %>
+    			<%= site.attributes.name %><br/>
+            <% }; %>
     	<% }) %>
 	</form>
  </div>
