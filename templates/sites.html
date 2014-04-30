@@ -8,13 +8,12 @@
     <div class="list_sites">
     	<form action="">
         	<% _.each(this.collection.models, function(site) { %>
-        		<input id="site_item" data-sites="<%= site.attributes.spatial_area_name %>" type="checkbox"/> 
+        		<input id="site_item" class="resource_id" data-id="<%= site.attributes._id %>" data-sites="<%= site.attributes.spatial_area_name %>" type="checkbox"/> 
         		<% if (site.attributes.local_name) { %>
-        			<a class="resource_id" href="#" data-id="<%= site.attributes._id %>">
-    			<%= site.attributes.local_name %></a><br/>
+        			
+    			<%= site.attributes.local_name %><br/>
                 <% } else { %>
-        			<a class="resource_id" href="#" data-id="<%= site.attributes._id %>">
-    			<%= site.attributes.name %></a><br/>
+    			<%= site.attributes.name %><br/>
                 <% }; %>
         	<% }) %>
     	</form>

@@ -204,6 +204,14 @@ IONUX2.Models.Instruments = Backbone.Model.extend({
   defaults: {
     name: 'glider'
   }
+  /*initialize: function() {
+    this.bind("reset", this.updateView);
+  },
+  updateView: function() {
+    console.log('removing models');
+    view.remove();
+    view.render();
+  }*/
 });
 IONUX2.Models.instruments = new IONUX2.Models.Instruments();
 

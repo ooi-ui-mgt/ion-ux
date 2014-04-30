@@ -47,10 +47,23 @@ IONUX2.Collections.Instruments = Backbone.Collection.extend({
   initialize: function(models, options){
     console.log("resource id is " + options.resource_id);
     this.resource_id = options.resource_id;
+    //this.listenTo(this.model, 'change', this.render);
+    //this.listenTo(this.model, 'destroy', this.remove);
+    //this.on('reset', this.updateView);
     //console.log("resource id is " + this.resource_id);
   },
   url: function() {
    return '/find_site_data_products/'+this.resource_id+'/';
+  },
+
+  updateView: function() {
+    console.log("need to remove the view now");
+    /*this.undelegateEvents();
+    this.$el.removeData().unbind(); 
+    //Remove view from DOM
+    this.remove();  
+    Backbone.View.prototype.remove.call(this);*/
+    //this.$el.remove()
   },
   
   parse: function(resp) {
