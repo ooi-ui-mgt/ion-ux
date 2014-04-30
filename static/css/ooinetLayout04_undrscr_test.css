@@ -1,0 +1,457 @@
+/*
+ooinet-04.css  proto=ooinetLayout04.css
+by Peter Rosti
+last edited 04-22 04-14 04-09 03-06 03-05 2014-03-03
+
+This layout uses calc() to set height and width values
+Note: calc must have spaces in the formula, to accomodate IE bug,
+like this: calc(100% - 100px), instead of like this: calc(100%-100px)
+DIVS in their native state stretch in WIDTH but not in HEIGHT, so heights have to be handled very specifically for calculated
+heights to work at all.
+height:100% on both HTML and BODY are REQUIRED because percentages cascade from ancestor to descendant. Even leaving it off html
+and just putting it on body only will cause the height calculations contained within the body to fail.
+*/
+
+html, body {
+ height:100%;
+ font-family: Arial;
+ font-size: 12px; 
+}
+
+body {
+ position:relative;
+ margin:0px;
+ padding:0px;
+}
+
+#header {
+ position:fixed;
+ top:0px;
+ left:0px;
+ margin:0px;
+ padding:0px;
+ width:100%;
+ height:96px;
+ z-index: 0;
+ overflow:hidden;
+ 'outline:1px solid #000; /* temp */
+}
+
+#header img[id=img_a] {
+ position: absolute;
+ left: 0px;
+ top: 0px;
+ z-index: -1;
+ height: 72px;
+ width: 100%;
+}
+
+#header_links {
+  color: white;
+  position: absolute;
+  top: 72px;
+  left: 0px;
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  z-index: 4;
+  background-color: #384d68;
+  background: -webkit-gradient(linear, top left, top right, from(#23435c), to(#040e17));
+  background: -webkit-linear-gradient(top, #23435c, #040e17);
+  background: -moz-linear-gradient(top, #23435c, #040e17);
+  background: -o-linear-gradient(top, #23435c, #040e17);
+  margin-right: 5px;
+  padding: 0px;
+  margin: 0px;
+  text-align: right;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 9pt;
+}
+
+#mainSubheader {
+ position:fixed;
+ top:96px;
+ left:338px;
+ margin:0px;
+ padding:0px;
+ width:calc(100% - 338px);
+ height:20px;
+ z-index:0;
+ 'outline:1px solid #000; /* temp */
+}
+
+#main {
+ position:absolute;
+ top:116px;
+ left:275px;
+ padding:0px;
+ margin:0px;
+ height:calc(100% - 116px);
+ width:calc(100% - 338px);
+ z-index:0;
+ overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
+ otherwise there will be 2 vertical scroll bars (might be a browser bug). */
+ 'outline:1px solid #000; /* temp */
+}
+
+#dynamic-container {  /* same as main */
+ position:absolute;
+ top:116px;
+ left:275px;
+ padding:0px;
+ margin:0px;
+ height:calc(100% - 116px);
+ width:calc(100% - 338px);
+ z-index:0;
+ overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
+ otherwise there will be 2 vertical scroll bars (might be a browser bug). */
+ 'outline:1px solid #000; /* temp */
+}
+
+#left {
+ position:absolute;
+ top:116px;
+ left:0px;
+ height:calc(100% - 116px);
+ width:338px;
+ overflow:auto;
+ z-index:1;
+ 'outline:1px solid #000; /* temp */
+}
+
+#leftSubheader {
+ position:fixed;
+ top:96px;
+ left:0px;
+ margin:0px;
+ padding:0px;
+ width:338px;
+ height:20px;
+ z-index:0;
+ 'outline:1px solid #000; /* temp */
+}
+
+#upperMain {
+ position:absolute;
+ top:0px;
+ left:0px;
+ margin:0px;
+ padding:0px;
+ width:100%;
+ height:50%;
+ z-index:4;
+ overflow:auto;
+}
+
+#lowerMain {
+ position:absolute;
+ top:50%;
+ left:0px;
+ margin:0px;
+ padding:0px;
+ width:100%;
+ height:50%;
+ z-index:4;
+ overflow:auto;
+}
+
+.innerMain {
+  position:relative;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  z-index:4;
+  overflow:auto;
+}
+
+#upperLeft {
+  position:absolute;
+  top:0px;
+  left:0px;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  height:33%;
+  z-index:4;
+  overflow:auto;
+}
+
+#middleLeft {
+  position:absolute;
+  top:33%;
+  left:0px;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  height:33%;
+  z-index:4;
+  overflow:auto;
+}
+
+#lowerLeft {
+  position:absolute;
+  top:66%;
+  left:0px;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  height:33%;
+  z-index:4;
+  overflow:auto;
+}
+.innerLeft {
+  position:relative;
+  margin:0px;
+  padding:0px;
+  width:100%;
+  z-index:4;
+  overflow:auto;
+}
+
+#login {
+ color: white;
+ position: absolute;
+ top: 10px;
+ right: 18px;
+ text-align: right;
+ padding: 0px;
+ margin: 0px;
+ width: 300px;
+ height: 20px;
+ z-index: 4;
+ line-height: 20px;
+ 'outline:1px solid #000; /* temp */
+}
+
+/* ---------------------------------------------------------------
+ TEMP USER-NAV - ALL BLUE BUTTONS TO GET THIS STYLE EVENTUALLY
+--------------------------------------------------------------- */
+
+#login a.btn-navigation {
+ border-radius: 3px;
+ background: #2d658c; /* Old browsers */
+ /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+ background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzJkNjU4YyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzAzNDk3MSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwOTI3M2MiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+ background: -moz-linear-gradient(top,  #2d658c 0%, #034971 50%, #09273c 100%); /* FF3.6+ */
+ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2d658c), color-stop(50%,#034971), color-stop(100%,#09273c)); /* Chrome,Safari4+ */
+ background: -webkit-linear-gradient(top,  #2d658c 0%,#034971 50%,#09273c 100%); /* Chrome10+,Safari5.1+ */
+ background: -o-linear-gradient(top,  #2d658c 0%,#034971 50%,#09273c 100%); /* Opera 11.10+ */
+ background: -ms-linear-gradient(top,  #2d658c 0%,#034971 50%,#09273c 100%); /* IE10+ */
+ background: linear-gradient(to bottom,  #2d658c 0%,#034971 50%,#09273c 100%); /* W3C */
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2d658c', endColorstr='#09273c',GradientType=0 ); /* IE6-8 */
+ border-top: #6692A9 1px solid;
+ border-left: #6692A9 1px solid;
+ border-right: #000 1px solid;
+ border-bottom: #000 1px solid;
+ font-size: 10px;
+ font-weight: 300;
+ letter-spacing: 1px;
+ color: #F2F2F2;
+ padding: 4px 10px;
+ text-shadow: -1px -1px 1px #000000;
+}
+
+#login a.btn-navigation:hover {
+ background: #6692a9; /* Old browsers */
+ /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+ background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY2OTJhOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzJkNjU4YyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMzQ5NzEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+ background: -moz-linear-gradient(top,  #6692a9 0%, #2d658c 50%, #034971 100%); /* FF3.6+ */
+ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6692a9), color-stop(50%,#2d658c), color-stop(100%,#034971)); /* Chrome,Safari4+ */
+ background: -webkit-linear-gradient(top,  #6692a9 0%,#2d658c 50%,#034971 100%); /* Chrome10+,Safari5.1+ */
+ background: -o-linear-gradient(top,  #6692a9 0%,#2d658c 50%,#034971 100%); /* Opera 11.10+ */
+ background: -ms-linear-gradient(top,  #6692a9 0%,#2d658c 50%,#034971 100%); /* IE10+ */
+ background: linear-gradient(to bottom,  #6692a9 0%,#2d658c 50%,#034971 100%); /* W3C */
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6692a9', endColorstr='#034971',GradientType=0 ); /* IE6-8 */
+}
+
+/* Add margin to Bootstrap span btn group */
+#login .dropdown {
+ margin-left: 3px;
+}
+
+a.btn-navigation-plain {
+ color: #FFFFFF;
+ font-size: 11px;
+ font-weight: 400;
+ letter-spacing: 2px;
+ padding-top: 5px;
+ padding-right: 10px;
+ padding-bottom: 5px;
+ padding-left: 5px;
+ text-decoration: none;
+ text-transform: uppercase;
+ border: solid transparent 1px;
+}
+
+ul.dropdown-menu {
+ background-color:#d7d7d7;
+ padding:5px;
+ font-family:Signika Negative;
+ font-size:10px;
+ font-weight:400;
+ letter-spacing:1px;
+ color:#666;
+}
+
+ul.dropdown-menu li {
+ padding: 2px 5px;
+ font-size: 11px;
+ text-transform: uppercase;
+ cursor: pointer;
+ color: #666;
+}
+
+ul.dropdown-menu li:hover {
+ color: #fff;
+ background: #999;
+ text-shadow: none;
+}
+
+/* ---------------------------------------------------------------
+ END TEMP USER-NAV
+--------------------------------------------------------------- */
+
+/* left sidebar accordion */
+#accordion_container {
+  background-color: #384d68;
+  padding-top:20px;
+  color: #9ecdf9;
+}
+
+.accordion_control {
+  position: relative;
+}
+
+.accordion_label {
+  color: #FFF;
+  margin: 0px;
+  padding: 0px;
+  display: inline-block;
+}
+
+.textRight {
+  margin-left: 80px;
+}
+
+.left_accordion {
+  background-color: #3b5e7e;
+  background: -webkit-gradient(linear, left top, right top, from(#5687AF), to(#3B5E7E));
+  background: -webkit-linear-gradient(left, #5687AF, #3B5E7E);
+  background: -moz-linear-gradient(left, #5687AF, #3B5E7E);
+  background: -o-linear-gradient(left, #5687AF, #3B5E7E);
+  padding: 10px 10px;
+  /*width: 217px;*/
+  margin-bottom: 5px;
+  margin-right: 3px;
+  border: 1px solid #5687AF;
+  border-left: 0px;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+input[type="text"].keyword {
+  height: 16px;
+}
+
+.spatial_duration {
+  width: 23px;
+  height: 13px !important;
+  color: #969fa6;
+}
+
+.expand-hide {
+  display:inline-block;
+}
+
+.accordion_title {
+  cursor: pointer;
+}
+
+.left_navi_select_container {
+  position: relative;
+  width: 160px;
+  height: 16px;
+  padding: 0px;
+  border: 1px solid #384D68;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.left_navi_select_arrow {
+  pointer-events:none;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 160px;
+  height: 16px;
+  background: transparent;
+  background: url('../img/left_select_arrow.png') no-repeat right;
+}
+
+.left_navi_select_container select {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  border: 0px;
+  width: 160px;
+  -webkit-appearance: none;
+  height: 16px !important;
+  padding: 0px;
+  line-height: 16px;
+  border-radius: 3px;
+  background: -webkit-gradient(linear, left top, right top, from(#88A9CC), to(#7890AC));
+  background: -webkit-linear-gradient(left, #88A9CC, #7890AC);
+  background: -moz-linear-gradient(left, #88A9CC, #7890AC);
+  background: -o-linear-gradient(left, #88A9CC, #7890AC);
+}
+
+.spatial_details select {
+  background-color: #88a9cc;
+  width: 160px;
+  color: #fff;
+  height: 23px;
+  font-size: 0.85em;
+  font-family: Arial;
+  border-color: #88A9CC;
+  padding: 0px;
+}
+
+.spatial_details h5 {
+  line-height: 8px;
+}
+
+.arrow_down {
+  cursor: pointer;
+  width: 0px;
+  height: 2px;
+  display: inline-block;
+  padding: 0px;
+  margin-top: -2px;
+  margin-right: 4px;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 5px solid #fff;
+}
+
+.arrow_right {
+  cursor: pointer;
+  width: 0px;
+  height: 0px;
+  display: inline-block;
+  padding: 0px;
+  margin-bottom: 2px;
+  margin-left: 2px;
+  margin-right: 3px;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-left: 5px solid #fff;
+}
+
+.spatial_details select.date_menu {
+  width: 70px;
+  font-size: 0.8em;
+  background-color: #fff;
+  color: #969fa6;
+  width: 55px;
+}
+

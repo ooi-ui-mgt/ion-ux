@@ -1,0 +1,138 @@
+<div id="accordionContainerWhite">
+	<article class="accordionWhite pinned" id="accordionData">
+		<div class="accordionWhiteLabel">Data
+			<div class="expand_hide arrow_down blue"></div>
+		</div>
+		<div class="accordionWhitePin"></div>
+		<div class="accordionContents">
+			<div id="23456"></div>
+		</div>
+	</article>
+	<article class="accordionWhite collapsed" id="accordionAssets">
+		<div class="accordionWhiteLabel">Assets
+			<div class="expand_hide arrow_right blue"></div>
+		</div>
+		<div class="accordionWhitePin"></div>
+		<div class="accordionContents" style="display:none;">
+			<div id="34567"></div>
+		</div>
+	</article>
+	<article class="accordionWhite collapsed" id="accordionPlatform">
+		<div class="accordionWhiteLabel">Platform
+			<div class="expand_hide arrow_right blue"></div>
+		</div>
+		<div class="accordionWhitePin"></div>
+		<div class="accordionContents" style="display:none;">
+			<div id="45678"></div>
+		</div>
+	</article>
+	<article class="accordionWhite collapsed" id="accordionInstruments">
+		<div class="accordionWhiteLabel">Instrument
+			<div class="expand_hide arrow_right blue"></div>
+		</div>
+		<div class="accordionWhitePin"></div>
+		<div class="accordionContents" style="display:none;">
+			<div id="56789"></div>
+		</div>
+	</article>
+	<article class="accordionWhite collapsed" id="accordionDataType">
+		<div class="accordionWhiteLabel">Data Type
+			<div class="expand_hide arrow_right blue"></div>
+		</div>
+		<div class="accordionWhitePin"></div>
+		<div class="accordionContents" style="display:none;">
+			<div id="67890"></div>
+		</div>
+	</article>
+</div>
+
+<script id="TABLE_23456">
+var TABLE_23456 = [
+    ["icon_ooi", "Type", "type_", "T04", "0", "level-zero"], 
+    ["icon_ooi", "Status", "aggregated_status", "T01", "0", "level-zero"],
+    ["text_short_ooi", "Name", "name", "T05", "0", "level-zero"],
+    ["text_extended_ooi", "Description", "description", "T09", "0", "level-zero"],
+    ["text_short_ooi", "Created", "unknown1219", "T10", "2", "level-two"],
+    ["text_short_ooi", "Modified", "ts_updated", "T11", "0", "level-zero"],
+    ["text_short_ooi", "Lifecycle State", "lcstate", "T13", "0", "level-zero"]
+];
+</script>
+
+<script id="TABLE_34567">
+var TABLE_34567 = TABLE_23456;
+</script>
+
+<script id="TABLE_45678">
+var TABLE_45678 = TABLE_23456;
+</script>
+
+<script id="TABLE_56789">
+var TABLE_56789 = TABLE_23456;
+</script>
+
+<script id="TABLE_67890">
+var TABLE_67890 = TABLE_23456;
+</script>
+
+<script>
+	$(function(){
+        $('#accordionContainerWhite').sortable({
+          items: ".accordionWhite:not(.pinned)"
+        });
+
+        function toggleAccordion(accordion_contents){
+			accordion_contents.slideToggle('fast', function() {
+				if ($(this).is(':visible')) {
+					$(this).parent().removeClass('collapsed');
+					$(this).parent().find('.expand_hide').removeClass('arrow_right');
+					$(this).parent().find('.expand_hide').addClass('arrow_down');
+				} else {
+					$(this).parent().addClass('collapsed');
+					$(this).parent().find('.expand_hide').removeClass('arrow_down');
+					$(this).parent().find('.expand_hide').addClass('arrow_right');
+				}
+			});
+        }
+
+        $('.accordionWhitePin').click(function(e){
+        	e.preventDefault();
+        	var pin = $(e.currentTarget);
+        	var accordion = pin.closest('.accordionWhite');
+        	if(!accordion.hasClass('pinned')) {
+        		if(accordion.hasClass('collapsed')){
+        			toggleAccordion( accordion.find('.accordionContents'));
+        		}
+        		accordion.addClass('pinned');
+        	} else {
+        		if(!accordion.hasClass('collapsed')){
+        			toggleAccordion( accordion.find('.accordionContents'));
+        		}
+        		accordion.removeClass('pinned');
+        	}
+		    $('#accordionContainerWhite').sortable({
+		      items: ".accordionWhite:not(.pinned)"
+		    });
+
+        });
+
+		$('.accordionWhiteLabel').click(function(e){
+			e.preventDefault();
+			var link = $(e.currentTarget);
+			var accordion = link.closest('.accordionWhite');
+			if( !accordion.hasClass('pinned')){
+				// this code would collapse other non-pinned accordions
+				// when you open one, but we don't do that anymore.
+				/* if( accordion.hasClass('collapsed')){
+					toggleAccordion( accordion.siblings('.accordionWhite:not(.pinned)').find('.accordionContents:visible'));
+				} */
+				toggleAccordion( accordion.find('.accordionContents'));
+			}
+		});
+
+		new IONUX2.Views.DataTable({data:TEST_TABLE_DATA, el:'#23456', visibility_level:2});
+		new IONUX2.Views.DataTable({data:TEST_TABLE_DATA, el:'#34567', visibility_level:2});
+		new IONUX2.Views.DataTable({data:TEST_TABLE_DATA, el:'#45678', visibility_level:2});
+		new IONUX2.Views.DataTable({data:TEST_TABLE_DATA, el:'#56789', visibility_level:2});
+		new IONUX2.Views.DataTable({data:TEST_TABLE_DATA, el:'#67890', visibility_level:2});
+	});
+</script>

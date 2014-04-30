@@ -1,0 +1,278 @@
+<div class="navLeftMinimizeArrow"></div>
+<button class="textRight">Search</button> <button class="textRight">Save this Search</button>
+<div id="accordion_container">
+<article class="left_accordion accordion_fixed" id="keyword">
+  <div class="accordion_label">Keyword</div>
+  <input class="keyword" type="text" placeholder="Keyword" style="display:inline-block;"/>
+</article>
+<article class="left_accordion" id="spatial">
+</article>
+<article class="left_accordion" id="temporal">
+  <span class="accordion_title">
+	 <div class="expand_hide arrow_right"></div><div class="accordion_label">Temporal</div>
+  </span>
+	<div class="spatial_details">
+    <div class="left_navi_select_container">
+      <select>
+        <option>Data Collection</option>
+        <option>Planned Timestamps</option>
+         <option>Deployed Timestamps</option>
+         <option>Activated Timestamps</option>
+      </select>
+      <div class="left_navi_select_arrow"/>
+    </div>
+		<div>From</div>
+		<div class='date-dropdown'>
+			<select class="date_menu year"></select>
+			<select class="date_menu month"></select>
+   		<select class="date_menu day"></select>
+      <select class="date_menu hour"></select>
+    </div>
+		<div>To</div>
+		<div class='date-dropdown'>
+			<select class="date_menu year"></select>
+			<select class="date_menu month"></select>
+   		<select class="date_menu day"></select>
+      <select class="date_menu hour"></select>
+    </div>
+	</div>
+</article>
+<article class="left_accordion" id="facility">
+  <span class="accordion_title">
+    <div class="expand_hide arrow_right"></div><div class="accordion_label">Facility</div>
+  </span>
+  <div class="spatial_details">
+    More information
+  </div>
+</article>
+<article class="left_accordion" id="region">
+</article>
+<article class="left_accordion" id="site">
+</article>
+<article class="left_accordion" id="platform">
+  <span class="accordion_title">
+    <div class="expand_hide arrow_right"></div><div class="accordion_label">Platform</div>
+  </span>
+  <div class="spatial_details">
+    More information
+  </div>
+</article>
+<article class="left_accordion" id="instrument">
+  <span class="accordion_title">
+    <div class="expand_hide arrow_right"></div><div class="accordion_label">Instrument</div>
+  </span>
+  <div class="spatial_details">
+    More information
+  </div>
+</article>
+<article class="left_accordion" id="data_type">
+  <span class="accordion_title">
+    <div class="expand_hide arrow_right"></div><div class="accordion_label">Data Type</div>
+  </span>
+  <div class="spatial_details">
+    More information
+  </div>
+</article>
+<article class="left_accordion" id="boolean_expression">
+  <span class="accordion_title">
+	 <div class="expand_hide arrow_right"></div><div class="accordion_label">Boolean Expression</div>
+  </span>
+	<div class="spatial_details">
+		More information
+	</div>
+</article>
+
+</div>
+    
+    <script>
+      $(function(){
+
+        IONUX2.Views.RegionList = new IONUX2.Views.Region({collection: IONUX2.Dashboard.Observatories });
+        IONUX2.Views.SitesList = new IONUX2.Views.Sites({collection: IONUX2.Dashboard.Observatories });
+
+        $('.spatial_details').hide();
+        $('#accordion_container').sortable({
+          items: "article:not(.accordion_fixed)"
+        });
+        $('#accordion_container').jScrollPane({autoReinitialise: true});
+        /** Init **/
+        initDatePicker();
+        initDateDropDown();
+      
+      });
+
+      /** Date Picker **/
+      
+      function initDatePicker() {
+        	$('#datepicker').datepicker({
+          showOn: 'button',
+          buttonImage: 'calendar.png',
+          buttonImageOnly: true,
+          beforeShow: function(input, inst) {            
+            setTimeout(function() {
+              var $calendar = inst.dpDiv;            
+              $calendar.position({
+                my: 'left top',              
+                at: 'left bottom+5',
+                of: $('#date-dropdown')
+              });
+            }, 1);
+          },
+          onSelect: function() {
+            syncDateDropdownWithDatePicker();
+          }
+        });        
+      }
+      
+      
+      /** Date Dropdown **/
+      
+      function initDateDropDown() {
+        var currentDate = new Date();
+        var currentYear = currentDate.getFullYear();
+        var currentMonth = currentDate.getMonth();
+        var currentDay = currentDate.getDate();
+        var numberOfDays = daysInMonth(currentYear, currentMonth);
+        var numberofHours = 24;
+        var currentHour = currentDate.getHours();
+        
+        populateYearDropdown(1900, currentYear+10);
+        populateMonthDropdown();
+        populateDayDropdown(numberOfDays);
+        populateHourDropdown(numberofHours);
+               
+        selectYearDropdown(currentYear);
+        selectMonthDropdown(currentMonth);
+        selectDayDropdown(currentDay);
+        selectHourDropdown(currentHour);
+        
+        bindYearDropdownEvent();
+        bindMonthDropdownEvent();
+        bindDayDropdownEvent();
+        bindHourDropdownEvent();
+      }      
+      
+      function populateYearDropdown(startYear, endYear) {
+        var yearOptions = [];
+        
+        for (var y = startYear; y <= endYear; y++) {          
+          yearOptions.push('<option value="' + y + '">' + y + '</option>');
+        }
+        
+        $('.year').html(yearOptions.join());
+      }
+      
+      function populateMonthDropdown() {
+        var monthOptions = [];
+        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        for (var m = 0; m < months.length; m++) {          
+          monthOptions.push('<option value="' + m + '">' + months[m] + '</option>');
+        }
+        
+        $('.month').html(monthOptions.join());
+      }
+      
+      function populateDayDropdown(numberOfDays) {
+        var dayOptions = [];        
+        for (var d = 1; d <= numberOfDays; d++) {          
+          dayOptions.push('<option value="' + d + '">' + d + '</option>');
+        }
+        $('.day').html(dayOptions.join());
+      }
+
+      function populateHourDropdown(numberOfHours) {
+        var hourOptions = [];
+        for (var h=1; h<=numberOfHours; h++) {
+          hourOptions.push('<option value="' + h + '">' + h + ':00</option>');
+        }
+        $('.hour').html(hourOptions.join());
+      }
+      
+      function selectYearDropdown(year) {
+        $('.year option[value=' + year + ']').attr('selected', true);
+      }
+      
+      function selectMonthDropdown(month) {
+        $('.month option[value=' + month + ']').attr('selected', true);
+      }
+      
+      function selectDayDropdown(day) {
+        $('.day option[value=' + day + ']').attr('selected', true);
+      }
+
+      function selectHourDropdown(hour) {
+        $('.hour option[value=' + hour + ']').attr('selected', true);
+      }
+      
+      function refreshDayDropdown() {
+        var year = parseInt($('.year').val());
+        var month = parseInt($('.month').val());
+        var day = parseInt($('.day').val());   
+        var numberOfDays = daysInMonth(year, month);
+        
+        populateDayDropdown(numberOfDays);
+        
+        if (day <= numberOfDays) {
+          selectDayDropdown(day);
+        } else {
+          selectDayDropdown(numberOfDays);
+        }        
+      }
+      
+      /*** Event handlers ***/
+      
+      function bindYearDropdownEvent() {
+        $('#year').on('change', function() {
+          refreshDayDropdown();
+          syncDatePickerWithDateDropdown();
+        });
+      }
+      
+      function bindMonthDropdownEvent() {
+        $('#month').on('change', function() {
+          refreshDayDropdown();
+          syncDatePickerWithDateDropdown();
+        });
+      }
+      
+      function bindDayDropdownEvent() {
+        $('#day').on('change', function() {
+          syncDatePickerWithDateDropdown();
+        });
+      }
+
+      function bindHourDropdownEvent() {
+        $('#hour').on('change', function() {
+          syncDatePickerWithDateDropdown();
+        });
+      }
+      
+      
+      /** Sync Functions **/
+      
+      function syncDateDropdownWithDatePicker() {
+        var datePickerDate = $('#datepicker').datepicker('getDate');
+        selectYearDropdown(datePickerDate.getFullYear());
+        selectMonthDropdown(datePickerDate.getMonth());
+        refreshDayDropdown();
+        selectDayDropdown(datePickerDate.getDate());
+        selectHourDropdown(dataPickerDate.getHours());
+      }
+      
+      function syncDatePickerWithDateDropdown() {
+        var dropdownYear = parseInt($('.year').val());
+        var dropdownMonth = parseInt($('.month').val());
+        var dropdownDay = parseInt($('.day').val());
+        var dropdownHour = parseInt($('.hour').val());
+        var dropdownDate = new Date(dropdownYear, dropdownMonth, dropdownDay, dropdownHour);
+        $('#datepicker').datepicker('setDate', dropdownDate);
+      }
+      
+      
+      /** Utility Function **/
+      // Reference: http://stackoverflow.com/a/315767 + fguillen's comment
+      function daysInMonth(year, month) {
+        return new Date(year, month+1, 0).getDate();
+      }
+      
+    </script>

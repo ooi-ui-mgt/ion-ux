@@ -38,7 +38,7 @@ TEST_TABLE_DATA = [
 /* Make sure that handlers exist for each of these down in filters_apply! */
 OPERATORS = ['CONTAINS', 'NEWER THAN', 'OLDER THAN', 'GREATER THAN', 'LESS THAN'];
 
-IONUX.Views.DataTable = IONUX.Views.Base.extend({
+IONUX2.Views.DataTable = Backbone.View.extend({
 
     events: {
         "click .filter-add":"add_filter_item",
@@ -615,6 +615,6 @@ IONUX.Views.DataTable = IONUX.Views.Base.extend({
           }
           
           var url = "/"+resource_type+"/face/"+resource_id+"/";
-          IONUX.ROUTER.navigate(url, {trigger:true});
+          IONUX2.ROUTER.navigate(url, {trigger:true});
     }
 });
