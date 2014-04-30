@@ -364,8 +364,12 @@ ul.dropdown-menu li:hover {
   margin-left:0;
 }
 
-.list_regions {
+.list_regions, .list_sites {
   margin-left: 13px;
+}
+
+.list_sites a {
+  color: #fff;
 }
 
 .textRight {

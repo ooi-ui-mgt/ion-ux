@@ -102,10 +102,30 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
 IONUX2.Views.Sites = Backbone.View.extend({
   el: '#site',
   template: _.template(IONUX2.getTemplate('templates/sites.html')),
+  events: {
+    'click .checkAllSites': 'select_all_sites',
+    'click .resource_id': 'getInstrument'
+  },
+
   initialize: function() {
     console.log('initializing sites view');
     this.render();
   },
+
+  select_all_sites: function(e) {
+    var $check = $(e.currentTarget);
+    if ($check.is(':checked')) {
+      $('.list_sites').find('input').prop('checked', true);
+    }
+    else {
+      $('.list_sites').find('input').prop('checked', false);
+    }
+  },
+
+  get_instrument: function(e) {
+
+  },
+
   render: function() {
     console.log('rendering sites');
     this.$el.html(this.template(this.collection.toJSON()));
