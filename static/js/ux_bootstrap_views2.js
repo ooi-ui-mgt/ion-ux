@@ -255,3 +255,26 @@ IONUX2.Views.Spatial = Backbone.View.extend({
 	}
 });
 
+IONUX2.Views.DataTypesList = Backbone.View.extend({
+	el: '#dataTypesList',
+	template: IONUX2.getTemplate('templates/block_data_type_list2.html'),
+	initialize: function() {
+		this.model.on('change:data', this.render, this);
+	},
+	render: function() {
+		this.$el.html(this.template);
+		this.renderFilterOptions();
+		return this;
+	},
+	renderFilterOptions: function(options){
+		// Should not be in separate templates? 
+		// Waiting for definitive filter behavior before consolidating.
+		// DATA filter
+		var item_tmpl = '<input type="checkbox" value="<%= type %>"/><span> <%= type %></span><br/>';
+		var dp_elmt = this.$el.find('.spatial_details');
+		_.each(this.model.data, function(option) {
+		  // IONUX.DataProductWhitelist.push(option);
+		  dp_elmt.append(_.template(item_tmpl, {type: option}));
+		});    
+  	}
+});	
