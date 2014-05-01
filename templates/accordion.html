@@ -65,13 +65,7 @@
     More information
   </div>
 </article>
-<article class="left_accordion" id="data_type">
-  <span class="accordion_title">
-    <div class="expand_hide arrow_right"></div><div class="accordion_label">Data Type</div>
-  </span>
-  <div class="spatial_details">
-    More information
-  </div>
+<article class="left_accordion" id="dataTypesList">
 </article>
 <article class="left_accordion" id="boolean_expression">
   <span class="accordion_title">
@@ -89,6 +83,9 @@
 
         IONUX2.Views.RegionList = new IONUX2.Views.Region({collection: IONUX2.Dashboard.Observatories });
         IONUX2.Views.SitesList = new IONUX2.Views.Sites({collection: IONUX2.Dashboard.Observatories });
+		IONUX2.Models.DataTypeListInstance = new IONUX2.Models.DataTypeList();
+		IONUX2.Views.DataTypesListInstance = new IONUX2.Views.DataTypesList({model: IONUX2.Models.DataTypeListInstance });
+		IONUX2.Models.DataTypeListInstance.fetch();
 
         $('.spatial_details').hide();
         $('#accordion_container').sortable({
