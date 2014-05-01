@@ -1,13 +1,4 @@
 <div id="accordionContainerWhite">
-	<article class="accordionWhite pinned" id="accordionData">
-		<div class="accordionWhiteLabel">Data
-			<div class="expand_hide arrow_down blue"></div>
-		</div>
-		<div class="accordionWhitePin"></div>
-		<div class="accordionContents">
-			<div id="23456"></div>
-		</div>
-	</article>
 	<article class="accordionWhite collapsed" id="accordionAssets">
 		<div class="accordionWhiteLabel">Assets
 			<div class="expand_hide arrow_right blue"></div>
@@ -15,6 +6,15 @@
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents" style="display:none;">
 			<div id="34567"></div>
+		</div>
+	</article>
+	<article class="accordionWhite collapsed" id="accordionData">
+		<div class="accordionWhiteLabel">Data
+			<div class="expand_hide arrow_right blue"></div>
+		</div>
+		<div class="accordionWhitePin"></div>
+		<div class="accordionContents" style="display:none;">
+			<div id="23456"></div>
 		</div>
 	</article>
 	<article class="accordionWhite collapsed" id="accordionPlatform">
@@ -99,14 +99,14 @@ var TABLE_67890 = TABLE_23456;
         	var pin = $(e.currentTarget);
         	var accordion = pin.closest('.accordionWhite');
         	if(!accordion.hasClass('pinned')) {
-        		if(accordion.hasClass('collapsed')){
+        		/*if(accordion.hasClass('collapsed')){
         			toggleAccordion( accordion.find('.accordionContents'));
-        		}
+        		}*/
         		accordion.addClass('pinned');
         	} else {
-        		if(!accordion.hasClass('collapsed')){
+        		/*if(!accordion.hasClass('collapsed')){
         			toggleAccordion( accordion.find('.accordionContents'));
-        		}
+        		}*/
         		accordion.removeClass('pinned');
         	}
 		    $('#accordionContainerWhite').sortable({
@@ -119,14 +119,14 @@ var TABLE_67890 = TABLE_23456;
 			e.preventDefault();
 			var link = $(e.currentTarget);
 			var accordion = link.closest('.accordionWhite');
-			if( !accordion.hasClass('pinned')){
+			//if( !accordion.hasClass('pinned')){
 				// this code would collapse other non-pinned accordions
 				// when you open one, but we don't do that anymore.
 				/* if( accordion.hasClass('collapsed')){
 					toggleAccordion( accordion.siblings('.accordionWhite:not(.pinned)').find('.accordionContents:visible'));
 				} */
 				toggleAccordion( accordion.find('.accordionContents'));
-			}
+			//}
 		});
 
 		new IONUX2.Views.DataTable({data:TEST_TABLE_DATA, el:'#23456', visibility_level:2});

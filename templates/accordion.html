@@ -38,12 +38,12 @@
 	</div>
 </article>
 <article class="left_accordion" id="facility">
-  <span class="accordion_title">
+  <!--<span class="accordion_title">
     <div class="expand_hide arrow_right"></div><div class="accordion_label">Facility</div>
   </span>
   <div class="spatial_details">
     More information
-  </div>
+  </div>-->
 </article>
 <article class="left_accordion" id="region">
 </article>
@@ -89,6 +89,7 @@
 
         IONUX2.Views.RegionList = new IONUX2.Views.Region({collection: IONUX2.Dashboard.Observatories });
         IONUX2.Views.SitesList = new IONUX2.Views.Sites({collection: IONUX2.Dashboard.Observatories });
+        IONUX2.Views.facility = new IONUX2.Views.Facility({collection: IONUX2.Dashboard.Orgs});
 
         $('.spatial_details').hide();
         $('#accordion_container').sortable({
