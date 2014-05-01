@@ -108,13 +108,10 @@ last edited 04-13 04-09 03-05 2014-03-02
             $("#lowerMain").css("height", "0%");
             $("#lowerMain").css("top", "100%");
             $(window).trigger('resize');
-            IONUX2.Dashboard.MapView.map.checkResize();
+            IONUX2.Dashboard.MapView.draw_map();
             IONUX2.Dashboard.MapView.map.setCenter(center);
             IONUX2.Dashboard.MapView.map.setZoom(zoom);
-            IONUX2.Dashboard.MapView.markerClusterer.setMap(null);
-            IONUX2.Dashboard.MapView.markerClusterer.setMap(IONUX2.Dashboard.MapView.map);
-            // IONUX2.Dashboard.MapView.draw_map();
-            // IONUX2.Dashboard.MapView.draw_markers();
+            IONUX2.Dashboard.MapView.draw_markers();
         });
 
         $(".mapButtonSplit").click(function(){
@@ -124,13 +121,15 @@ last edited 04-13 04-09 03-05 2014-03-02
             $("#lowerMain").css("height", "40%");
             $("#lowerMain").css("top", "60%");
             $(window).trigger('resize');
-            IONUX2.Dashboard.MapView.map.checkResize();
+            IONUX2.Dashboard.MapView.draw_map();
+            IONUX2.Dashboard.MapView.map.setCenter(center);
+            IONUX2.Dashboard.MapView.map.setZoom(zoom);
+            IONUX2.Dashboard.MapView.draw_markers();
+            /*IONUX2.Dashboard.MapView.map.checkResize();
             IONUX2.Dashboard.MapView.map.setCenter(center);
             IONUX2.Dashboard.MapView.map.setZoom(zoom);
             IONUX2.Dashboard.MapView.markerClusterer.setMap(null);
-            IONUX2.Dashboard.MapView.markerClusterer.setMap(IONUX2.Dashboard.MapView.map);
-            // IONUX2.Dashboard.MapView.draw_map();
-            // IONUX2.Dashboard.MapView.draw_markers();
+            IONUX2.Dashboard.MapView.markerClusterer.setMap(IONUX2.Dashboard.MapView.map);*/
         });
         
         $(".mapButtonHidden").click(function(){
@@ -140,13 +139,15 @@ last edited 04-13 04-09 03-05 2014-03-02
             $("#lowerMain").css("height", "100%");
             $("#lowerMain").css("top", "0%");
             $(window).trigger('resize');
-            IONUX2.Dashboard.MapView.map.checkResize();
+            IONUX2.Dashboard.MapView.draw_map();
+            IONUX2.Dashboard.MapView.map.setCenter(center);
+            IONUX2.Dashboard.MapView.map.setZoom(zoom);
+            IONUX2.Dashboard.MapView.draw_markers();
+            /*IONUX2.Dashboard.MapView.map.checkResize();
             IONUX2.Dashboard.MapView.map.setCenter(center);
             IONUX2.Dashboard.MapView.map.setZoom(zoom);
             IONUX2.Dashboard.MapView.markerClusterer.setMap(null);
-            IONUX2.Dashboard.MapView.markerClusterer.setMap(IONUX2.Dashboard.MapView.map);
-            // IONUX2.Dashboard.MapView.draw_map();
-            // IONUX2.Dashboard.MapView.draw_markers();
+            IONUX2.Dashboard.MapView.markerClusterer.setMap(IONUX2.Dashboard.MapView.map);*/
         });
         
       });
