@@ -886,7 +886,12 @@ resources-view { background-color:#FF0004}
 
 #map_canvas {
   width: 100%;
-  height: 400px;
+  height: 383px;
+  position: relative;
+  background-color: rgb(229, 227, 223);
+  overflow: hidden;
+  -webkit-transform: translateZ(0px);
+  /*height: 400px;*/
 }
 
 #map_canvas img {
