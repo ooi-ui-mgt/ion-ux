@@ -128,7 +128,7 @@ IONUX2.Views.Sites = Backbone.View.extend({
     IONUX2.Dashboard.MapResource = new IONUX2.Models.MapResource();
     IONUX2.Dashboard.MapResource.set({resource_id: resourceId});
     console.log(IONUX2.Dashboard.MapResource);
-    IONUX2.Dashboard.MapDataResources = new IONUX2.Collections.MapDataProducts([], IONUX.Dashboard.MapResource);
+    IONUX2.Dashboard.MapDataResources = new IONUX2.Collections.MapDataProducts([], {resource_id: resourceId});
     console.log(IONUX2.Dashboard.MapDataResources);
     /*IONUX2.Models.instruments.set({'id': resource_id});
     $.getJSON('/find_site_data_products/'+ resource_id +'/', function(data) {

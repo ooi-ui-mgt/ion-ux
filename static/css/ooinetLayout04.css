@@ -166,7 +166,8 @@ body {
  margin:0px;
  padding:0px;
  width:100%;
- height:60%;
+ /*height:60%;*/
+ height: 100%;
  z-index:4;
  overflow:auto;
 }
@@ -179,6 +180,7 @@ body {
  padding:0px;
  width:100%;
  height:40%;
+ background-color: #fff;
  z-index:4;
  overflow:auto;
 }
@@ -368,7 +370,7 @@ ul.dropdown-menu li:hover {
   margin-left: 13px;
 }
 
-.list_sites a {
+.list_sites a, .list_facilities a {
   color: #fff;
 }
 
