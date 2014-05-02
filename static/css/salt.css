@@ -154,17 +154,14 @@ h2 {
 #left h3 {
   margin: 0;
   padding: 0;
-  background: #cdcdcd;
-  color: #000;
+  color: #FFFFFF;
   font-size: 11px;
   text-transform: uppercase;
   line-height: 20px;
   font-weight: 600;
   padding: 0 0 0 10px;
-  border-top: solid 1px #fff;
-  border-bottom: solid 1px #7d7d7d;
   letter-spacing: 1px;
-  text-shadow: -1px -1px 1px #fff;
+  background: #497498;
 }
 
 #select-facility {
@@ -178,15 +175,13 @@ h2 {
 }
 
 .panelize {
-  background-color: #e1e1e1;
-  border-top: #fff 1px solid;
-  border-left: #fff 1px solid;
-  border-bottom: #7d7d7d 1px solid;
+  background-color: #384D68;
+  border: none;
 }
 
 
 #observatory-selector {
-  background: #e1e1e1;
+  background: #497498;
 }
 
 #observatory-selector #list {
@@ -206,14 +201,39 @@ h2 {
 #dataproduct-filter .even,
 #lcstate-filter .even,
 #asset-filter .even {
-  background-color: #F4F4F4;
+  background-color: #3b5e7e;
+  background: -webkit-gradient(linear, left top, right top, from(#5687AF), to(#3B5E7E));
+  background: -webkit-linear-gradient(left, #5687AF, #3B5E7E);
+  background: -moz-linear-gradient(left, #5687AF, #3B5E7E);
+  background: -o-linear-gradient(left, #5687AF, #3B5E7E);
+  padding: 2px;
+  /*width: 217px;*/
+  margin-bottom: 5px;
+  margin-right: 3px;
+  margin-left: 6px;
+  border: 1px solid #5687AF;
+  border-left: 0px;
+  border-radius: 7px;
 }
 
 #dataproduct-filter .odd,
 #lcstate-filter .odd,
 #asset-filter .odd {
-  background-color: #EAEAEA;
+  background-color: #3b5e7e;
+  background: -webkit-gradient(linear, left top, right top, from(#5687AF), to(#3B5E7E));
+  background: -webkit-linear-gradient(left, #5687AF, #3B5E7E);
+  background: -moz-linear-gradient(left, #5687AF, #3B5E7E);
+  background: -o-linear-gradient(left, #5687AF, #3B5E7E);
+  padding: 2px;
+  /*width: 217px;*/
+  margin-bottom: 5px;
+  margin-right: 3px;
+  margin-left: 6px;
+  border: 1px solid #5687AF;
+  border-left: 0px;
+  border-radius: 7px;
 }
+.filter-option span {margin-left:15px}
 
 #dataproduct-filter .filter-option {
   margin-right: 0;
@@ -257,7 +277,7 @@ h2 {
 }
 
 .filter-option {
-  color: #000;
+  color: #FFFFFF;
   padding-left: 30px;
   line-height: 20px;
   font-size: 13px;
@@ -407,7 +427,7 @@ td.filter-option {
 ul.map-ul {
   padding: 0;
   margin: 0;
-  list-style: none; 
+  list-style: none;
 }
 
 .map-ul > li {
@@ -666,7 +686,7 @@ ul.resource-ul {
 }
 
 .primary-link:link, .primary-link:visited {
-  color: #000;
+  color: #FFF;
   font-weight: 300;
   text-decoration: none;
 }
@@ -703,26 +723,19 @@ ul.resource-ul {
 #map-asset-data-menu {
   margin: 0;
   padding: 5px 0;
-  background: #E1E1E1;
-  color: #000;
+  color: #FFF;
   font-size: 10px;
   text-transform: uppercase;
-  line-height: 10px;
+  line-height: 5px;
   font-weight: 400;
-  border-top: solid 1px #fff;
-  border-right: solid 1px #7d7d7d;
-  border-bottom: solid 1px #7d7d7d;
-  border-left: solid 1px #fff;
   letter-spacing: 1px;
-  text-shadow: -1px -1px 1px #fff;
   width: 100%;
 }
 
 #map-asset-data-menu span {
-  background: #e1e1e1;
   width: 40%;
   display: inline-block;
-  line-height: 38px;
+  line-height: 16px;
   cursor: pointer;
   padding-left: 10%;
   position: relative;
@@ -751,7 +764,7 @@ ul.resource-ul {
 /* nsf & ocean leadership logos  */
 
 .nsf-ol {
-  background-color: #d7d7d7;
+  background-color: transparent;
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
@@ -789,9 +802,11 @@ ul.resource-ul {
   clear: both;
   font-size: 11px;
   font-weight: 300;
-  color: #7099A6;
+  color: #FFFFFF;
   padding: 10px;
 }
+
+.about a:link {color:#49aaff; font-weight:bold}
 
 /* map/resource/searchbar */
 
@@ -886,12 +901,7 @@ resources-view { background-color:#FF0004}
 
 #map_canvas {
   width: 100%;
-  height: 383px;
-  position: relative;
-  background-color: rgb(229, 227, 223);
-  overflow: hidden;
-  -webkit-transform: translateZ(0px);
-  /*height: 400px;*/
+  height: 400px;
 }
 
 #map_canvas img {
@@ -1723,7 +1733,7 @@ a.btn-footer {
   font-size: 12px;
   font-weight: 300;
   letter-spacing: 0px;
-  color: #fff;
+  
 }
 
 .user-nav {
@@ -2348,6 +2358,7 @@ ul.nav {
   color: #FFF;
   letter-spacing: 1px;
   text-transform: uppercase;
+  background-color:#2A3E57;
 }
 
 #temporal-field-ctrl {
