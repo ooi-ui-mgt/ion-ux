@@ -85,6 +85,9 @@ IONUX2 = {
 
 	    IONUX2.Models.SaveSpatialSearch = Backbone.Model.extend({});
 
+	    
+        //new IONUX.Views.OrgSelector({collection: IONUX.Dashboard.Orgs, title: 'Facility'}).render().el;
+
 	    //IONUX2.Views.RegionObservatory = new IONUX.Views.ObservatorySelector({collection: IONUX2.Dashboard.Observatories});
       	this.dashboard_map();
 	},

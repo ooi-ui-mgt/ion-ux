@@ -12,7 +12,11 @@
     		<% _.each(resources, function(nested_resources, san) { %>
     			<input id="region_item" type="checkbox" data-spatial="<%= san %>"/> <%= san %><br/>
     			<% _.each(nested_resources, function(nest) { %>
-    				<div style="display: none"><%= nest.name %></div>
+	                <% if (nest.local_name) { %>
+	                  <div style="display: none"><%= nest.local_name %></div>
+	                <% } else { %>
+	                  <div style="display: none"><%= nest.name %></div>
+	                <% }; %>
     			<% }); %>
     		<% }); %>
 		</form>

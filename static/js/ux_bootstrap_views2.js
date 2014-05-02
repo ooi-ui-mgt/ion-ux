@@ -102,15 +102,80 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
 IONUX2.Views.Sites = Backbone.View.extend({
   el: '#site',
   template: _.template(IONUX2.getTemplate('templates/sites.html')),
+  events: {
+    'click .checkAllSites': 'select_all_sites',
+    'click .resource_id': 'get_instrument'
+  },
+
   initialize: function() {
     console.log('initializing sites view');
     this.render();
   },
+
+  select_all_sites: function(e) {
+    var $check = $(e.currentTarget);
+    if ($check.is(':checked')) {
+      $('.list_sites').find('input').prop('checked', true);
+    }
+    else {
+      $('.list_sites').find('input').prop('checked', false);
+    }
+  },
+
+  get_instrument: function(e) {
+    var resourceId = $(e.currentTarget).data('id');
+    IONUX2.Collections.instruments = new IONUX2.Collections.Instruments([], {resource_id: resourceId});
+    IONUX2.Views.instruments = new IONUX2.Views.Instruments({collection: IONUX2.Collections.instruments});
+    IONUX2.Collections.instruments.fetch({
+      success : function(collection) {
+        $('#instrument .spatial_details').html(IONUX2.Views.instruments.render().el);
+      }
+    });
+  },
+
   render: function() {
     console.log('rendering sites');
     this.$el.html(this.template(this.collection.toJSON()));
     return this;
   }
+});
+
+IONUX2.Views.InstrumentView = Backbone.View.extend({
+  tagName : "li",
+  className : "instrument_item",
+  render : function() {
+    // just render the tweet text as the content of this element.
+    $(this.el).html('<input type="checkbox" /> ' + this.model.get("name") + '<br/>');
+    return this;
+  }
+});
+
+IONUX2.Views.Instruments = Backbone.View.extend({
+  tagName: "ul",
+  className: "instrument_list",
+  initialize: function() {},
+  render: function() {
+    this.collection.each(function(instrument_name) {
+      var instrumentView = new IONUX2.Views.InstrumentView({ model : instrument_name });
+      $(this.el).prepend(instrumentView.render().el);
+    }, this);
+    return this;
+  }
+});
+
+
+
+IONUX2.Views.Facility = Backbone.View.extend({
+  el: '#facility',
+  template: _.template(IONUX2.getTemplate('templates/facility.html')),
+  initialize: function() {
+    this.render();
+  },
+  render: function() {
+    this.$el.html(this.template(this.collection.toJSON()));
+    return this;
+  }
+
 });
 
 IONUX2.Views.Region = Backbone.View.extend({
