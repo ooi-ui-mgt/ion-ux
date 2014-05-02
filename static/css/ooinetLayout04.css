@@ -4,7 +4,7 @@ by Peter Rosti
 last edited 04-22 04-14 04-09 03-06 03-05 2014-03-03
 
 This layout uses calc() to set height and width values
-Note: calc must have spaces in the formula,
+Note: calc must have spaces in the formula, to accomodate IE bug,
 like this: calc(100% - 100px), instead of like this: calc(100%-100px)
 DIVS in their native state stretch in WIDTH but not in HEIGHT, so heights have to be handled very specifically for calculated
 heights to work at all.
@@ -33,6 +33,7 @@ body {
  width:100%;
  height:72px;
  z-index: 50;
+ 'outline:1px solid #000; /* temp */
 }
 
 #header2 img[id=img_a] {
@@ -44,7 +45,7 @@ body {
  width: 100%;
 }
 
-#header_links {
+#headerLinks {
   color: white;
   position: absolute;
   bottom: 3px;
@@ -58,17 +59,16 @@ body {
   text-align: right;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 12px;
-  display: none;
 }
 
-#header_links a {
+#headerLinks a {
   text-decoration: none;
   color: #FFFFFF;
   border: none;
   margin-right: 5px;
 }
 
-#header_links a:after {
+#headerLinks a:after {
   margin-left: 5px;
   color: #004972;
   content: "|";
@@ -84,8 +84,7 @@ body {
  width:calc(100% - 275px);
  height:32px;
  z-index:0;
- display:block;
- background-color: #ddd;
+ 'outline:1px solid #000; /* temp */
 }
 
 #main {
@@ -99,22 +98,9 @@ body {
  /*height:calc(100% - 141px);*/
  width:calc(100% - 275px);
  z-index:0;
- display:block;
  overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
  otherwise there will be 2 vertical scroll bars (might be a browser bug). */
-}
-
-#mainFull {
- position:absolute;
- top:72px;
- left:275px;
- padding:0px;
- margin:0px;
- height:calc(100% - 72px);
- width:calc(100% - 275px);
- z-index:0;
- display:none;
- overflow:auto;
+ 'outline:1px solid #000; /* temp */
 }
 
  a:link, a:visited {
@@ -125,15 +111,24 @@ body {
 
 #dynamic-container {  /* same as main */
  position:absolute;
- top:104px;
- left:275px;
+ top:0px;
+ left:0px;
  padding:0px;
  margin:0px;
- height:calc(100% - 104px);
- width:calc(100% - 275px);
+ /* height:calc(100% - 104px); */
+ height: 100%;
+ /* width:calc(100% - 275px); */
+ width: 100%;
  z-index:0;
  overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
  otherwise there will be 2 vertical scroll bars (might be a browser bug). */
+ 'outline:1px solid #000; /* temp */
+ 		background-color:#dbdee5
+}
+
+/* FIX for left creeping in width with legacy in new architecture */
+#left {
+  float: none;
 }
 
 #left2 {
@@ -145,6 +140,7 @@ body {
  width:275px;
  overflow: auto;
  z-index:1;
+ 'outline:1px solid #000; /* temp */
 }
 
 #leftSubheader {
@@ -157,6 +153,7 @@ body {
  width:275px;
  height:32px;
  z-index:0;
+ 'outline:1px solid #000; /* temp */
 }
 
 #upperMain {
@@ -178,8 +175,7 @@ body {
  margin:0px;
  padding:0px;
  width:100%;
- height:37%;
- background-color: #ddd;
+ height:40%;
  z-index:4;
  overflow:auto;
 }
@@ -242,13 +238,6 @@ body {
   position: absolute;
   top: 20px;
   left: 0px;
-}
-
-.navLeftMinimizeArrow {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  background: url('../img/navLeftMinimizeArrow.png') no-repeat left;
 }
 
 #login {
@@ -333,9 +322,9 @@ ul.dropdown-menu li:hover {
 --------------------------------------------------------------- */
 
 /* left sidebar accordion */
-#accordion_container {
+#accordionContainer {
   position: absolute;
-  top: 28px;
+  top: 21px;
   left: 0px;
   background-color: #384d68;
   padding-top: 0px;
@@ -343,58 +332,33 @@ ul.dropdown-menu li:hover {
   font-family: Arial;
   font-size: 12px; 
   width: 100%;
-  height:calc(100% - 28px);
+  height:calc(100% - 21px);
   overflow: auto;
 }
 
-.accordion_control {
-  position: relative;
-}
+.accordionControl {position: relative; /* class not called in javascript, html */}
 
-.accordion_label {
-  color: #FFF;
-  padding: 0px;
-  display: inline-block;
-}
-
-.spatial_details {
-  margin-left: 13px;
-}
-
-.spatial_details.align_left {
-  margin-left:0;
-}
-
-.list_regions, .list_sites {
-  margin-left: 13px;
-}
-
-.list_sites a, .list_facilities a {
-  color: #fff;
-}
+.accordionLabel {color: #FFF;padding: 0px;display: inline-block;}
 
 .textRight {
-  height: 18px;
+  height: 16px;
   line-height: 12px;
-  margin: 5px 7px 5px auto;
-  /*text-align: right;*/
-  background-color: #00aedb;
-  color: #000;
+  margin: 5px 3px 5px auto;
+  text-align: right;
+  background-color: #384d68;
+  color: #fff;
   font-family: Arial;
   font-size: 12px; 
   overflow: none;
-  float: right;
-  border-radius: 5px;
-  border: none;
 }
 
-.left_accordion {
+.leftAccordion {
   background-color: #3b5e7e;
   background: -webkit-gradient(linear, left top, right top, from(#5687AF), to(#3B5E7E));
   background: -webkit-linear-gradient(left, #5687AF, #3B5E7E);
   background: -moz-linear-gradient(left, #5687AF, #3B5E7E);
   background: -o-linear-gradient(left, #5687AF, #3B5E7E);
-  padding: 4px 5px 4px 4px;
+  padding: 4px 10px;
   /*width: 217px;*/
   margin-bottom: 5px;
   margin-right: 3px;
@@ -404,18 +368,13 @@ ul.dropdown-menu li:hover {
   border-radius: 7px;
 }
 
-.left_accordion#spatial {
-  padding: 4px 13px 4px 4px;
-}
-
-.spatial_duration, .latlong {
+.spatialDuration, .latlong {
   height: 13px !important;
   color: #969fa6;
 }
 
-.spatial_duration {
+.spatialDuration {
   width: 23px;
-  text-align: center;
 }
 
 .latlong {
@@ -430,15 +389,11 @@ input.latlong {
 	font-size: 12px;
 }
 
-.expand-hide {
+.expandHide {
   display:inline-block;
 }
 
-.accordion_title {
-  cursor: pointer;
-  height:12px;
-  line-height:12px;
-}
+.accordionTitle {cursor: pointer;}
 
  input.keyword {
   width: calc(100% - 58px);
@@ -447,31 +402,23 @@ input.latlong {
 }
 
 #spatial input {
-  width: 45px;
+  width: 40px;
 }
 
 select.date_menu {
   width: 54px;
 }
 
-select.date_menu.day {
-  width: 45px;
-}
-
-select.date_menu.hour {
-  width: 58px;
-}
-
-#accordion_container input {
+#accordionContainer input {
   height: 16px;
-  line-height: 15px;
+  line-height: 16px;
   padding: 0px 2px;
   margin: 0px;
   font-family: Arial;
   font-size: 12px; 
 }
 
-#accordion_container select {
+#accordionContainer select {
   height: 16px;
   line-height: 16px;
   padding: 0px;
@@ -480,7 +427,7 @@ select.date_menu.hour {
   font-size: 12px; 
 }
 
-.left_navi_select_container {
+.leftNaviSelectContainer {
   position: relative;
   width: 160px;
   height: 16px;
@@ -490,7 +437,7 @@ select.date_menu.hour {
   margin-bottom: 4px;
 }
 
-.left_navi_narrow_select_container {
+.leftNaviNarrowSelectContainer {
 position: relative;
 height: 16px;
 padding: 0px;
@@ -500,21 +447,21 @@ margin-bottom: 4px;
 display: inline-block;
 }
 
-.left_navi_narrow_select_container {
-  width: 40px;
+.leftNaviNarrowSelectContainer {
+  width: 60px;
   top: 9px;
   height:16px;
 }
 
-.left_navi_narrow_select_arrow {
-  width: 40px;
+.leftNaviNarrowSelectArrow {
+  width: 60px;
 }
 
-.left_navi_select_arrow {
+.leftNaviSelectArrow {
    width: 160px;
 }
 
-.left_navi_select_arrow, .left_navi_narrow_select_arrow {
+.leftNaviSelectArrow, .leftNaviNarrowSelectArrow {
   pointer-events:none;
   position: absolute;
   left: 0px;
@@ -524,24 +471,20 @@ display: inline-block;
   background: url('../img/left_select_arrow.png') no-repeat right;
 }
 
-.left_navi_select_container select {
+.leftNaviSelectContainer select {
   width: 160px;
 }
 
-.left_navi_narrow_select_container select {
-  width: 40px;
+.leftNaviNarrowSelectContainer select {
+  width: 60px;
 }
 
-.left_navi_select_container select, .left_navi_narrow_select_container select {
+.leftNaviSelectContainer select, .leftNaviNarrowSelectContainer select {
   position: absolute;
   left: 0px;
   top: 0px;
   border: 0px;  
   -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  text-indent: 0.01px;
-  text-overflow: '';
   height: 16px !important;
   padding: 0px;
   color: #fff;
@@ -554,83 +497,65 @@ display: inline-block;
   background: -o-linear-gradient(left, #88A9CC, #7890AC);
 }
 
-.top_search_radius {
+.topSearchRadius {
   display: none;
 }
 
-input.no_placeholder_radius {
+input.noPlaceholderRadius {
   display: none;
 }
 
-.miles_kilos_menu {
+.milesKilosMenu {
   display: none;
 }
 
-.spatial_details select option {
-  background-color: #88A9CC;
+select.latLongMenu option {
+  background-color: #384d68;
 }
 
-.spatial_details h5 {
+.spatialDetails h5 {
   line-height: 8px;
   font-size: 12px;
 }
 
-.label_through {
+.labelThrough {
   height: 10px;
   display: block;
 }
 
-.arrow_down {
+.arrowDown { /* not called in another file */
   cursor: pointer;
   width: 0px;
   height: 2px;
   display: inline-block;
   padding: 0px;
-  margin-bottom: -1px;
+  margin-top: -2px;
   margin-right: 4px;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 7px solid #fff;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 5px solid #fff;
 }
 
-.arrow_down.blue {
-  position: absolute;
-  left: 6px;
-  top: 11px;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 7px solid #3e6586;
-}
-
-.arrow_right {
+.arrowRight {
   cursor: pointer;
   width: 0px;
   height: 0px;
   display: inline-block;
   padding: 0px;
+  margin-bottom: 2px;
   margin-left: 2px;
   margin-right: 3px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 7px solid #fff;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-left: 5px solid #fff;
 }
-
-.arrow_right.blue {
-  position: absolute;
-  left: 6px;
-  top: 10px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 7px solid #3e6586;
-}
-
-#search_bar_container {
+#searchBarContainer {
   background-color: #3b5e7e;
   padding-left: 10px;
   border-radius: 3px;
 }
 
-#search_bar_container h5 {
+#searchBarContainer h5 {
   color: #FFF;
   margin: 0px;
   padding: 0px;
@@ -638,47 +563,14 @@ input.no_placeholder_radius {
   font-size:12px;
 }
 
-#mySearchesTabContent {
-  padding-top: 20px;
-}
-
-.list_mysearches {
-  list-style: none;
-}
-
-.list_mysearches a {
-  color: #fff;
-}
-
-/* instrument view */
-
-.instrument_list {
-  list-style: none;
-  margin-left: 0;
-}
-
-.accordion_detail_container {
-  margin-top: -5px;
-}
-
-.vertical_extents {
-  display: inline-block;
-  padding-top: 10px;
-  margin-bottom: 0;
-}
-
-.select_all {
-  margin-bottom: 10px;
-}
-
-.two_nav_tabs {
+.twoNavTabs {
   position: absolute;
   left: 0px;
   bottom: 0px;
   width: 100%;
 }
 
-.two_nav_tab {
+.twoNavTab {
   cursor: pointer;
   display: inline-block;
   padding-left: 12px;
@@ -690,7 +582,7 @@ input.no_placeholder_radius {
   border-top-left-radius: 5px;
 }
 
-.two_nav_tabs .active {
+.twoNavTabs .active {
   background-color: #384d68;
   color: #fff;
 }
@@ -731,19 +623,15 @@ input.no_placeholder_radius {
   background: url('../img/map-button-03-03.png');
 }
 
-#map_bounds {
-  background: transparent;
-}
-
-#accordion_container .jspVerticalBar {
+.jspVerticalBar {
   right: 4px;
 }
 
-#accordion_container .jspTrack {
+.jspTrack {
   background: none;
 }
 
-#accordion_container .jspDrag {
+.jspDrag {
   background: #88A9CC;
 }
 
@@ -773,11 +661,11 @@ input.no_placeholder_radius {
   background: url('../img/tack2.png');
 }
 
-.icon-chevron {
+.icon-chevron { /* bootstrap */
   background-position: -288px -120px;
 }
 
-.collapsed .icon-chevron {
+.collapsed .icon-chevron { /* bootstrap */
   background-position: -313px -119px;
 }
 
@@ -790,14 +678,8 @@ input.no_placeholder_radius {
   border-radius: 5px;
 }
 
-/* regions */
-.map-ul a {
-  color: #fff;
-}
-
 .accordionWhiteLabel {
   padding: 5px 8px;
-  padding-left: 18px;
   border-radius: 5px;
   color:#3e6586;
   font-size:14px;
@@ -830,5 +712,4 @@ input.no_placeholder_radius {
 
 .accordionContents {
   padding: 5px;
-  background: #fff;
 }
