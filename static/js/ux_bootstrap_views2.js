@@ -255,26 +255,15 @@ IONUX2.Views.Spatial = Backbone.View.extend({
 	}
 });
 
-IONUX2.Views.DataTypesList = Backbone.View.extend({
-	el: '#dataTypesList',
-	template: IONUX2.getTemplate('templates/block_data_type_list2.html'),
+IONUX2.Views.OrgSelector = Backbone.View.extend({
+  el: '#orgSelector',
+  template: _.template(IONUX2.getTemplate('templates/partials/block_dashboard_org_list2.html')),
 	initialize: function() {
-		this.model.on('change:data', this.render, this);
+		console.log('initializing org selector view');
+		this.collection.on('change:data', this.render, this);
 	},
-	render: function() {
-		this.$el.html(this.template);
-		this.renderFilterOptions();
+	render: function(){
+		this.$el.html(this.template({resources: this.collection.toJSON()}));
 		return this;
-	},
-	renderFilterOptions: function(options){
-		// Should not be in separate templates? 
-		// Waiting for definitive filter behavior before consolidating.
-		// DATA filter
-		var item_tmpl = '<input type="checkbox" value="<%= type %>"/><span> <%= type %></span><br/>';
-		var dp_elmt = this.$el.find('.spatial_details');
-		_.each(this.model.data, function(option) {
-		  // IONUX.DataProductWhitelist.push(option);
-		  dp_elmt.append(_.template(item_tmpl, {type: option}));
-		});    
-  	}
+	}
 });	

@@ -371,6 +371,11 @@ def collection(resource_type=None):
     else:
         return render_app_template(request.path)
 
+@app.route('/orgs/list/', methods=['GET'])
+def org_list():
+    orgs = ServiceApi.find_by_resource_type('Org')
+    return jsonify(data={'orgs': orgs})
+
 # -----------------------------------------------------------------------------
 # RESOURCE EXTENSION & RELATED SITES API
 # -----------------------------------------------------------------------------

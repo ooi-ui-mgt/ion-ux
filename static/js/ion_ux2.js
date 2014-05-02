@@ -78,7 +78,7 @@ IONUX2 = {
 			url: '/ui/navigation/',
 			success: function(resp) {
 		        // MAPS Sidebar (initially shown)
-		        IONUX2.Dashboard.Observatories = new IONUX2.Collections.Observatories(_.sortBy(resp.data.observatories,function(o){return o.spatial_area_name + (o.local_name ? o.local_name : '') + o.name}))
+		        IONUX2.Dashboard.Observatories = new IONUX2.Collections.Observatories(_.sortBy(resp.data.observatories,function(o){return o.spatial_area_name + (o.local_name ? o.local_name : '') + o.name}));
       		},
       	});
 	    IONUX2.Views.spatial = new IONUX2.Views.Spatial();

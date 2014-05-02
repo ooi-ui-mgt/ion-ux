@@ -1,0 +1,23 @@
+<span class="accordion_title">
+  <div class="expand_hide arrow_right"></div><div class="accordion_label">Facility</div>
+</span>
+
+<div class="spatial_details align_left">
+	<div class="select_all">
+		<input class="checkAll" type="checkbox"/> Select All
+	</div>
+	<div class="list_regions">
+		<form action="">
+			
+            <% _.each(resources, function(resource) { %>
+                <input type="checkbox" value="<%= resource._id %>"/><span> <%= resource.name %></span><br/>
+            <% }) %>
+        </form>
+    </div>
+</div>
+
+<script>
+	$(function() {
+		$('.spatial_details').hide();
+	});
+</script>

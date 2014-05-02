@@ -1,84 +1,103 @@
 <div class="navLeftMinimizeArrow"></div>
 <button class="textRight">Search</button> <button class="textRight">Save this Search</button>
 <div id="accordion_container">
-<article class="left_accordion accordion_fixed" id="keyword">
-  <div class="accordion_label">Keyword</div>
-  <input class="keyword" type="text" placeholder="Keyword" style="display:inline-block;"/>
-</article>
-<article class="left_accordion" id="spatial">
-</article>
-<article class="left_accordion" id="temporal">
-  <span class="accordion_title">
-	 <div class="expand_hide arrow_right"></div><div class="accordion_label">Temporal</div>
-  </span>
-	<div class="spatial_details">
-    <div class="left_navi_select_container">
-      <select>
-        <option>Data Collection</option>
-        <option>Planned Timestamps</option>
-         <option>Deployed Timestamps</option>
-         <option>Activated Timestamps</option>
-      </select>
-      <div class="left_navi_select_arrow"/>
-    </div>
-		<div>From</div>
-		<div class='date-dropdown'>
-			<select class="date_menu year"></select>
-			<select class="date_menu month"></select>
-   		<select class="date_menu day"></select>
-      <select class="date_menu hour"></select>
-    </div>
-		<div>To</div>
-		<div class='date-dropdown'>
-			<select class="date_menu year"></select>
-			<select class="date_menu month"></select>
-   		<select class="date_menu day"></select>
-      <select class="date_menu hour"></select>
-    </div>
-	</div>
-</article>
-<article class="left_accordion" id="region">
-</article>
-<article class="left_accordion" id="facility">
-  <span class="accordion_title">
-    <div class="expand_hide arrow_right"></div><div class="accordion_label">Facility</div>
-  </span>
-  <div class="spatial_details">
-    More information
-  </div>
-</article>
-<article class="left_accordion" id="site">
-</article>
-<article class="left_accordion" id="platform">
-  <span class="accordion_title">
-    <div class="expand_hide arrow_right"></div><div class="accordion_label">Platform</div>
-  </span>
-  <div class="spatial_details">
-    More information
-  </div>
-</article>
-<article class="left_accordion" id="instrument">
-  <span class="accordion_title">
-    <div class="expand_hide arrow_right"></div><div class="accordion_label">Instrument</div>
-  </span>
-  <div class="spatial_details">
-    More information
-  </div>
-</article>
-<article class="left_accordion" id="dataTypesList">
-</article>
-<article class="left_accordion" id="boolean_expression">
-  <span class="accordion_title">
-	 <div class="expand_hide arrow_right"></div><div class="accordion_label">Boolean Expression</div>
-  </span>
-	<div class="spatial_details">
-		More information
-	</div>
-</article>
+    <article class="left_accordion accordion_fixed" id="keyword">
+      <div class="accordion_label">Keyword</div>
+      <input class="keyword" type="text" placeholder="Keyword" style="display:inline-block;"/>
+    </article>
+    <article class="left_accordion" id="spatial">
+    </article>
+    <article class="left_accordion" id="temporal">
+      <span class="accordion_title">
+         <div class="expand_hide arrow_right"></div><div class="accordion_label">Temporal</div>
+      </span>
+        <div class="spatial_details">
+        <div class="left_navi_select_container">
+          <select>
+            <option>Data Collection</option>
+            <option>Planned Timestamps</option>
+             <option>Deployed Timestamps</option>
+             <option>Activated Timestamps</option>
+          </select>
+          <div class="left_navi_select_arrow"/>
+        </div>
+            <div>From</div>
+            <div class='date-dropdown'>
+                <select class="date_menu year"></select>
+                <select class="date_menu month"></select>
+            <select class="date_menu day"></select>
+          <select class="date_menu hour"></select>
+        </div>
+            <div>To</div>
+            <div class='date-dropdown'>
+                <select class="date_menu year"></select>
+                <select class="date_menu month"></select>
+            <select class="date_menu day"></select>
+          <select class="date_menu hour"></select>
+        </div>
+        </div>
+    </article>
+    
+    <article class="left_accordion" id="region"></article>
+    
+    <article class="left_accordion" id="orgSelector">
+      <span class="accordion_title">
+        <div class="expand_hide arrow_right"></div><div class="accordion_label">Facility</div>
+      </span>
+      <div class="spatial_details">
+      </div>
+    </article>
+    
+    <article class="left_accordion" id="site">
+    </article>
+    
+    <article class="left_accordion" id="platform">
+      <span class="accordion_title">
+        <div class="expand_hide arrow_right"></div><div class="accordion_label">Platform</div>
+      </span>
+      <div class="spatial_details">
+        More information
+      </div>
+    </article>
+    
+    <article class="left_accordion" id="instrument">
+      <span class="accordion_title">
+        <div class="expand_hide arrow_right"></div><div class="accordion_label">Instrument</div>
+      </span>
+      <div class="spatial_details">
+        More information
+      </div>
+    </article>
+    
+    <article class="left_accordion" id="dataTypesList">
+    </article>
+    
+    <article class="left_accordion" id="boolean_expression">
+      <span class="accordion_title">
+         <div class="expand_hide arrow_right"></div><div class="accordion_label">Boolean Expression</div>
+      </span>
+        <div class="spatial_details">
+            More information
+        </div>
+    </article>
 
 </div>
+
+<script type="text/template" id="block_data_type_list_tmpl">{% include 'block_data_type_list2.html' %}</script>
     
     <script>
+		IONUX2.Views.DataTypesList = Backbone.View.extend({
+			el: '#dataTypesList',
+			template: _.template($('#block_data_type_list_tmpl').html()),
+			initialize: function() {
+				this.model.on('change:data', this.render, this);
+			},
+			render: function() {
+				this.$el.html(this.template({resources: this.model.data}));
+				return this;
+			}
+		});	
+		
       $(function(){
 
         IONUX2.Views.RegionList = new IONUX2.Views.Region({collection: IONUX2.Dashboard.Observatories });
@@ -86,6 +105,9 @@
 		IONUX2.Models.DataTypeListInstance = new IONUX2.Models.DataTypeList();
 		IONUX2.Views.DataTypesListInstance = new IONUX2.Views.DataTypesList({model: IONUX2.Models.DataTypeListInstance });
 		IONUX2.Models.DataTypeListInstance.fetch();
+		IONUX2.Collections.OrgsInstance = new IONUX2.Collections.Orgs();
+		IONUX2.Views.OrgSelectorInstance = new IONUX2.Views.OrgSelector({collection: IONUX2.Collections.OrgsInstance});
+		IONUX2.Collections.OrgsInstance.fetch();
 
         $('.spatial_details').hide();
         $('#accordion_container').sortable({

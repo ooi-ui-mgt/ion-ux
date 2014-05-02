@@ -168,4 +168,14 @@ IONUX2.Models.DataTypeList = Backbone.Model.extend({
 		return resp;
 	}
 });
+		
+IONUX2.Collections.Orgs = Backbone.Collection.extend({
+  url: '/orgs/list/',
+  parse: function(resp) {
+	  data = _.sortBy(resp.data.orgs,function(o){return o.name});
+	  this.set(data);
+	  this.trigger('change:data');
+	  return data;
+  }
+});
 
