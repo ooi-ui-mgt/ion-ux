@@ -77,7 +77,7 @@ var TABLE_67890 = TABLE_23456;
 <script>
 	$(function(){
         $('#accordionContainerWhite').sortable({
-          items: ".accordionWhite:not(.pinned)"
+        	items: ".accordionWhite:not(.pinned)"
         });
 
         function toggleAccordion(accordion_contents){
@@ -109,24 +109,25 @@ var TABLE_67890 = TABLE_23456;
         		}*/
         		accordion.removeClass('pinned');
         	}
-		    $('#accordionContainerWhite').sortable({
-		      items: ".accordionWhite:not(.pinned)"
-		    });
-
+	        $( "#accordionContainerWhite" ).sortable( "disable" );
+	        $('#accordionContainerWhite').sortable({
+	        	items: ".accordionWhite:not(.pinned)"
+	        });
+	        $( "#accordionContainerWhite" ).sortable( "enable" );
         });
 
 		$('.accordionWhiteLabel').click(function(e){
 			e.preventDefault();
 			var link = $(e.currentTarget);
 			var accordion = link.closest('.accordionWhite');
-			//if( !accordion.hasClass('pinned')){
+			if( !accordion.hasClass('pinned')){
 				// this code would collapse other non-pinned accordions
 				// when you open one, but we don't do that anymore.
 				/* if( accordion.hasClass('collapsed')){
 					toggleAccordion( accordion.siblings('.accordionWhite:not(.pinned)').find('.accordionContents:visible'));
 				} */
 				toggleAccordion( accordion.find('.accordionContents'));
-			//}
+			}
 		});
 
 		new IONUX2.Views.DataTable({data:TEST_TABLE_DATA, el:'#23456', visibility_level:2});
