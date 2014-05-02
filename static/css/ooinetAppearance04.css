@@ -1,0 +1,55 @@
+/*
+ooinetLayout04.css
+by Peter Rosti
+last edited 2014-04-22
+
+*/
+#header {
+}
+
+#mainSubheader {
+}
+
+#main {
+}
+
+#dynamic-container {  /* DONT TOUCH THIS DIV same as main */
+  position:absolute;
+  top:116px;
+  left:218px;
+  padding:0px;
+  margin:0px;
+  height:calc(100% - 116px);
+  width:calc(100% - 218px);
+  z-index:0;
+  overflow:auto; /* Note: for a contained iframe at 100% height and width, must set overflow:hidden
+  otherwise there will be 2 vertical scroll bars (might be a browser bug). */
+  'outline:1px solid #000; /* temp */
+}
+
+#left {
+}
+
+#leftSubheader {
+}
+
+#upperMain {
+}
+
+#lowerMain {
+}
+
+.innerMain {
+}
+
+#upperLeft {
+}
+
+#middleLeft {
+}
+
+#lowerLeft {
+}
+
+.innerLeft {
+}
