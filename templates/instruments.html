@@ -6,15 +6,13 @@
         <input class="checkAllSites" type="checkbox"/> Select All
     </div>-->
     <div class="list_instruments">
+        test instrument
     	<form action="">
     		<ul>
         	<% _.each(this.collection, function(instrument) { %>
-				<%_.each(instrument.data, function(item) { %>
-					<li><%= item.site_resource %></li>
-				<% }); %>
+                <li><%= instrument %></li>
 			<% }); %> 
 			</ul>
 		</form>
 	</div>
 </div>
- 

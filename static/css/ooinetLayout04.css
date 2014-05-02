@@ -650,6 +650,13 @@ input.no_placeholder_radius {
   color: #fff;
 }
 
+/* instrument view */
+
+.instrument_list {
+  list-style: none;
+  margin-left: 0;
+}
+
 .accordion_detail_container {
   margin-top: -5px;
 }
