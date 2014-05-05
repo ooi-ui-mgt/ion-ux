@@ -87,9 +87,21 @@
 		IONUX2.Views.DataTypesList = Backbone.View.extend({
 			el: '#dataTypesList',
 			template: _.template($('#block_data_type_list_tmpl').html()),
+      events: {
+        'click .checkAllTypes': 'select_all_types'
+      },
 			initialize: function() {
 				this.model.on('change:data', this.render, this);
 			},
+      select_all_types: function(e) {
+        var $check = $(e.currentTarget);
+        if ($check.is(':checked')) {
+          $('.listDataTypes').find('input').prop('checked', true);
+        }
+        else {
+          $('.listDataTypes').find('input').prop('checked', false);
+        }
+      },
 			render: function() {
 				this.$el.html(this.template({resources: this.model.data}));
 				return this;

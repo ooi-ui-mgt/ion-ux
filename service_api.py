@@ -1051,6 +1051,10 @@ class ServiceApi(object):
                     ui_theme_dark = variable['value']
         
         session['ui_theme_dark'] = ui_theme_dark
+
+    @staticmethod
+    def get_user_identities():
+        return ServiceApi.find_by_resource_type("UserInfo")
         
     @staticmethod
     def signon_user_testmode(user_name):

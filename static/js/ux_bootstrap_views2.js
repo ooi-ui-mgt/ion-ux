@@ -63,6 +63,7 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
 	},
   saveSearch: function() {
     (function() {
+      // store spatial input values and set to model
       var spatial_dropdown = $('.lat_long_menu option:selected').attr('value'),
         from_latitude = $('#south').val(),
         from_ns = $('.from_ns option:selected').val(),
@@ -98,6 +99,7 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
     })();
 
     (function() {
+      // save temporal input values and set to model
       var temporal_dropdown = $('.temporal_menu option:selected').attr('value'),
         from_year = $('.from_date_menu .year').val(),
         from_month = $('.from_date_menu .month').val(),
@@ -120,6 +122,40 @@ IONUX2.Views.SearchTabContent = Backbone.View.extend({
         'to_hour': to_hour,
       });
     })();
+
+    (function() {
+      // get facility checkbox values
+      var facilities_checked = [];
+      $('.list_facilities input').each(function(data) {
+        var facility_value = $(this).val();
+        var is_checked = $(this).prop('checked');
+        facilities_checked.push({'value' : facility_value, 'is_checked' : is_checked });
+      });
+      console.log(facilities_checked);
+    })();
+
+    (function() {
+      // get region checkbox values
+      var regions_checked = [];
+      $('.list_regions input').each(function(data) {
+        var region_name = $(this).data('spatial');
+        var is_checked = $(this).prop('checked');
+        regions_checked.push({'name' : region_name, 'is_checked' : is_checked });
+      });
+      console.log(regions_checked);
+    })();
+
+    (function() {
+      // get sites checkbox values
+      var sites_checked = [];
+      $('.list_sites input').each(function(data) {
+        var site_id = $(this).data('id');
+        var is_checked = $(this).prop('checked');
+        sites_checked.push({'id' : site_id, 'is_checked' : is_checked });
+      });
+      console.log(sites_checked);
+    })();
+
 
   },
 	render: function() {
@@ -248,7 +284,7 @@ IONUX2.Views.Instruments = Backbone.View.extend({
 
 
 
-IONUX2.Views.Facility = Backbone.View.extend({
+/*IONUX2.Views.Facility = Backbone.View.extend({
   el: '#facility',
   template: _.template(IONUX2.getTemplate('templates/facility.html')),
   events: {
@@ -273,7 +309,7 @@ IONUX2.Views.Facility = Backbone.View.extend({
     return this;
   }
 
-});
+});*/
 
 IONUX2.Views.Region = Backbone.View.extend({
 	el: '#region',
