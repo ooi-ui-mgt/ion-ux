@@ -83,7 +83,7 @@ IONUX2 = {
       	});
 	    IONUX2.Views.spatial = new IONUX2.Views.Spatial();
 
-	    
+	    IONUX2.Models.SessionInstance.set_polling();
 	    
         //new IONUX.Views.OrgSelector({collection: IONUX.Dashboard.Orgs, title: 'Facility'}).render().el;
 
@@ -103,6 +103,10 @@ IONUX2 = {
     	});
     	return data;
 	},
+
+	is_logged_in: function(){
+    	return IONUX2.Models.SessionInstance.get('is_logged_in');
+  	},
 
 	dashboard_map: function(){	    
 	    $('#upperMain').html(get_template('templates/block_map2.html')).show();
