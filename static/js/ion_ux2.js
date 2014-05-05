@@ -104,10 +104,6 @@ IONUX2 = {
     	return data;
 	},
 
-	is_logged_in: function(){
-    	return IONUX2.Models.SessionInstance.get('is_logged_in');
-  	},
-
 	dashboard_map: function(){	    
 	    $('#upperMain').html(get_template('templates/block_map2.html')).show();
 	    if (!IONUX2.Dashboard.MapResources || !IONUX2.Dashboard.MapResource) {
