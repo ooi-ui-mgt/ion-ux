@@ -120,6 +120,7 @@ IONUX2.Models.Login = Backbone.Model.extend({
 	setSession: function(){
 		console.log('setting data from session.');
 		this.data = this.sessionModel.toJSON();
+    console.log(this.data);
 		this.trigger('change:session');
 	},
 	fetch: function(options){

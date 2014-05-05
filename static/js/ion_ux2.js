@@ -83,6 +83,10 @@ IONUX2 = {
       	});
 	    IONUX2.Views.spatial = new IONUX2.Views.Spatial();
 
+	    IONUX2.Models.SessionInstance.fetch({
+      		async: false
+    	});
+
 	    IONUX2.Models.SessionInstance.set_polling();
 	    
         //new IONUX.Views.OrgSelector({collection: IONUX.Dashboard.Orgs, title: 'Facility'}).render().el;

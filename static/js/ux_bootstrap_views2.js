@@ -24,20 +24,14 @@ IONUX2.Views.Login = Backbone.View.extend({
 		'click #signup': 'create_account'
 	},
 	initialize: function(){
+    console.log('initializing login view');
+    console.log(this.model);
 		this.model.on('change:html', this.setTemplate, this);
-    //this.model.on('change:session', this.checkLogin, this);
 		this.model.on('change:session', this.render, this);
 	},
-  /*checkLogin: function() {
-    var logged_in = IONUX2.Models.SessionInstance.get_logged_in();
-    if (logged_in) {
-      console.log('user is logged in');
-    }
-  }*/
 	setTemplate: function(){
 		console.log('setting login template');
 		this.template = _.template(this.model.html);
-    //this.template = _.template(IONUX2.getTemplate('templates/partials/login2.html'));
 		return this;
 	},
 	render: function(){
