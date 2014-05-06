@@ -190,7 +190,7 @@ class LayoutApi(object):
                     if group_position == 'V00':
                         block_container_elmt = block_elmt
                         left_elmt = _make_element(block_container_elmt, 'div', css='span6 heading-left')
-                        right_elmt = _make_element(block_container_elmt, 'div', css='span6 heading-right')
+                        right_elmt = _make_element(block_container_elmt, 'div', css='span6 heading-right', style="display:none;")
                     else:
                         block_container_elmt = _make_element(block_elmt, 'div')
                     

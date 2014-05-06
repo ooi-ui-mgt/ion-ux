@@ -1,5 +1,5 @@
 IONUX2.Views.Map = Backbone.View.extend({
-  el: '#map_canvas',
+  el: '#map_canvas2',
 
   // From worst to best ('na' considered the catch-all).
   icons_rank: [
@@ -128,7 +128,7 @@ IONUX2.Views.Map = Backbone.View.extend({
     this.sprite_url = '/static/img/pepper_sprite.png';
     this.active_marker = null; // Track clicked icon
     this.sites_status_loaded = false;
-    this.map_bounds_elmt = $('#map_bounds');
+    this.map_bounds_elmt = $('#map_bounds2');
     this.data_types();
     this.model.on('pan:map', this.pan_map);
     this.model.on('set:active', this.set_active_marker);
@@ -141,7 +141,7 @@ IONUX2.Views.Map = Backbone.View.extend({
     // This is a hack until something can be done more elegantly in the CSS!
     if (!window.resize) {
       window.resize = $(window).resize(function() {
-        $('#map_canvas').height($('#map_canvas').parent().height() - 20); // Leave enough room for the banner.
+        $('#map_canvas2').height($('#map_canvas2').parent().height() - 20); // Leave enough room for the banner.
       });
     }
 
@@ -241,7 +241,7 @@ IONUX2.Views.Map = Backbone.View.extend({
 
   get_sites_status: function() {
     var resource_ids = this.collection.pluck('_id');
-    $('#map_canvas').append('<div id="loading-status" style="">Loading Status...</div>')
+    $('#map_canvas2').append('<div id="loading-status2" style="">Loading Status...</div>')
     
     var self = this;
     $.ajax({
@@ -339,9 +339,9 @@ IONUX2.Views.Map = Backbone.View.extend({
   
   draw_map: function(map_options, container_server) {
     console.log('draw_map');
-    $('#map_canvas').empty().show();
+    $('#map_canvas2').empty().show();
 
-    this.map = new google.maps.Map(document.getElementById('map_canvas'), {
+    this.map = new google.maps.Map(document.getElementById('map_canvas2'), {
       center: new google.maps.LatLng(39.8106460, -98.5569760),
       zoom: 3,
       mapTypeId: google.maps.MapTypeId.SATELLITE,
@@ -441,13 +441,13 @@ IONUX2.Views.Map = Backbone.View.extend({
       if (mode == "rectangle"){
         self.clear_inputs();
         if(!self.from_click){
-          $(".lat_long_menu").val("1").change();
+          $(".latLongMenu").val("1").change();
         }
          self.from_click = false;
       } else if (mode == "circle"){
         self.clear_inputs();
         if(!self.from_click){
-          $(".lat_long_menu").val("2").change();
+          $(".latLongMenu").val("2").change();
         }
         self.from_click = false;
       }
@@ -465,7 +465,7 @@ IONUX2.Views.Map = Backbone.View.extend({
     });
 
     //Moved here for toggle between drop-down and drawing selector on Map
-    $('.lat_long_menu').on('change', function(e) {
+    $('.latLongMenu').on('change', function(e) {
       console.log('changed option ' + $(this).find('option:selected').attr('value'));
       self.clear_inputs();
       if ($(this).find('option:selected').attr('value') == "2") {
@@ -484,7 +484,7 @@ IONUX2.Views.Map = Backbone.View.extend({
     //Input to drawing manager mapping
     $('#west, #east, #north, #south, #radius').on('change', function(){
       
-      if($(".lat_long_menu").val() == "1"){
+      if($(".latLongMenu").val() == "1"){
        
         var bounds = new google.maps.LatLngBounds(
           new google.maps.LatLng($('#south').val(), $('#west').val()),
@@ -505,7 +505,7 @@ IONUX2.Views.Map = Backbone.View.extend({
         self.rectangle.setBounds(bounds);
         self.drawingManager.setDrawingMode(null);
 
-      } else if($(".lat_long_menu").val() == "2"){
+      } else if($(".latLongMenu").val() == "2"){
      
         var point = new google.maps.LatLng($('#south').val(), $('#west').val());
         var radius = parseInt($("#radius").val())*1000;

@@ -1,11 +1,11 @@
-<div id="two_nav_tabs" class="two_nav_tabs">
-	<div class="two_nav_tab active" href="#searchTabContent">Search</div>
-	<div class="two_nav_tab" href="#mySearchesTabContent">My Searches</div>
+<div id="twoNavTabs" class="twoNavTabs">
+	<div class="twoNavTab active" href="#searchTabContent">Search</div>
+	<div class="twoNavTab" href="#mySearchesTabContent">My Searches</div>
 </div>
 
 <script>
 	$(function () {
-		$(".two_nav_tab").click(function(e){
+		$(".twoNavTab").click(function(e){
 			var target = $(e.target);
 			target.addClass('active').siblings().removeClass('active');
 			tab_content = target.attr("href");

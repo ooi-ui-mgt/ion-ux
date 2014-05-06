@@ -1,80 +1,80 @@
 <div class="navLeftMinimizeArrow"></div>
 <button class="textRight">Search</button> <button class="textRight">Save this Search</button>
-<div id="accordion_container">
-<article class="left_accordion accordion_fixed" id="keyword">
-  <div class="accordion_label">Keyword</div>
+<div id="accordionContainer">
+<article class="leftAccordion accordion_fixed" id="keyword">
+  <div class="accordionLabel">Keyword</div>
   <input class="keyword" type="text" placeholder="Keyword" style="display:inline-block;"/>
 </article>
-<article class="left_accordion" id="spatial">
+<article class="leftAccordion" id="spatial">
 </article>
-<article class="left_accordion" id="temporal">
-  <span class="accordion_title">
-	 <div class="expand_hide arrow_right"></div><div class="accordion_label">Temporal</div>
+<article class="leftAccordion" id="temporal">
+  <span class="accordionTitle">
+	 <div class="expandHide arrowRight"></div><div class="accordionLabel">Temporal</div>
   </span>
-	<div class="spatial_details">
-    <div class="left_navi_select_container">
+	<div class="spatialDetails">
+    <div class="leftNaviSelectContainer">
       <select class="temporal_menu">
         <option value="1">Data Collection</option>
         <option value="2">Planned Timestamps</option>
          <option value="3">Deployed Timestamps</option>
          <option value="4">Activated Timestamps</option>
       </select>
-      <div class="left_navi_select_arrow"/>
+      <div class="leftNaviSelectArrow"/>
     </div>
 		<div>From</div>
 		<div class='date-dropdown from_date_menu'>
-			<select class="date_menu year"></select>
-			<select class="date_menu month"></select>
-   		<select class="date_menu day"></select>
-      <select class="date_menu hour"></select>
+			<select class="dateMenu year"></select>
+			<select class="dateMenu month"></select>
+   		<select class="dateMenu day"></select>
+      <select class="dateMenu hour"></select>
     </div>
 		<div>To</div>
 		<div class='date-dropdown to_date_menu'>
-			<select class="date_menu year"></select>
-			<select class="date_menu month"></select>
-   		<select class="date_menu day"></select>
-      <select class="date_menu hour"></select>
+			<select class="dateMenu year"></select>
+			<select class="dateMenu month"></select>
+   		<select class="dateMenu day"></select>
+      <select class="dateMenu hour"></select>
     </div>
 	</div>
 </article>
-    <article class="left_accordion" id="orgSelector">
-      <span class="accordion_title">
-        <div class="expand_hide arrow_right"></div><div class="accordion_label">Facility</div>
+    <article class="leftAccordion" id="orgSelector">
+      <span class="accordionTitle">
+        <div class="expandHide arrowRight"></div><div class="accordionLabel">Facility</div>
       </span>
-      <div class="spatial_details">
+  <div class="spatialDetails">
       </div>
     </article>
     
-<article class="left_accordion" id="region">
+<article class="leftAccordion" id="region">
 </article>
-<article class="left_accordion" id="site">
+<article class="leftAccordion" id="site">
 </article>
-<article class="left_accordion" id="platform">
-  <span class="accordion_title">
-    <div class="expand_hide arrow_right"></div><div class="accordion_label">Platform</div>
+<article class="leftAccordion" id="platform">
+  <span class="accordionTitle">
+    <div class="expandHide arrowRight"></div><div class="accordionLabel">Platform</div>
   </span>
-  <div class="spatial_details">
+  <div class="spatialDetails">
     More information
   </div>
 </article>
-<article class="left_accordion" id="instrument">
-  <span class="accordion_title">
-    <div class="expand_hide arrow_right"></div><div class="accordion_label">Instrument</div>
+<article class="leftAccordion" id="instrument">
+  <span class="accordionTitle">
+    <div class="expandHide arrowRight"></div><div class="accordionLabel">Instrument</div>
   </span>
-  <div class="spatial_details">
+  <div class="spatialDetails">
     <ul class="instrument_list">
     </ul>
   </div>
 </article>
 
-    <article class="left_accordion" id="dataTypesList">
+    <article class="leftAccordion" id="dataTypesList">
     </article>
     
-<article class="left_accordion" id="boolean_expression">
-  <span class="accordion_title">
-	 <div class="expand_hide arrow_right"></div><div class="accordion_label">Boolean Expression</div>
+<article class="leftAccordion" id="boolean_expression">
+  <span class="accordionTitle">
+	 <div class="expandHide arrowRight"></div><div class="accordionLabel">Boolean Expression</div>
   </span>
-	<div class="spatial_details">
+	<div class="spatialDetails">
 		More information
 	</div>
 </article>
@@ -107,11 +107,11 @@
 		IONUX2.Views.OrgSelectorInstance = new IONUX2.Views.OrgSelector({collection: IONUX2.Collections.OrgsInstance});
 		IONUX2.Collections.OrgsInstance.fetch();
 
-        $('.spatial_details').hide();
-        $('#accordion_container').sortable({
+        $('.spatialDetails').hide();
+        $('#accordionContainer').sortable({
           items: "article:not(.accordion_fixed)"
         });
-        $('#accordion_container').jScrollPane({autoReinitialise: true});
+        $('#accordionContainer').jScrollPane({autoReinitialise: true});
         /** Init **/
         initDatePicker();
         initDateDropDown();

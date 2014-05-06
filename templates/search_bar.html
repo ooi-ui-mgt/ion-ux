@@ -1,66 +1,66 @@
-<section id="search_bar_container">
+<section id="searchBarContainer">
   <h5>Spatial</h5>
   <div class="top_navi_select_container">
-      <select class="lat_long_menu">
+      <select class="latLongMenu">
         <option>Lat/Long - Rect</option>
         <option>Point/Rad</option>
       </select>
       <div class="top_navi_select_arrow"></div>
     </div>
-  <div class="accordion_label">From:</div>
+  <div class="accordionLabel">From:</div>
    <input class="latlong" type="text" placeholder="Lat" />
   <div class="top_navi_narrow_select_container">
       <select>
         <option>N/S</option>
       </select>
-      <div class="left_navi_narrow_select_arrow"></div>
+      <div class="leftNaviNarrowSelectArrow"></div>
     </div>
     <input class="latlong" type="text" placeholder="Long" />
     <div class="top_navi_narrow_select_container">
       <select>
         <option>E/W</option>
       </select>
-      <div class="left_navi_narrow_select_arrow"></div>
+      <div class="leftNaviNarrowSelectArrow"></div>
     </div>
-    <div class="accordion_label top_search_to">To:</div>
-    <span class="accordion_label top_search_radius">Radius:</span>
+    <div class="accordionLabel top_search_to">To:</div>
+    <span class="accordionLabel topSearchRadius">Radius:</span>
      <input class="latlong placeholder_lat" type="text" placeholder="Lat" />
-     <input class="latlong no_placeholder_radius" type="text" />
+     <input class="latlong noPlaceholderRadius" type="text" />
     <div class="top_navi_narrow_select_container">
       <select class="north_south_menu">
         <option>N/S</option>
       </select>
-      <select class="miles_kilos_menu">
+      <select class="milesKilosMenu">
         <option>Mi/Km</option>
       </select>
-      <div class="left_navi_narrow_select_arrow"></div>
+      <div class="leftNaviNarrowSelectArrow"></div>
     </div>
       <input class="latlong show_hide_longitude" type="text" placeholder="Long" />
      <div class="top_navi_narrow_select_container show_hide_longitude">
       <select>
         <option>E/W</option>
       </select>
-      <div class="left_navi_narrow_select_arrow"></div>
+      <div class="leftNaviNarrowSelectArrow"></div>
     </div>
 </section>
-<section id="search_bar_container">
+<section id="searchBarContainer">
   <h5>Vertical Position</h5>
-  <div class="accordion_label">From:</div>
+  <div class="accordionLabel">From:</div>
   <input class="latlong" type="text" />
-  <div class="accordion_label">To (Depth):</div>
+  <div class="accordionLabel">To (Depth):</div>
   <input class="latlong" type="text" />
   <div class="top_navi_narrow_select_container">
       <select>
         <option>FS/M</option>
       </select>
-      <div class="left_navi_narrow_select_arrow"></div>
+      <div class="leftNaviNarrowSelectArrow"></div>
     </div>
 </section>
-<!-- <script>
+ <script>
       $(function(){
-        $('.lat_long_menu').on('change', function(e) {
+        $('.latLongMenu').on('change', function(e) {
           $('.top_search_to, .placeholder_lat, .north_south_menu, .show_hide_longitude').hide();
-          $('.top_search_radius, .no_placeholder_radius, .miles_kilos_menu').show();
+          $('.topSearchRadius, .noPlaceholderRadius, .milesKilosMenu').show();
         });
       });
-</script>-->
+</script>
