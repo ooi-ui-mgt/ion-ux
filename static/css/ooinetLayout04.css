@@ -368,7 +368,7 @@ ul.dropdown-menu li:hover {
   margin-left:0;
 }
 
-.list_regions, .list_sites, .list_facilities {
+.list_regions, .list_sites, .list_facilities, .listDataTypes {
   margin-left: 13px;
 }
 

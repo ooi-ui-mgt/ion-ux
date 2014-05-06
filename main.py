@@ -680,6 +680,11 @@ def login(redir):
     else:
         return "This page should redirect to a secure login page"
 
+@app.route('/allUsers/', methods=['GET'])
+def get_all_users():
+    users = ServiceApi.get_user_identities()
+    return jsonify(data=users)
+
 @app.route('/userprofile/', methods=['GET', 'POST', 'PUT'])
 def userprofile():
     if not session.has_key('user_id'):

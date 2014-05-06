@@ -120,6 +120,7 @@ IONUX2.Models.Login = Backbone.Model.extend({
 	setSession: function(){
 		console.log('setting data from session.');
 		this.data = this.sessionModel.toJSON();
+    console.log(this.data);
 		this.trigger('change:session');
 	},
 	fetch: function(options){
@@ -204,14 +205,6 @@ IONUX2.Models.Instruments = Backbone.Model.extend({
   defaults: {
     name: 'glider'
   }
-  /*initialize: function() {
-    this.bind("reset", this.updateView);
-  },
-  updateView: function() {
-    console.log('removing models');
-    view.remove();
-    view.render();
-  }*/
 });
 IONUX2.Models.instruments = new IONUX2.Models.Instruments();
 
@@ -251,6 +244,9 @@ IONUX2.Models.SaveTemporalSearch = Backbone.Model.extend({
 });
 
 IONUX2.Models.saveTemporalSearch = new IONUX2.Models.SaveTemporalSearch();
+
+IONUX2.Models.Facilities = Backbone.Model.extend({});
+IONUX2.Models.facilities = new IONUX2.Models.Facilities();
 
 IONUX2.siteData = [];
 IONUX2.siteDataObj = {};
