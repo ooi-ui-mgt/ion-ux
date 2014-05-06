@@ -1,5 +1,5 @@
 IONUX2.Views.Map = Backbone.View.extend({
-  el: '#mapCanvas2',
+  el: '#map_canvas',
 
   // From worst to best ('na' considered the catch-all).
   icons_rank: [
@@ -128,7 +128,7 @@ IONUX2.Views.Map = Backbone.View.extend({
     this.sprite_url = '/static/img/pepper_sprite.png';
     this.active_marker = null; // Track clicked icon
     this.sites_status_loaded = false;
-    this.map_bounds_elmt = $('#mapBounds2');
+    this.map_bounds_elmt = $('#map_bounds');
     this.data_types();
     this.model.on('pan:map', this.pan_map);
     this.model.on('set:active', this.set_active_marker);
@@ -141,7 +141,7 @@ IONUX2.Views.Map = Backbone.View.extend({
     // This is a hack until something can be done more elegantly in the CSS!
     if (!window.resize) {
       window.resize = $(window).resize(function() {
-        $('#mapCanvas2').height($('#mapCanvas2').parent().height() - 20); // Leave enough room for the banner.
+        $('#map_canvas').height($('#map_canvas').parent().height() - 20); // Leave enough room for the banner.
       });
     }
 
@@ -241,7 +241,7 @@ IONUX2.Views.Map = Backbone.View.extend({
 
   get_sites_status: function() {
     var resource_ids = this.collection.pluck('_id');
-    $('#mapCanvas2').append('<div id="loadingStatus2" style="">Loading Status...</div>')
+    $('#map_canvas').append('<div id="loading-status" style="">Loading Status...</div>')
     
     var self = this;
     $.ajax({
@@ -322,26 +322,180 @@ IONUX2.Views.Map = Backbone.View.extend({
 
   update_latlon: function (ne, sw){
 
-    $("#south").val(sw.lat().toFixed(2));
-    $("#west").val(sw.lng().toFixed(2));
-    $("#north").val(ne.lat().toFixed(2));
-    $("#east").val(ne.lng().toFixed(2));
+    var n = ne.lat();
+    var e = ne.lng();
+    var s = sw.lat();
+    var w = sw.lng();
+
+    if(n >= 0){
+      $("#ne_ns").val("1");
+    } else {
+      $("#ne_ns").val("2");
+      n = n * -1;
+    }
+
+    if(e >= 0){
+      $("#ne_ew").val("1");
+    } else {
+      $("#ne_ew").val("2");
+      e = e * -1;
+    }
+
+    if(s >= 0){
+      $("#sw_ns").val("1");
+    } else {
+      $("#sw_ns").val("2");
+      s = s * -1;
+    }
+
+    if(w >= 0){
+      $("#sw_ew").val("1");
+    } else {
+      $("#sw_ew").val("2");
+      w = w * -1;
+    }
+
+    $("#south").val(s.toFixed(2));
+    $("#west").val(w.toFixed(2));
+    $("#north").val(n.toFixed(2));
+    $("#east").val(e.toFixed(2));
+
+    //TODO: Assign actual values to input fields for form submission
+    //$("#hidden_field").val(ne.lat())
 
   },
 
   update_pointradius: function (radius, sw){
+    var s = sw.lat();
+    var w = sw.lng();
 
-    $("#south").val(sw.lat().toFixed(2));
-    $("#west").val(sw.lng().toFixed(2));
+    if(s >= 0){
+      $("#sw_ns").val("1");
+    } else {
+      $("#sw_ns").val("2");
+      s = s * -1;
+    }
+
+    if(w >= 0){
+      $("#sw_ew").val("1");
+    } else {
+      $("#sw_ew").val("2");
+      w = w * -1;
+    }
+
+    $("#south").val(s.toFixed(2));
+    $("#west").val(w.toFixed(2));
     $("#radius").val((radius/1000).toFixed(2));
+
+    //TODO: Assign actual values to input fields for form submission
+    //$("#hidden_field_lat").val(sw.lat())
+    //$("#hidden_field_lng").val(sw.lng())
+    //$("#hidden_field_radius").val(radius)
+
+  },
+
+  create_rectangle: function(n, s, e, w){
+
+    var bounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(s, w),
+      new google.maps.LatLng(n, e)
+    );
+
+    var self = this;
+    if (!self.rectangle) {
+      // make a rectangle if a user hasn't drawn one
+      self.rectangle = new google.maps.Rectangle();
+      self.rectangle.setOptions(self.overlay_options);
+      // create a listener on the rectangle to catch modifications / dragging
+      google.maps.event.addListener(self.rectangle, 'bounds_changed', function(e) {
+        self.update_latlon(self.rectangle.getBounds().getNorthEast(), self.rectangle.getBounds().getSouthWest());
+      });
+      self.rectangle.setMap(self.map);
+    }
+
+    self.rectangle.setBounds(bounds);
+    self.drawingManager.setDrawingMode(null);
+  },
+
+  create_circle: function(lat, lng, radius){
+    var point = new google.maps.LatLng(lat, lng);
+    var radius = 0.00;
+    
+    if($("#radius").val() != null && $("#radius").val().length > 0){
+     radius = parseInt($("#radius").val())*1000;
+    }
+
+    var self = this;
+    if (!self.circle) {
+      // make a rectangle if a user hasn't drawn one
+      self.circle = new google.maps.Circle();
+      self.circle.setOptions(self.overlay_options);
+      // create a listener on the rectangle to catch modifications / dragging
+      google.maps.event.addListener(self.circle, 'radius_changed', function() {
+        self.update_pointradius(self.circle.getRadius(), self.circle.getCenter());
+      });
+      google.maps.event.addListener(self.circle, 'center_changed', function() {
+        self.update_pointradius(self.circle.getRadius(), self.circle.getCenter());
+      });
+
+      self.circle.setMap(self.map);
+    }
+
+    self.circle.setCenter(point);
+    self.circle.setRadius(radius);
+    self.drawingManager.setDrawingMode(null);
+
+  },
+
+  update_inputs: function(){
+
+    var self = this;
+
+    if($(".lat_long_menu").val() == "1"){
+
+        var n = $('#north').val();
+        var s = $('#south').val();
+        var e = $('#east').val();
+        var w = $('#west').val();
+
+        if($("#sw_ew").val() == "2"){
+          w =  w * -1;
+        }
+        if($("#ne_ew").val() == "2"){
+          e =  e * -1;
+        }
+        if($("#ne_ns").val() == "2"){
+          n =  n * -1;
+        }
+        if($("#sw_ns").val() == "2"){
+          s =  s * -1;
+        }
+
+        self.create_rectangle(n, s, e, w);
+
+      } else if($(".lat_long_menu").val() == "2"){
+
+        var s = $('#south').val();
+        var w = $('#west').val();
+
+        if($("#sw_ns").val() == "2"){
+          s =  s * -1;
+        }
+        if($("#sw_ew").val() == "2"){
+          w =  w * -1;
+        }
+        
+        self.create_circle(s, w);
+
+      }
 
   },
   
   draw_map: function(map_options, container_server) {
     console.log('draw_map');
-    $('#mapCanvas2').empty().show();
+    $('#map_canvas').empty().show();
 
-    this.map = new google.maps.Map(document.getElementById('mapCanvas2'), {
+    this.map = new google.maps.Map(document.getElementById('map_canvas'), {
       center: new google.maps.LatLng(39.8106460, -98.5569760),
       zoom: 3,
       mapTypeId: google.maps.MapTypeId.SATELLITE,
@@ -441,13 +595,13 @@ IONUX2.Views.Map = Backbone.View.extend({
       if (mode == "rectangle"){
         self.clear_inputs();
         if(!self.from_click){
-          $(".latLongMenu").val("1").change();
+          $(".lat_long_menu").val("1").change();
         }
          self.from_click = false;
       } else if (mode == "circle"){
         self.clear_inputs();
         if(!self.from_click){
-          $(".latLongMenu").val("2").change();
+          $(".lat_long_menu").val("2").change();
         }
         self.from_click = false;
       }
@@ -465,7 +619,7 @@ IONUX2.Views.Map = Backbone.View.extend({
     });
 
     //Moved here for toggle between drop-down and drawing selector on Map
-    $('.latLongMenu').on('change', function(e) {
+    $('.lat_long_menu').on('change', function(e) {
       console.log('changed option ' + $(this).find('option:selected').attr('value'));
       self.clear_inputs();
       if ($(this).find('option:selected').attr('value') == "2") {
@@ -481,55 +635,10 @@ IONUX2.Views.Map = Backbone.View.extend({
       }
     });
 
+
     //Input to drawing manager mapping
-    $('#west, #east, #north, #south, #radius').on('change', function(){
-      
-      if($(".latLongMenu").val() == "1"){
-       
-        var bounds = new google.maps.LatLngBounds(
-          new google.maps.LatLng($('#south').val(), $('#west').val()),
-          new google.maps.LatLng($('#north').val(), $('#east').val())
-        );
-
-        if (!self.rectangle) {
-          // make a rectangle if a user hasn't drawn one
-          self.rectangle = new google.maps.Rectangle();
-          self.rectangle.setOptions(self.overlay_options);
-          // create a listener on the rectangle to catch modifications / dragging
-          google.maps.event.addListener(self.rectangle, 'bounds_changed', function(e) {
-            self.update_latlon(self.rectangle.getBounds().getNorthEast(), self.rectangle.getBounds().getSouthWest());
-          });
-          self.rectangle.setMap(self.map);
-        }
-
-        self.rectangle.setBounds(bounds);
-        self.drawingManager.setDrawingMode(null);
-
-      } else if($(".latLongMenu").val() == "2"){
-     
-        var point = new google.maps.LatLng($('#south').val(), $('#west').val());
-        var radius = parseInt($("#radius").val())*1000;
-
-        if (!self.circle) {
-          // make a rectangle if a user hasn't drawn one
-          self.circle = new google.maps.Circle();
-          self.circle.setOptions(self.overlay_options);
-          // create a listener on the rectangle to catch modifications / dragging
-          google.maps.event.addListener(self.circle, 'radius_changed', function() {
-            self.update_pointradius(self.circle.getRadius(), self.circle.getCenter());
-          });
-          google.maps.event.addListener(self.circle, 'center_changed', function() {
-            self.update_pointradius(self.circle.getRadius(), self.circle.getCenter());
-          });
-
-          self.circle.setMap(self.map);
-        }
-
-        self.circle.setCenter(point);
-        self.circle.setRadius(radius);
-        self.drawingManager.setDrawingMode(null);
-
-      }
+    $('#west, #east, #north, #south, #radius, #ne_ns, #ne_ew, #sw_ns, #sw_ew').on('change', function(){
+      self.update_inputs();
     });
 
     var self = this;
