@@ -1,81 +1,81 @@
-<span class="accordionTitle" id="spatial_title">
-   <div class="expandHide arrowRight"></div>
-   <div class="accordionLabel">Spatial</div>
+<span class="accordion_title" id="spatial_title">
+   <div class="expand_hide arrow_right"></div>
+   <div class="accordion_label">Spatial</div>
 </span>
-<section class="spatialDetails" style="display:none;">
-  <div class="leftNaviSelectContainer">
-    <select class="latLongMenu">
+<section class="spatial_details">
+  <div class="left_navi_select_container">
+    <select class="lat_long_menu">
       <option value="1">Lat/Long - Rect</option>
       <option value="2">Point/Radius</option>
     </select>
-    <div class="leftNaviSelectArrow"></div>
+    <div class="left_navi_select_arrow"></div>
   </div>
-  <span class="labelThrough">From:</span>
-  <input class="spatialDuration latlong" type="text" placeholder="Lat" id="south"/>
-  <div class="leftNaviNarrowSelectContainer">
-    <select class="from_ns">
+  <span class="label_through">From:</span>
+  <input class="spatial_duration latlong" type="text" placeholder="Lat" id="south"/>
+  <div class="left_navi_narrow_select_container">
+    <select class="from_ns" id="sw_ns">
       <option value="1">N</option>
       <option value="2">S</option>
     </select>
-    <div class="leftNaviNarrowSelectArrow"></div>
+    <div class="left_navi_narrow_select_arrow"></div>
   </div>
-  <input class="spatialDuration latlong" type="text" placeholder="Long" id="west"/>
-  <div class="leftNaviNarrowSelectContainer">
-    <select class="from_ew">
+  <input class="spatial_duration latlong" type="text" placeholder="Long" id="west"/>
+  <div class="left_navi_narrow_select_container">
+    <select class="from_ew" id="sw_ew">
       <option value="1">E</option>
       <option value="2">W</option>
     </select>
-    <div class="leftNaviNarrowSelectArrow"></div>
+    <div class="left_navi_narrow_select_arrow"></div>
   </div>
-  <span class="labelThrough top_search_to">To:</span>
-  <span class="accordionLabel topSearchRadius">Radius:</span>
-  <input class="spatialDuration latlong placeholder_lat" type="text" placeholder="Lat" id="north"/>
-  <input class="spatialDuration latlong no_placeholder_radius" type="text" id="radius"/>
-  <div class="leftNaviNarrowSelectContainer">
-    <select class="north_south_menu">
+  <span class="label_through top_search_to">To:</span>
+  <span class="accordion_label top_search_radius">Radius:</span>
+  <input class="spatial_duration latlong placeholder_lat" type="text" placeholder="Lat" id="north"/>
+  <input class="spatial_duration latlong no_placeholder_radius" type="text" id="radius"/>
+  <div class="left_navi_narrow_select_container">
+    <select class="north_south_menu" id="ne_ns">
         <option value="1">N</option>
         <option value="2">S</option>
       </select>
-    <select class="milesKilosMenu">
+    <select class="miles_kilos_menu">
       <option value="1">Km</option>
       <option value="2">Mi</option>
     </select>
-    <div class="leftNaviNarrowSelectArrow"></div>
+    <div class="left_navi_narrow_select_arrow"></div>
   </div>
   <input class="spatial_duration latlong show_hide_longitude" type="text" placeholder="Long" id="east"/>
-  <div class="leftNaviNarrowSelectContainer show_hide_longitude">
-    <select class="to_ew">
+  <div class="left_navi_narrow_select_container show_hide_longitude">
+    <select class="to_ew" id="ne_ew">
       <option value="1">E</option>
       <option value="2">W</option>
     </select>
-    <div class="leftNaviNarrowSelectArrow"></div>
+    <div class="left_navi_narrow_select_arrow"></div>
   </div>
   <span class="vertical_extents">Vertical Extents (positive downward)</span>
   <div class="accordion_detail_container">
-  <div class="accordionLabel">From:</div>
+    <div class="accordion_label">From:</div>
     <input class="spatial_duration latlong" type="text" placeholder="0" data-verticalfrom="from" />
-  <div class="accordionLabel">To:</div>
+    <div class="accordion_label">To:</div>
     <input class="spatial_duration latlong" type="text" placeholder="Depth" data-verticalto="to" />
-  <div class="leftNaviNarrowSelectContainer">
+    <div class="left_navi_narrow_select_container">
       <select class="feet_miles">
         <option value="1">m</option>
         <option value="2">ft</option>
       </select>
-      <div class="leftNaviNarrowSelectArrow"></div>
+      <div class="left_navi_narrow_select_arrow"></div>
     </div>
   </div>
 </section>
 <script>
 $(function(){
-        $('.latLongMenu').on('change', function(e) {
+  $('.lat_long_menu').on('change', function(e) {
     $('.top_search_to, .placeholder_lat, .north_south_menu, .show_hide_longitude').hide();
-    $('.topSearchRadius, .noPlaceholderRadius, .milesKilosMenu').show();
+    $('.top_search_radius, .no_placeholder_radius, .miles_kilos_menu').show();
     if ($(this).find('option:selected').attr('value') == "2") {
       $('.top_search_to, .placeholder_lat, .north_south_menu, .show_hide_longitude').hide();
-            $('.topSearchRadius, .noPlaceholderRadius, .milesKilosMenu').show();
+      $('.top_search_radius, .no_placeholder_radius, .miles_kilos_menu').show();
     }
     else {
-            $('.topSearchRadius, .noPlaceholderRadius, .milesKilosMenu').hide();
+      $('.top_search_radius, .no_placeholder_radius, .miles_kilos_menu').hide();
       $('.top_search_to, .placeholder_lat, .north_south_menu, .show_hide_longitude').show();
     }
   });
