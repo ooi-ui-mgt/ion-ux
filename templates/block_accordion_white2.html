@@ -1,7 +1,7 @@
 <div id="accordionContainerWhite">
 	<article class="accordionWhite collapsed" id="accordionAssets">
 		<div class="accordionWhiteLabel">Assets
-			<div class="expand_hide arrow_right blue"></div>
+			<div class="expandHide arrowRight blue"></div>
 		</div>
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents" style="display:none;">
@@ -10,7 +10,7 @@
 	</article>
 	<article class="accordionWhite collapsed" id="accordionData">
 		<div class="accordionWhiteLabel">Data
-			<div class="expand_hide arrow_right blue"></div>
+			<div class="expandHide arrowRight blue"></div>
 		</div>
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents" style="display:none;">
@@ -19,7 +19,7 @@
 	</article>
 	<article class="accordionWhite collapsed" id="accordionPlatform">
 		<div class="accordionWhiteLabel">Platform
-			<div class="expand_hide arrow_right blue"></div>
+			<div class="expandHide arrowRight blue"></div>
 		</div>
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents" style="display:none;">
@@ -28,7 +28,7 @@
 	</article>
 	<article class="accordionWhite collapsed" id="accordionInstruments">
 		<div class="accordionWhiteLabel">Instrument
-			<div class="expand_hide arrow_right blue"></div>
+			<div class="expandHide arrowRight blue"></div>
 		</div>
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents" style="display:none;">
@@ -37,7 +37,7 @@
 	</article>
 	<article class="accordionWhite collapsed" id="accordionDataType">
 		<div class="accordionWhiteLabel">Data Type
-			<div class="expand_hide arrow_right blue"></div>
+			<div class="expandHide arrowRight blue"></div>
 		</div>
 		<div class="accordionWhitePin"></div>
 		<div class="accordionContents" style="display:none;">
@@ -84,12 +84,12 @@ var TABLE_67890 = TABLE_23456;
 			accordion_contents.slideToggle('fast', function() {
 				if ($(this).is(':visible')) {
 					$(this).parent().removeClass('collapsed');
-					$(this).parent().find('.expand_hide').removeClass('arrow_right');
-					$(this).parent().find('.expand_hide').addClass('arrow_down');
+					$(this).parent().find('.expandHide').removeClass('arrowRight');
+					$(this).parent().find('.expandHide').addClass('arrowDown');
 				} else {
 					$(this).parent().addClass('collapsed');
-					$(this).parent().find('.expand_hide').removeClass('arrow_down');
-					$(this).parent().find('.expand_hide').addClass('arrow_right');
+					$(this).parent().find('.expandHide').removeClass('arrowDown');
+					$(this).parent().find('.expandHide').addClass('arrowRight');
 				}
 			});
         }
