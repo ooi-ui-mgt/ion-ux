@@ -1162,12 +1162,17 @@ input.noPlaceholderRadius {
   overflow:auto;
   background:#384d68;
 }
+
+/* jscroll overrides - start */
 #searchResultsContainer .jspVerticalBar {right: 4px;}
 #searchResultsContainer .jspTrack {background: none;}
 #searchResultsContainer .jspDrag {background: #88A9CC;}
 .accordionContainer .jspVerticalBar {right: 4px;}
 .accordionContainer .jspTrack {background: none;}
 .accordionContainer .jspDrag {background: #88A9CC;}
+.jspPane {position: asolute; width:100%}
+/* jscroll overrides - end */
+
 .accordionContainerWhite {
   color: #000;
   position: relative;
