@@ -1,7 +1,7 @@
 /*
-ooinet-04.css  proto=ooinetLayout04.css
+ooinetLayout04.css
 by Peter Rosti
-last edited 05-29 04-22 04-14 04-09 03-06 03-05 2014-03-03
+last edited 06-06 05-29 04-22 04-14 04-09 03-06 03-05 2014-03-03
 
 This layout uses calc() to set height and width values
 Note: calc must have spaces in the formula, to accomodate IE bug,
@@ -58,7 +58,6 @@ a:focus, object:focus {outline:none; -moz-outline-style:none}
   text-align:right;
   z-index:4;
   overflow:hidden;
-  'outline:1px solid #F00;
 }
 
 .adminMenuTab {
@@ -441,7 +440,6 @@ ul.nav {margin-top: 15px;}
  height: 20px;
  z-index: 8;
  line-height: 20px;
- 'outline:1px solid #000; /* temp */
 }
 
 .current-user {margin-right:6px}
