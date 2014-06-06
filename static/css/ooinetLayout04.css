@@ -58,7 +58,7 @@ a:focus, object:focus {outline:none; -moz-outline-style:none}
   text-align:right;
   z-index:4;
   overflow:hidden;
-  'outline:1px solid #F00;
+
 }
 
 .adminMenuTab {
@@ -441,7 +441,6 @@ ul.nav {margin-top: 15px;}
  height: 20px;
  z-index: 8;
  line-height: 20px;
- 'outline:1px solid #000; /* temp */
 }
 
 .current-user {margin-right:6px}
