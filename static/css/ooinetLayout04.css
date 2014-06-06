@@ -1,7 +1,7 @@
 /*
 ooinetLayout04.css
 by Peter Rosti
-last edited 06-06 05-29 04-22 04-14 04-09 03-06 03-05 2014-03-03
+last edited 06-06(JG) 05-29 04-22 04-14 04-09 03-06 03-05 2014-03-03
 
 This layout uses calc() to set height and width values
 Note: calc must have spaces in the formula, to accomodate IE bug,
@@ -10,6 +10,8 @@ DIVS in their native state stretch in WIDTH but not in HEIGHT, so heights have t
 heights to work at all.
 height:100% on both HTML and BODY are REQUIRED because percentages cascade from ancestor to descendant. Even leaving it off html
 and just putting it on body only will cause the height calculations contained within the body to fail.
+
+MAKE SURE THIS FILE LOADS LAST! - JG
 */
 
 html, body {
@@ -175,15 +177,22 @@ a.paginate_disabled_previous, a.paginate_disabled_next {
     background: none repeat scroll 0% 0% #96A8BC;
     cursor: not-allowed;
     text-shadow: none;
-    margin-right: 3px;}
+    margin-right: 3px;
+}
 
-/* salt.css and bootstrap tabbed navigation overrides */
+/* salt.css and bootstrap tabbed navigation overrides - start */
+
 .nav-tabs li a:hover, .nav-tabs li.active a:link, .nav-tabs > li > a, 
 .nav-tabs li a, .nav-tabs > li, .nav-tabs, .nav, ul.nav, ul.nav {text-align: center}
+
 ul.nav {margin: 0;}
+
 ul.nav {margin-top: 15px;}
+
 .nav-tabs, .nav {border-bottom: none;}
+
 .nav-tabs > li {border: none;margin-bottom: 0;}
+
 .nav-tabs li a {
   background-color:#FFF;
   border: none;
@@ -199,7 +208,9 @@ ul.nav {margin-top: 15px;}
   margin-right:10px;
   margin-bottom: 0;
 }
+
 .nav-tabs > li > a {line-height: 16px; padding: 4px 14px;}
+
 .nav-tabs li.active a:link { 
   border: none;
   background: #384d68; /* Old browsers */
@@ -218,13 +229,12 @@ ul.nav {margin-top: 15px;}
   color: #FFF;
   text-shadow: none;
 }
-.nav-tabs li a:hover {
-  border: none;
-  background-color: #bcc1ce;
-  color: #000;
-}
+.nav-tabs li a:hover {border: none;background-color: #bcc1ce;color: #000;}
+
+/* salt.css and bootstrap tabbed navigation overrides - end*/
 
 .row-fluid .span8 {width: 67%;}
+
 .v02 .block h3 {
 	padding: 5px 6px 5px 5px;
 	line-height: 11px;
@@ -237,6 +247,7 @@ ul.nav {margin-top: 15px;}
 	background: linear-gradient(135deg,  #7b99b5 58%,#607187 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7b99b5', endColorstr='#607187',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 	}
+	
 .v02 .block {
 	margin:0px;
 	background: #ffffff; /* Old browsers */
@@ -248,6 +259,7 @@ ul.nav {margin-top: 15px;}
 	background: linear-gradient(135deg,  #ffffff 0%,#f6f6f6 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 	}
+	
 .tab-content {
     border-width: 2px 0px 0px 0px;
     border-style: solid;
@@ -464,6 +476,7 @@ ul.nav {margin-top: 15px;}
 }
 
 /* Add margin to Bootstrap span btn group */
+
 #login .dropdown {
  margin-left: 3px;
 }
@@ -508,7 +521,7 @@ a.btn-navigation-plain {
   background-position: -240px -180px;
 }
 
-/* EDIT RESOURCE - HAMBURGER ICON */
+/* Edit Resource - Hamburger Icon - Legacy Overide - start*/
 
 #searchResultsTabContainer a.btn {
 	display: inline-block;
@@ -567,11 +580,13 @@ searchResultsTabContainer .pull-right {
   background-position: -240px -176px;
 }
 
-
-
 .btn-group.open .hamburger:before {background-position: -240px -180px;}
 #searchResultsTabContainer .btn-group{height:28px}
 .btn-group{height:20px}
+
+/* Edit Resource - Hamburger Icon - Legacy Overide - end*/
+
+/* Legacy Overide - start */
 
 ul.dropdown-menu {
 	background: -moz-linear-gradient(left, #384d68 0%, #7b99b5 100%); /* FF3.6+ */
@@ -624,6 +639,9 @@ ul.dropdown-menu li:hover {
     font-weight: normal;
     line-height: 20px;
 }
+
+/* Legacy Overide - end */
+
 
 /* ---------------------------------------------------------------
  END TEMP USER-NAV
@@ -1161,12 +1179,19 @@ input.noPlaceholderRadius {
   overflow:auto;
   background:#384d68;
 }
+
+/* jscroll overrides - start */
+
 #searchResultsContainer .jspVerticalBar {right: 4px;}
 #searchResultsContainer .jspTrack {background: none;}
 #searchResultsContainer .jspDrag {background: #88A9CC;}
 .accordionContainer .jspVerticalBar {right: 4px;}
 .accordionContainer .jspTrack {background: none;}
 .accordionContainer .jspDrag {background: #88A9CC;}
+.jspPane {position: asolute; width:100%}
+
+/* jscroll overrides - end */
+
 .accordionContainerWhite {
   color: #000;
   position: relative;
@@ -1177,24 +1202,6 @@ input.noPlaceholderRadius {
   padding: 0px;
   overflow-x: hidden;
   z-index:8;
-}
-.accordionWhiteChevron {
-  position: absolute;
-  right: 22px;
-  top: 7px;
-}
-
-.accordionWhitePin {
-  position: absolute;
-  right: 5px;
-  top: 7px;
-  width: 14px;
-  height: 14px;
-  background: url('../img/tack1.png');
-}
-
-.pinned .accordionWhitePin {
-  background: url('../img/tack2.png');
 }
 
 .icon-chevron { /* bootstrap */
@@ -1260,43 +1267,47 @@ input.noPlaceholderRadius {
 .softwareNested, .modelNested, .marineSiteNested, .physicalNested, #lifecycleSoftware, #lifecycleDataProduct, #lifecycleModel, #lifecycleMarineSite {
   display: none;
 }
+
+/* legacy overrides - start */
+
 .form-horizontal{padding: 20px 10px 10px;}
-.form-horizontal fieldset {
-    margin-top: 0px;
-    width: 80%;
-    border: 0px none;
-    border-radius: 10px;
-    padding: 0px;
-    text-align: right;
-}
-.form-horizontal .control-group {
-  display: block;
-  width:60%;
-  min-width:600px;
-}
 
-.form-horizontal .control-label {
-  float: none;
-  display: inline-block;
-  width: 105px;
-  vertical-align: top;
-  font-size:13px
-}
+.form-horizontal fieldset {margin-top: 0px;width: 80%;border: 0px none;border-radius: 10px;padding: 0px;text-align: right;}
 
-.form-horizontal .controls {
-  margin-left: 10px;
-  width: calc(100% - 130px);
-  display: inline-block;
-}
+.form-horizontal .control-group {display: block;width:60%;min-width:600px;}
+
+.form-horizontal .control-label {float: none;display: inline-block;width: 105px;vertical-align: top;font-size:13px}
+
+.form-horizontal .controls {margin-left: 10px;width: calc(100% - 130px);display: inline-block;}
+
 .controls {padding: 10px 0px 0px 0px}
+
 #form-container .form-horizontal .controls select {width: 91.1%;}
+
 #form-container .form-horizontal .controls input[type=checkbox] {width:42px}
+
 #form-container .form-horizontal .controls input[type=text] {width: 88.5%; margin-left:32px}
+
 #form-container .form-horizontal .controls input{width: 88.5%; margin-left:33px}
+
 #form-container .form-horizontal .controls textarea {width: 88.5%;}
 
 .form-horizontal .help-block {margin-bottom: 0;}
+
 .help-block {color: #595959; font-style:italic}
+
+.controls input, .controls textarea {
+    padding: 5px;
+    color: #555;
+    min-height: 15px;
+    background: none repeat scroll 0% 0% #FFF;
+    border: 1px solid #999;
+    box-shadow: none;
+    font-family: Helvetica,Arial,sans-serif Negative;
+    font-size: 14px;
+}
+
+/* legacy overrides - end*/
 
 .adminButtonGrey {
 	display: inline-block;
@@ -1432,17 +1443,6 @@ input.noPlaceholderRadius {
   -moz-box-sizing:border-box; /* Firefox 28 and earlier*/
 }
 
-.controls input, .controls textarea {
-    padding: 5px;
-    color: #555;
-    min-height: 15px;
-    background: none repeat scroll 0% 0% #FFF;
-    border: 1px solid #999;
-    box-shadow: none;
-    font-family: Helvetica,Arial,sans-serif Negative;
-    font-size: 14px;
-}
-
 .createResourceFooter {
   position: relative;
   text-align:center;
@@ -1465,4 +1465,3 @@ input.noPlaceholderRadius {
   box-sizing:border-box;
   -moz-box-sizing:border-box; /* Firefox 28 and earlier*/
 }
-
